@@ -17,7 +17,15 @@ const Hero = () => {
     const container = useRef();
 
     useGSAP(() => {
+        const line2Split = new SplitText(".line2a", {
+            type: "chars",
+            charsClass: "word"
+        });
 
+        const line3Split = new SplitText(".line3a", {
+            type: "chars",
+            charsClass: "word"
+        });
         const descSplit = new SplitText(".hero_desc", {
             type: "lines",
             linesClass: "line-wrapper"
@@ -33,7 +41,7 @@ const Hero = () => {
             wrapper.appendChild(line);
         });
 
-        gsap.set([...descSplit.lines], {
+        gsap.set([...line2Split.chars, ...line3Split.chars, ...descSplit.lines], {
             yPercent: 100
         });
 
@@ -49,6 +57,11 @@ const Hero = () => {
             ease: "custom",
             duration: .8
         }, "<")
+        tl.to(line2Split.chars, {
+            yPercent: 0,
+            stagger: 0.025,
+            ease: "custom"
+        }, "<0.1");
         tl.to(".line2a", {
             transform: "translateY(-108%)",
             ease: "custom",
@@ -59,8 +72,13 @@ const Hero = () => {
             ease: "custom",
             duration: .8
         }, "<")
+        tl.to(line3Split.chars, {
+            yPercent: 0,
+            stagger: 0.01,
+            ease: "custom"
+        }, "<0.1");
         tl.to(".line3a", {
-            color:"white",
+            color: "white",
             ease: "custom",
             duration: .8
         })
