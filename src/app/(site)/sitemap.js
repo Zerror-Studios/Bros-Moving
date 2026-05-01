@@ -17,5 +17,15 @@ export default function sitemap() {
       lastModified: new Date(),
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/blogs`,
+      lastModified: new Date(),
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      priority: 0.5,
+    },
   ];
 }
