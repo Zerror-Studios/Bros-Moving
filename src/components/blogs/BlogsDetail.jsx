@@ -11,33 +11,6 @@ import { BlogsData } from '../utils/BlogsData';
 import { useParams } from 'next/navigation';
 gsap.registerPlugin(SplitText);
 
-const BlogDetailData = [
-    {
-        id: 1,
-        heading: "Introduction",
-        content: `At Bro's Moving, we understand that behind every successful move is a team of dedicated professionals who bring commitment, care, and expertise to the job. Our High Five Friday series is designed to recognize those individuals who consistently go above and beyond expectations. This week, we are proud to celebrate Kingsley Okorafo, whose hard work and positive attitude make a meaningful impact on both our team and our customers.`
-    },
-    {
-        id: 2,
-        heading: "Professional Excellence",
-        content: `Kingsley stands out for his exceptional work ethic and attention to detail. No matter the size or complexity of the move, he approaches every task with precision and focus. From carefully packing fragile items to organizing efficient loading and unloading processes, he ensures that each step is executed smoothly. His ability to maintain high standards under pressure highlights his professionalism and dedication to delivering reliable, top-quality service every time.`,
-        images: [
-            "/images/blogpage/blog_det_1.png",
-            "/images/blogpage/blog_det_2.png"
-        ]
-    },
-    {
-        id: 3,
-        heading: "Customer & Team Impact",
-        content: `What truly sets Kingsley apart is the way he connects with people. He understands that moving can be a stressful experience, and he goes the extra mile to make customers feel comfortable and confident throughout the process. His friendly demeanor, clear communication, and respectful approach consistently earn positive feedback. At the same time, Kingsley is a strong team player—always ready to support his colleagues, share knowledge, and contribute to a positive and productive work environment.`
-    },
-    {
-        id: 4,
-        heading: "Recognition & Appreciation",
-        content: `Kingsley’s consistent performance and commitment to excellence reflect the core values of Bor’s Moving—care, reliability, and professionalism. His contributions not only help maintain our reputation for quality service but also inspire others to raise their standards.`
-    }
-]
-
 const BlogsDetail = () => {
     const [deskLoaded, setDeskLoaded] = useState(false);
     const [mobLoaded, setMobLoaded] = useState(false);
@@ -141,7 +114,7 @@ const BlogsDetail = () => {
             </div>
 
             <div className=" max_width_layout  md:w-[60%] padding md:px-0! pb-10! border-b border-black/10 mx-auto space-y-8">
-                {BlogDetailData.map((blog, i) => (
+                {blog?.BlogDetailData.map((blog, i) => (
                     <div key={i} className="">
                         <h3 className='text-2xl font-semibold'>{i + 1}. {blog.heading}</h3>
                         <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>{blog.content}</p>
