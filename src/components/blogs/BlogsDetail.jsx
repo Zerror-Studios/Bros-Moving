@@ -7,27 +7,25 @@ import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image from 'next/image';
-import { BlogsData } from '../utils/BlogsData';
-import { useParams } from 'next/navigation';
+import { urlFor } from '@/sanity/lib/image';
+import { formatPostDate } from '@/components/utils/formatPostDate';
 gsap.registerPlugin(SplitText);
 
-const BlogsDetail = () => {
+const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
     const [deskLoaded, setDeskLoaded] = useState(false);
     const [mobLoaded, setMobLoaded] = useState(false);
     const isLoaded = deskLoaded || mobLoaded;
-    const { slug } = useParams()
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const swiperRef = useRef(null);
     const container = useRef();
 
-    const blog = BlogsData.find((blog) => blog.slug === slug)
-    const currentIndex = BlogsData.findIndex((blog) => blog.slug === slug);
-    const prevIndex = currentIndex === 0 ? BlogsData.length - 1 : currentIndex - 1;
-    const nextIndex = currentIndex === BlogsData.length - 1 ? 0 : currentIndex + 1;
-
-    const prevSlug = BlogsData[prevIndex].slug;
-    const nextSlug = BlogsData[nextIndex].slug;
+    const heroImgUrl = post?.coverImage
+        ? urlFor(post.coverImage).width(1920).height(1080).fit('crop').url()
+        : "/images/blogpage/blog_detail_img.png";
+    const heroMobImgUrl = post?.coverImage
+        ? urlFor(post.coverImage).width(1080).height(1920).fit('crop').url()
+        : "/images/blogpage/mob_blog_detail_img.png";
 
     useGSAP(() => {
         const titleSplit = new SplitText(".hero_title", {
@@ -91,22 +89,22 @@ const BlogsDetail = () => {
             <div ref={container} className="w-full p-3 md:p-5 center relative text-center">
                 <div className="  max_width_layout absolute bottom-20 md:bottom-32 flex flex-col justify-center items-center text-[#F9F6F3]">
                     <div className=" hero_text opacity-0 flex flex-col justify-center items-center">
-                        <h1 className=' hero_title  text-4xl md:text-7xl max-sm:w-[90vw]  font-semibold'>{blog.title}</h1>
+                        <h1 className=' hero_title  text-4xl md:text-7xl max-sm:w-[90vw]  font-semibold'>{post?.title}</h1>
                     </div>
                     <div className=" hero_text opacity-0 w-fit mt-5  flex gap-x-5 h-fit  ">
                         <div className="flex items-center gap-x-2">
                             <img src="/icons/white_person.svg" className='w-5 icon_anim opacity-0' alt="" />
-                            <p className=' hero_desc text-base md:text-lg'>{blog.author}</p>
+                            <p className=' hero_desc text-base md:text-lg'>{post?.author || "Bro's Moving"}</p>
                         </div>
                         <div className="w-[1px] bg-white h-8 icon_anim opacity-0"></div>
                         <div className="flex items-center gap-x-2">
                             <img src="/icons/white_calender.svg" className='w-5 icon_anim opacity-0' alt="" />
-                            <p className=' hero_desc text-base md:text-lg'>{blog.date}</p>
+                            <p className=' hero_desc text-base md:text-lg'>{formatPostDate(post?.date)}</p>
                         </div>
                     </div>
                 </div>
-                <Image width={1920} height={1080} onLoadingComplete={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src="/images/blogpage/blog_detail_img.png" alt="" />
-                <Image height={1920} width={1080} onLoadingComplete={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src="/images/blogpage/mob_blog_detail_img.png" alt="" />
+                <Image width={1920} height={1080} onLoadingComplete={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroImgUrl} alt={post?.title ?? ""} />
+                <Image height={1920} width={1080} onLoadingComplete={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroMobImgUrl} alt={post?.title ?? ""} />
                 <div className={`w-full absolute  pointer-events-none transition-all  skeleton duration-300 inset-0 p-3 md:p-5 ${isLoaded ? "opacity-0" : "opacity-100"} `}>
                     <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="" />
                     <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="" />
@@ -114,25 +112,37 @@ const BlogsDetail = () => {
             </div>
 
             <div className=" max_width_layout  md:w-[60%] padding md:px-0! pb-10! border-b border-black/10 mx-auto space-y-8">
-                {blog?.BlogDetailData.map((blog, i) => (
-                    <div key={i} className="">
-                        <h3 className='text-2xl font-semibold'>{i + 1}. {blog.heading}</h3>
-                        <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>{blog.content}</p>
-                        {blog.images && (
-                            <div className="w-full grid grid-cols-2 gap-x-3 md:gap-x-10 mt-8">
-                                {blog?.images.map((item, i) => (
-                                    <div key={i} className="w-full">
-                                        <img src={item} alt="" className='w-full' />
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                ))}
+                {post?.details?.length ? (
+                    post.details.map((section, i) => (
+                        <div key={section._key ?? i} className="">
+                            <h3 className='text-2xl font-semibold'>{i + 1}. {section.heading}</h3>
+                            {section.content ? (
+                                <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73] whitespace-pre-line'>{section.content}</p>
+                            ) : null}
+                            {section.images?.length ? (
+                                <div className="w-full grid grid-cols-2 gap-x-3 md:gap-x-10 mt-8">
+                                    {section.images.map((img, j) => {
+                                        const src = img ? urlFor(img).width(900).url() : null
+                                        if (!src) return null
+                                        return (
+                                            <div key={img._key ?? j} className="w-full">
+                                                <img src={src} alt="" className='w-full' />
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            ) : null}
+                        </div>
+                    ))
+                ) : (
+                    <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>
+                        No content yet.
+                    </p>
+                )}
             </div>
 
             <div className=" max_width_layout md:w-[60%] padding py-0! mx-auto flex items-center justify-between mt-5 md:mt-10 mb-5 md:mb-24">
-                <Link href={`/blog/${prevSlug}`} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
+                <Link href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
                     <div className={`group-hover:scale-100 group-hover:p-2.5 transition-all duration-300 scale-0  p-0 overflow-hidden bg-[#090A0C] rounded-full  `}>
                         <img
                             src="/icons/arrow-right.svg"
@@ -142,7 +152,7 @@ const BlogsDetail = () => {
                     </div>
                     Previous Blog
                 </Link>
-                <Link href={`/blog/${nextSlug}`} className=' group hover:pr-2 pr-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
+                <Link href={nextSlug ? `/blog/${nextSlug}` : '/blogs'} className=' group hover:pr-2 pr-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
                     Next Blog
                     <div className={`group-hover:scale-100 group-hover:p-2.5 transition-all duration-300 scale-0  p-0 overflow-hidden bg-[#090A0C] rounded-full  `}>
                         <img
@@ -222,18 +232,22 @@ const BlogsDetail = () => {
                             },
                         }}
                     >
-                        {BlogsData.map((blog, i) => (
-                            <SwiperSlide key={i} className=' group space-y-5 '>
-                                <Link href={`/blog/${blog.slug}`} key={i} className="space-y-5">
-                                    <img src={blog.image} className='w-full group-hover:scale-95 transition-all duration-300' alt="" />
+                        {latestPosts.map((blog, i) => (
+                            <SwiperSlide key={blog._id ?? i} className=' group space-y-5 '>
+                                <Link href={`/blog/${blog.slug}`} className="space-y-5">
+                                    <img
+                                        src={blog?.coverImage ? urlFor(blog.coverImage).width(1200).height(900).fit('crop').url() : "/images/blogpage/blog1.png"}
+                                        className='w-full group-hover:scale-95 transition-all duration-300'
+                                        alt={blog?.title ?? "Blog image"}
+                                    />
                                     <div className="flex w-full justify-between">
                                         <div className="flex items-center gap-x-2">
                                             <img src="/icons/form_person.svg" alt="" />
-                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author}</p>
+                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
                                         </div>
                                         <div className="flex items-center gap-x-2">
                                             <img src="/icons/red_calender.svg" alt="" />
-                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.date}</p>
+                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{formatPostDate(blog.date)}</p>
                                         </div>
                                     </div>
                                     <h3 className='text-2xl group-hover:text-[#F5344F]  transition-all duration-300 leading-tight group-hover:underline font-semibold'>{blog.title}</h3>

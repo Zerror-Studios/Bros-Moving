@@ -2,7 +2,8 @@
 import { RiArrowDownSLine } from '@remixicon/react'
 import { Link } from 'next-view-transitions';
 import React, { useState } from 'react'
-import { BlogsData } from '../utils/BlogsData';
+import { urlFor } from '@/sanity/lib/image';
+import { formatPostDate } from '@/components/utils/formatPostDate';
 
 const SERVICES = [
     "Residential Moving",
@@ -11,7 +12,7 @@ const SERVICES = [
     "Storage Services",
     "Specialty Moving"
 ];
-const BlogsGrid = () => {
+const BlogsGrid = ({ posts = [] }) => {
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
     const [isSortOpen, setIsSortOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const BlogsGrid = () => {
         <>
             <div className="w-full padding">
                 <div className=" max_width_layout w-full flex border-b border-black/10 pb-5 items-end justify-between">
-                    <h2 className='text-3xl md:text-5xl  font-semibold '>Blogs<sup className='text-base md:text-lg'>(6)</sup> </h2>
+                    <h2 className='text-3xl md:text-5xl  font-semibold '>Blogs<sup className='text-base md:text-lg'>({posts.length})</sup> </h2>
                     <div className="relative flex items-end gap-x-4">
 
                         <button
@@ -82,17 +83,21 @@ const BlogsGrid = () => {
                     </div>
                 </div>
                 <div className=" max_width_layout w-full grid-cols-2 grid md:grid-cols-3 gap-3 md:gap-8 gap-y-5 md:gap-y-12 pt-5 md:pt-10">
-                    {BlogsData.map((blog, i) => (
-                        <Link href={`/blog/${blog.slug}`} key={i} className=" group space-y-3 md:space-y-5 ">
-                            <img src={blog.image} className='w-full group-hover:scale-95 transition-all duration-300' alt="" />
+                    {posts.map((blog, i) => (
+                        <Link href={`/blog/${blog.slug}`} key={blog._id ?? i} className=" group space-y-3 md:space-y-5 ">
+                            <img
+                                src={blog?.coverImage ? urlFor(blog.coverImage).width(1200).height(900).fit('crop').url() : "/images/blogpage/blog1.png"}
+                                className='w-full group-hover:scale-95 transition-all duration-300'
+                                alt={blog?.title ?? "Blog image"}
+                            />
                             <div className=" max-sm:space-y-1 md:flex w-full justify-between">
                                 <div className="flex items-center gap-x-2">
                                     <img src="/icons/form_person.svg" className='w-5' alt="" />
-                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author}</p>
+                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
                                 </div>
                                 <div className="flex items-center gap-x-2">
                                     <img src="/icons/red_calender.svg" className='w-5' alt="" />
-                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.date}</p>
+                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{formatPostDate(blog.date)}</p>
                                 </div>
                             </div>
                             <h3 className=' text-base md:text-2xl group-hover:text-[#F5344F]  transition-all duration-300 leading-tight group-hover:underline font-semibold'>{blog.title}</h3>
