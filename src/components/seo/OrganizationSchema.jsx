@@ -1,5 +1,5 @@
 import React from "react";
-import { Const } from "@/utils/Constants";
+import { Const } from "../utils/Constants";
 
 const OrganizationSchema = () => {
   const schemaData = {

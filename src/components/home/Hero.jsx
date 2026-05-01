@@ -114,15 +114,15 @@ const Hero = () => {
                                 <div className="space-y-6 md:space-y-10">
                                     <h1 className="text-4xl md:text-7xl md:w-1/2 font-semibold">
                                         <div className='block overflow-hidden  relative'>
-                                            <div className=' line1a text-black'>Hi</div>
-                                            <div className=' line2a translate-y-full absolute inset-0 text-[#F5344F]'>We’re Bro’s moving</div>
-                                            <div className=' line3a translate-y-full absolute inset-0 text-[#090A0C]'>⁠We make</div>
+                                            <div className=' line1a whitespace-nowrap text-black'>Hi</div>
+                                            <div className=' line2a translate-y-full absolute inset-0 whitespace-nowrap text-[#F5344F]'>We’re Bro’s moving</div>
+                                            <div className=' line3a translate-y-full absolute inset-0 whitespace-nowrap text-[#090A0C]'>⁠We make</div>
                                         </div>
                                         <div className='block overflow-hidden'>
-                                            <div className='line3a text-[#090A0C] translate-y-full'>moving reliable & </div>
+                                            <div className='line3a whitespace-nowrap text-[#090A0C] translate-y-full'>moving reliable & </div>
                                         </div>
                                         <div className='block overflow-hidden'>
-                                            <div className="line3a text-[#090A0C] translate-y-full">
+                                            <div className="line3a whitespace-nowrap text-[#090A0C] translate-y-full">
                                                 stress-free
                                             </div>
                                         </div>
