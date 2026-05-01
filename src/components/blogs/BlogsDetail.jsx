@@ -103,8 +103,8 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                         </div>
                     </div>
                 </div>
-                <Image width={1920} height={1080} onLoadingComplete={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroImgUrl} alt={post?.title ?? ""} />
-                <Image height={1920} width={1080} onLoadingComplete={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroMobImgUrl} alt={post?.title ?? ""} />
+                <Image width={1920} height={1080} onLoad={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroImgUrl} unoptimized alt={post?.title ?? ""} />
+                <Image height={1920} width={1080} onLoad={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroMobImgUrl} unoptimized alt={post?.title ?? ""} />
                 <div className={`w-full absolute  pointer-events-none transition-all  skeleton duration-300 inset-0 p-3 md:p-5 ${isLoaded ? "opacity-0" : "opacity-100"} `}>
                     <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="" />
                     <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="" />
@@ -141,7 +141,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                 )}
             </div>
 
-            <div className=" max_width_layout md:w-[60%] padding py-0! mx-auto flex items-center justify-between mt-5 md:mt-10 mb-5 md:mb-24">
+            <div className=" max_width_layout md:w-[60%] md:px-0!  padding py-0! mx-auto flex items-center justify-between mt-5 md:mt-10 mb-5 md:mb-24">
                 <Link href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
                     <div className={`group-hover:scale-100 group-hover:p-2.5 transition-all duration-300 scale-0  p-0 overflow-hidden bg-[#090A0C] rounded-full  `}>
                         <img

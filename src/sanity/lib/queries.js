@@ -6,7 +6,9 @@ export const POSTS_QUERY = groq`*[_type == "post"] | order(coalesce(date, _creat
   author,
   "slug": slug.current,
   date,
-  coverImage
+  coverImage{
+    asset->
+  }
 }`
 
 export const POST_BY_SLUG_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
@@ -15,7 +17,9 @@ export const POST_BY_SLUG_QUERY = groq`*[_type == "post" && slug.current == $slu
   author,
   "slug": slug.current,
   date,
-  coverImage,
+  coverImage{
+    asset->
+  },
   details,
   seo
 }`
