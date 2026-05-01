@@ -1,6 +1,6 @@
-export default function sitemap() {
-  const baseUrl = "https://bros-moving.vercel.app";
+const baseUrl = "https://bros-moving.vercel.app";
 
+export default function sitemap() {
   return [
     {
       url: baseUrl,

@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/website.css";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
+import SiteShell from "@/components/common/SiteShell";
 import { Const } from "@/components/utils/Constants";
 
 
@@ -79,7 +80,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning>
         <OrganizationSchema />
-        {children}
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

@@ -80,7 +80,7 @@ const EstimateForm = () => {
 
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full">
                                 <div className="w-10 h-10 flex items-center justify-center bg-[#F5344F] rounded-full shadow-[0px_6px_10px_rgba(245,52,79,0.25)]">
-                                    <img src="/icons/swap_arrow.svg" className="w-4" />
+                                    <img src="/icons/swap_arrow.svg" className="w-4" alt="arrow" />
                                 </div>
                             </div>
 
@@ -130,6 +130,7 @@ const EstimateForm = () => {
                                         className={`bg-transparent outline-none ${form.date ? "text-[#0F172A]" : "text-[#6B6E73]"}  font-medium w-full appearance-none pointer-events-none`}
                                     />
                                     <img
+                                        alt="calender"
                                         src="/icons/calender.svg"
                                         className="w-5 opacity-60 pointer-events-none"
                                     />
@@ -149,7 +150,7 @@ const EstimateForm = () => {
                                     <span className={`w-full font-medium ${form.homeSize ? "text-black" : "text-[#6B6E73]"}`}>
                                         {form.homeSize || "Select home size"}
                                     </span>
-                                    <img src="/icons/drop_arrow.svg" className="w-4 opacity-60" />
+                                    <img alt="arrow" src="/icons/drop_arrow.svg" className="w-4 opacity-60" />
                                 </div>
 
                                 {/* Dropdown */}
@@ -188,7 +189,7 @@ const EstimateForm = () => {
                                     placeholder="+(123) 456 7890"
                                     className="bg-transparent outline-none text-[#0F172A] font-medium w-full"
                                 />
-                                <img src="/icons/phone.svg" className="w-5 opacity-60" />
+                                <img alt="phone" src="/icons/phone.svg" className="w-5 opacity-60" />
                             </div>
                         </div>
 
@@ -198,7 +199,7 @@ const EstimateForm = () => {
                             className=" group w-full mt-8 bg-[#090A0C] hover:bg-white hover:text-[#090A0C] hover:font-medium border border-[#090A0C] text-white py-3 rounded-full flex items-center justify-center gap-2 text-base md:text-lg transition-all duration-300"
                         >
                             Calculate Cost
-                            <img src="/icons/compass.svg" className="w-4 group-hover:invert-100 group-hover:rotate-90 transition-all duration-300" />
+                            <img alt="arrow" src="/icons/compass.svg" className="w-4 group-hover:invert-100 group-hover:rotate-90 transition-all duration-300" />
                         </button>
                     </form>
                 </div>

@@ -1,6 +1,4 @@
 import PageHero from '@/components/common/PageHero'
-import Testimonials from '@/components/home/Testimonials'
-import VideoSection from '@/components/home/VideoSection'
 import WebPageSchema from '@/components/seo/WebPageSchema'
 import ServicesScroll from '@/components/services/ServicesScroll'
 import { Const } from '@/components/utils/Constants'
@@ -72,8 +70,6 @@ const ServicesPage = () => {
         mobImage={"/images/servicepage/mob_service_hero.png"}
       />
       <ServicesScroll />
-      {/* <VideoSection /> */}
-      {/* <Testimonials /> */}
     </>
   )
 }

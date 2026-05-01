@@ -1,23 +1,26 @@
 "use client";
 
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
-import LenisScroll from "@/components/common/LenisScroll";
-import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-
+import { usePathname } from "next/navigation";
+import { ViewTransitions } from "next-view-transitions";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { ViewTransitions } from "next-view-transitions";
 import EstimateForm from "@/components/common/EstimateForm";
+import Footer from "@/components/common/Footer";
+import Header from "@/components/common/Header";
+import LenisScroll from "@/components/common/LenisScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SiteLayout({ children }) {
+export default function SiteShell({ children }) {
   const pathname = usePathname();
-
+  const isStudio = pathname?.startsWith("/studio");
 
   useEffect(() => {
+    if (isStudio) {
+      return;
+    }
+
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh();
       if (window.lenis) {
@@ -26,27 +29,27 @@ export default function SiteLayout({ children }) {
     }, 500);
 
     return () => clearTimeout(timeout);
-  }, [pathname]);
+  }, [isStudio, pathname]);
+
+  if (isStudio) {
+    return children;
+  }
 
   return (
     <ViewTransitions>
       <LenisScroll>
-
-      <EstimateForm/>
+        <EstimateForm />
 
         <header>
           <Header />
         </header>
 
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
 
         <footer>
           <Footer />
         </footer>
       </LenisScroll>
     </ViewTransitions>
-
   );
 }
