@@ -57,11 +57,11 @@ const Footer = () => {
               <Button variant="white" onClick={open}>
                 Get an estimate now!
               </Button>
-              <button className=' w-fit flex text-white items-center gap-x-2 px-4 py-3 border font-medium border-white rounded-full'><img src="/icons/call.svg" className='w-5' alt="" /> (555) 123-4567</button>
+              <button className=' w-fit flex text-white items-center gap-x-2 px-4 py-3 border font-medium border-white rounded-full'><img src="/icons/call.svg" className='w-5' alt="loading" /> (555) 123-4567</button>
             </div>
           </div>
-          <img src="/images/fotter_red_box.png" className='w-full max-sm:hidden' alt="" />
-          <img src="/images/mob_footer_red_box.png" className='w-full md:hidden' alt="" />
+          <img src="/images/fotter_red_box.png" className='w-full max-sm:hidden' alt="loading" />
+          <img src="/images/mob_footer_red_box.png" className='w-full md:hidden' alt="loading" />
         </div>
 
         <div className=" max-sm:text-sm max_width_layout w-full relative text-[#F9F6F3]">
@@ -69,19 +69,19 @@ const Footer = () => {
           <div className="absolute inset-0 w-full flex md:items-center  md:px-16 ">
             <div className=" w-full h-fit md:flex justify-between">
               <div className="w-full center py-6 border-b border-white/20 md:hidden!">
-                <img className='w-28 md:hidden' src="/logo.svg" alt="" />
+                <img className='w-28 md:hidden' src="/logo.svg" alt="loading" />
               </div>
               <div className=" w-fit grid grid-cols-2 font-light md:flex max-sm:gap-x-5 max-sm:border-b border-white/20 pr-10 max-sm:py-6 md:flex-col justify-between">
-                <img className='w-28 max-sm:hidden' src="/logo.svg" alt="" />
+                <img className='w-28 max-sm:hidden' src="/logo.svg" alt="loading" />
                 <p className='leading-tight  md:hidden'>Fast, reliable & stress-free moving  services across the country.</p>
                 <p className='leading-tight max-sm:hidden'>Fast, reliable & stress-free moving <br /> services across the country.</p>
                 <div className=" max-sm:space-y-2">
                   <div className="flex items-center gap-x-2">
-                    <img src="/icons/red_dialer.svg" alt=""  className='w-5'/>
+                    <img src="/icons/red_dialer.svg" alt="loading" className='w-5' />
                     <p className=''>(555) 123-4567</p>
                   </div>
                   <div className="flex items-center gap-x-2">
-                    <img src="/icons/red_mail.svg" alt=""  className='w-5'/>
+                    <img src="/icons/red_mail.svg" alt="loading" className='w-5' />
                     <p className=''>info@brosmoving.com</p>
                   </div>
                 </div>
@@ -100,8 +100,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <img src="/images/footer_outline.svg" className='w-full max-sm:hidden' alt="" />
-          <img src="/images/mob_footer_outline.svg" className='w-full md:hidden ' alt="" />
+          <img src="/images/footer_outline.svg" className='w-full max-sm:hidden' alt="loading" />
+          <img src="/images/mob_footer_outline.svg" className='w-full md:hidden ' alt="loading" />
         </div>
 
         <div className="w-full center text-center">

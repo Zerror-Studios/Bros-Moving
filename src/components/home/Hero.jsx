@@ -105,7 +105,7 @@ const Hero = () => {
             {/* <Introloader /> */}
             <div ref={container} className="w-full  h-[100svh]  relative p-2 md:p-5">
                 <div style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className="vide_pren w-full h-full overflow-hidden rounded-2xl md:rounded-[36px]">
-                    <video poster='/images/hero_video_poster_.webp' loop autoPlay muted playsInline src="/videos/hero_video.mp4" className={` hero_video scale-[3] cover brightness-95`} alt="" />
+                    <video poster='/images/hero_video_poster_.webp' loop autoPlay muted playsInline src="/videos/hero_video.mp4" className={` hero_video scale-[3] cover brightness-95`} alt="loading" />
                 </div>
                 <div className="w-full padding absolute  h-full  inset-0">
                     <div className=" max_width_layout  w-full  h-full">

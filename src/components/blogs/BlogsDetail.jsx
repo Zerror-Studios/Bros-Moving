@@ -93,12 +93,12 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                     </div>
                     <div className=" hero_text opacity-0 w-fit mt-5  flex gap-x-5 h-fit  ">
                         <div className="flex items-center gap-x-2">
-                            <img src="/icons/white_person.svg" className='w-5 icon_anim opacity-0' alt="" />
+                            <img src="/icons/white_person.svg" className='w-5 icon_anim opacity-0' alt="loading" />
                             <p className=' hero_desc text-base md:text-lg'>{post?.author || "Bro's Moving"}</p>
                         </div>
                         <div className="w-[1px] bg-white h-8 icon_anim opacity-0"></div>
                         <div className="flex items-center gap-x-2">
-                            <img src="/icons/white_calender.svg" className='w-5 icon_anim opacity-0' alt="" />
+                            <img src="/icons/white_calender.svg" className='w-5 icon_anim opacity-0' alt="loading" />
                             <p className=' hero_desc text-base md:text-lg'>{formatPostDate(post?.date)}</p>
                         </div>
                     </div>
@@ -106,8 +106,8 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                 <Image width={1920} height={1080} onLoad={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroImgUrl} unoptimized alt={post?.title ?? ""} />
                 <Image height={1920} width={1080} onLoad={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroMobImgUrl} unoptimized alt={post?.title ?? ""} />
                 <div className={`w-full absolute  pointer-events-none transition-all  skeleton duration-300 inset-0 p-3 md:p-5 ${isLoaded ? "opacity-0" : "opacity-100"} `}>
-                    <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="" />
-                    <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="" />
+                    <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="loading" />
+                    <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="loading" />
                 </div>
             </div>
 
@@ -126,7 +126,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                                         if (!src) return null
                                         return (
                                             <div key={img._key ?? j} className="w-full">
-                                                <img src={src} alt="" className='w-full' />
+                                                <img src={src} alt="loading" className='w-full' />
                                             </div>
                                         )
                                     })}
@@ -142,7 +142,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
             </div>
 
             <div className=" max_width_layout md:w-[60%] md:px-0!  padding py-0! mx-auto flex items-center justify-between mt-5 md:mt-10 mb-5 md:mb-24">
-                <Link href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
+                <Link  href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
                     <div className={`group-hover:scale-100 group-hover:p-2.5 transition-all duration-300 scale-0  p-0 overflow-hidden bg-[#090A0C] rounded-full  `}>
                         <img
                             src="/icons/arrow-right.svg"
@@ -182,7 +182,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className={`w-4 rotate-180 group-hover:invert-100 `}
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -199,7 +199,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className="w-4 group-hover:invert-100"
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -242,11 +242,11 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                                     />
                                     <div className="flex w-full justify-between">
                                         <div className="flex items-center gap-x-2">
-                                            <img src="/icons/form_person.svg" alt="" />
+                                            <img src="/icons/form_person.svg" alt="loading" />
                                             <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
                                         </div>
                                         <div className="flex items-center gap-x-2">
-                                            <img src="/icons/red_calender.svg" alt="" />
+                                            <img src="/icons/red_calender.svg" alt="loading" />
                                             <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{formatPostDate(blog.date)}</p>
                                         </div>
                                     </div>

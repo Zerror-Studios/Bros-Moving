@@ -78,7 +78,7 @@ const OurTeam = () => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className={`w-4 rotate-180 group-hover:invert-100 `}
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -95,7 +95,7 @@ const OurTeam = () => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className="w-4 group-hover:invert-100"
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -132,9 +132,9 @@ const OurTeam = () => {
                             <SwiperSlide key={i} className=" pt-6 md:pt-12 group  relative">
                                 <div className="w-full relative text-center">
                                     <div className="w-full  flex items-end justify-center relative ">
-                                        <img src="/images/aboutpage/team_card_bg.png" className="absolute inset-0 w-full" alt="" />
-                                        <img src="/images/aboutpage/team_card_bg_red.png" className="absolute opacity-0 group-hover:opacity-100 transition-all duration-300 inset-0 w-full" alt="" />
-                                        <img src={member.img} className="w-[81%] origin-bottom group-hover:scale-105 transition-all duration-300 relative z-10" alt="" />
+                                        <img src="/images/aboutpage/team_card_bg.png" className="absolute inset-0 w-full" alt="loading" />
+                                        <img src="/images/aboutpage/team_card_bg_red.png" className="absolute opacity-0 group-hover:opacity-100 transition-all duration-300 inset-0 w-full" alt="loading" />
+                                        <img src={member.img} className="w-[81%] origin-bottom group-hover:scale-105 transition-all duration-300 relative z-10" alt="loading" />
                                     </div>
                                     <h3 className="text-2xl md:text-3xl  mt-5 font-semibold">
                                         {member.name}

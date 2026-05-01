@@ -72,11 +72,11 @@ const PageHero = ({ title, description, image, mobImage }) => {
                     <h1 className=' hero_title  text-4xl md:text-7xl max-sm:w-[90vw]  font-semibold'>{title}</h1>
                     <p className=' hero_desc mt-2 leading-tight max-sm:w-[90vw]  text-base md:text-lg '>{description}</p>
                 </div>
-                <Image width={1920} height={1080} onLoadingComplete={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 relative z-10 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={image} alt="" />
-                <Image height={1920} width={1080} onLoadingComplete={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 relative z-10 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={mobImage} alt="" />
+                <Image width={1920} height={1080} onLoadingComplete={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 relative z-10 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={image} alt="loading" />
+                <Image height={1920} width={1080} onLoadingComplete={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 relative z-10 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={mobImage} alt="loading" />
                 <div className={`w-full absolute  pointer-events-none transition-all  skeleton duration-300 inset-0 p-3 md:p-5 ${isLoaded ? "opacity-0" : "opacity-100"} `}>
-                    <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="" />
-                    <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="" />
+                    <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="loading" />
+                    <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="loading" />
                 </div>
             </div>
         </>

@@ -110,14 +110,14 @@ const OurMission = () => {
                         </div>
                         <div className=" space-y-5 max-sm:my-8 md:space-y-10">
                             <div className="flex items-start gap-x-4">
-                                <img src="/icons/red_smile.svg" className='w-12' alt="" />
+                                <img src="/icons/red_smile.svg" className='w-12' alt="loading" />
                                 <div className="">
                                     <h3 className='text-2xl leading-none font-semibold'>Happy Faces Guaranteed</h3>
                                     <p className='text-[#6B6E73] leading-tight mt-3 md:w-[80%]'>Our success is measured in smiles. Every tailored service is designed to ensure you walk into your new home with complete peace of mind.</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-x-4">
-                                <img src="/icons/red_dollar.svg" className='w-12' alt="" />
+                                <img src="/icons/red_dollar.svg" className='w-12' alt="loading" />
                                 <div className="">
                                     <h3 className='text-2xl leading-none font-semibold'>Competitive & Affordable</h3>
                                     <p className='text-[#6B6E73] leading-tight mt-3 md:w-[80%]'>Premium service shouldn't come with a prohibitive price tag. We offer the best value in Regina without sacrificing quality.</p>
@@ -126,13 +126,13 @@ const OurMission = () => {
                         </div>
                     </div>
                     <div className="md:w-1/2  ">
-                        <img src="/images/aboutpage/mission_img.png" className='w-full' alt="" />
+                        <img src="/images/aboutpage/mission_img.png" className='w-full' alt="loading" />
                     </div>
                 </div>
             </div>
             <div ref={container} className='mission_section_paren w-full relative h-screen overflow-hidden '>
 
-                <img className='w-full h-full' src="/images/aboutpage/trust_bg.png" alt="" />
+                <img className='w-full h-full' src="/images/aboutpage/trust_bg.png" alt="loading" />
 
                 <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
                     <div className="text-center text-white">
@@ -142,9 +142,9 @@ const OurMission = () => {
                     <div className=" max_width_layout relative w-full max-sm:h-[65%] flex max-sm:justify-center md:grid grid-cols-4 items-center gap-x-5">
                         {highlights.map((highlight, i) => (
                             <div key={i} className={`mission_card max-sm:absolute max-sm:w-[80vw] p-8  w-full aspect-3/4 ${highlight.className} `}>
-                                <img src="/images/aboutpage/trust_card_bg.png" className=' inset-0 absolute w-full' alt="" />
+                                <img src="/images/aboutpage/trust_card_bg.png" className=' inset-0 absolute w-full' alt="loading" />
                                 <div className="relative z-10 flex flex-col justify-center gap-y-5 items-center h-full text-center w-full">
-                                    <img src={highlight.icon} alt="" />
+                                    <img src={highlight.icon} alt="loading" />
                                     <h3 className='text-2xl font-semibold w-[80%]'>{highlight.title}</h3>
                                     <p className='text-[#6B6E73]'>{highlight.description}</p>
                                 </div>

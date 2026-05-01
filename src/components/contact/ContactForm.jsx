@@ -61,7 +61,7 @@ const ContactForm = () => {
                         >
                             {/* Full Name */}
                             <div className="flex items-center gap-x-2 border rounded-full px-4 py-3 hover:px-6 hover:border-[#F5344F] transition-all duration-300 border-black/10">
-                                <img className='w-5' src="/icons/form_person.svg" alt="" />
+                                <img className='w-5' src="/icons/form_person.svg" alt="loading" />
                                 <input
                                     type="text"
                                     name="name"
@@ -74,7 +74,7 @@ const ContactForm = () => {
 
                             {/* Phone */}
                             <div className="flex items-center gap-x-2 border rounded-full px-4 py-3 hover:px-6 hover:border-[#F5344F] transition-all duration-300 border-black/10">
-                                <img className='w-5' src="/icons/form_dialer.svg" alt="" />
+                                <img className='w-5' src="/icons/form_dialer.svg" alt="loading" />
                                 <input
                                     type="tel"
                                     name="phone"
@@ -91,7 +91,7 @@ const ContactForm = () => {
                                 className="flex relative items-center gap-x-2 border rounded-full px-4 py-3 hover:px-6 hover:border-[#F5344F] transition-all duration-300 border-black/10 cursor-pointer"
                                 onClick={() => setOpen((prev) => !prev)}
                             >
-                                <img className="w-5" src="/icons/form_setting.svg" alt="" />
+                                <img className="w-5" src="/icons/form_setting.svg" alt="loading" />
 
                                 {/* Selected Value */}
                                 <span className={`w-full ${form.service ? "text-black" : "text-[#6B6E73]"}`}>
@@ -121,7 +121,7 @@ const ContactForm = () => {
 
                             {/* Note */}
                             <div className="flex items-start gap-x-2 border rounded-2xl px-4 py-3 hover:px-6 hover:border-[#F5344F] transition-all duration-300 border-black/10">
-                                <img className='w-5' src="/icons/form_note.svg" alt="" />
+                                <img className='w-5' src="/icons/form_note.svg" alt="loading" />
                                 <textarea
                                     data-lenis-prevent
                                     name="note"
@@ -134,12 +134,12 @@ const ContactForm = () => {
                             </div>
 
                             {/* Button */}
-                            <button type='submit' className='w-full leading-none center  gap-x-2  text-white rounded-full p-4 bg-[#F5344F]'>  Send Message <img src="/icons/arrow-right.svg" className='w-5 invert-100' alt="" /> </button>
+                            <button type='submit' className='w-full leading-none center  gap-x-2  text-white rounded-full p-4 bg-[#F5344F]'>  Send Message <img src="/icons/arrow-right.svg" className='w-5 invert-100' alt="loading" /> </button>
 
                         </form>
                     </div>
                     <div className=" w-full  max-sm:mt-10 md:w-1/2 flex items-center  ">
-                        <img src="/images/contactpage/contact_form_img.png" className='w-full' alt="" />
+                        <img src="/images/contactpage/contact_form_img.png" className='w-full' alt="loading" />
                     </div>
                 </div>
             </div>

@@ -84,7 +84,7 @@ const TrendingBlogs = () => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className={`w-4 rotate-180 group-hover:invert-100 `}
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -101,7 +101,7 @@ const TrendingBlogs = () => {
                             <img
                                 src="/icons/arrow-right.svg"
                                 className="w-4 group-hover:invert-100"
-                                alt=""
+                                alt="loading"
                             />
                         </button>
 
@@ -137,14 +137,14 @@ const TrendingBlogs = () => {
                         {BLOGS.map((blog, i) => (
                             <SwiperSlide key={i} className=' group space-y-5 '>
                                 <Link href={`/blog/${blog.slug}`} key={i} className="space-y-5">
-                                    <img src={blog.image} className='w-full group-hover:scale-95 transition-all duration-300' alt="" />
+                                    <img src={blog.image} className='w-full group-hover:scale-95 transition-all duration-300' alt="loading" />
                                     <div className="flex w-full justify-between">
                                         <div className="flex items-center gap-x-2">
-                                            <img src="/icons/form_person.svg" className='w-5' alt="" />
+                                            <img src="/icons/form_person.svg" className='w-5' alt="loading" />
                                             <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author}</p>
                                         </div>
                                         <div className="flex items-center gap-x-2">
-                                            <img src="/icons/red_calender.svg" className='w-5' alt="" />
+                                            <img src="/icons/red_calender.svg" className='w-5' alt="loading" />
                                             <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.date}</p>
                                         </div>
                                     </div>

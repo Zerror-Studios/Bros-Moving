@@ -148,7 +148,7 @@ const ServicesScroll = () => {
                                     <div className="">
                                         {service.innerServices.map((feature, i) => (
                                             <div key={i} className="flex items-center hover:pl-3 py-2 md:py-3 rounded-lg hover:bg-[#F9F6F3] transition-all duration-300 hover:text-[#F5344F]  gap-x-4">
-                                                <img src="/icons/red_check.svg" className='' alt="" />
+                                                <img src="/icons/red_check.svg" className='' alt="loading" />
                                                 <p className='text-base md:text-lg font-semibold leading-none'>{feature}</p>
                                             </div>
                                         ))}
@@ -158,11 +158,11 @@ const ServicesScroll = () => {
                             ))}
                         </div>
                         <div className="w-1/2 max-sm:hidden sticky flex items-center top-0 h-screen  ">
-                            <img src={SERVICES[0].image} style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }} className='  serv_img1 w-full absolute' alt="" />
-                            <img src={SERVICES[1].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img2 w-full absolute' alt="" />
-                            <img src={SERVICES[2].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img3 w-full absolute' alt="" />
-                            <img src={SERVICES[3].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img4 w-full absolute' alt="" />
-                            <img src={SERVICES[4].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img5 w-full absolute' alt="" />
+                            <img src={SERVICES[0].image} style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }} className='  serv_img1 w-full absolute' alt="loading" />
+                            <img src={SERVICES[1].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img2 w-full absolute' alt="loading" />
+                            <img src={SERVICES[2].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img3 w-full absolute' alt="loading" />
+                            <img src={SERVICES[3].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img4 w-full absolute' alt="loading" />
+                            <img src={SERVICES[4].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img5 w-full absolute' alt="loading" />
                         </div>
                     </div>
                 </div>

@@ -109,7 +109,7 @@ const ExpertSection = () => {
                         </div>
                     ))}
 
-                    <img className='w-full' src="/images/homepage/expert_map.png" alt="" />
+                    <img className='w-full' src="/images/homepage/expert_map.png" alt="loading" />
 
                     <div className="w-full mt-10 flex items-center justify-between">
 
