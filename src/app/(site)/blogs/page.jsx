@@ -4,6 +4,7 @@ import React from 'react'
 import { sanityFetch } from '@/sanity/lib/live'
 import { POSTS_QUERY } from '@/sanity/lib/queries'
 import WebPageSchema from '@/components/seo/WebPageSchema'
+import { Const } from '@/components/utils/Constants'
 
 export const blogMetadata = {
     title: "Moving Tips & Guides | Bro's Moving Inc Blog",

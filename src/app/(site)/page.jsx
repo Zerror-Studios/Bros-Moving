@@ -8,6 +8,7 @@ import TrendingBlogs from '@/components/home/TrendingBlogs'
 import VideoSection from '@/components/home/VideoSection'
 import WhyChooseSection from '@/components/home/WhyChooseSection'
 import WebPageSchema from '@/components/seo/WebPageSchema'
+import { Const } from '@/components/utils/Constants'
 import React from 'react'
 
 

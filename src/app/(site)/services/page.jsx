@@ -3,6 +3,7 @@ import Testimonials from '@/components/home/Testimonials'
 import VideoSection from '@/components/home/VideoSection'
 import WebPageSchema from '@/components/seo/WebPageSchema'
 import ServicesScroll from '@/components/services/ServicesScroll'
+import { Const } from '@/components/utils/Constants'
 import React from 'react'
 
 
