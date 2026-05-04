@@ -4,6 +4,7 @@ import { Link } from 'next-view-transitions';
 import React, { useState } from 'react'
 import { urlFor } from '@/sanity/lib/image';
 import { formatPostDate } from '@/components/utils/formatPostDate';
+import Image from 'next/image';
 
 const SERVICES = [
     "Residential Moving",
@@ -84,12 +85,17 @@ const BlogsGrid = ({ posts = [] }) => {
                 </div>
                 <div className=" max_width_layout w-full grid-cols-2 grid md:grid-cols-3 gap-3 md:gap-8 gap-y-5 md:gap-y-12 pt-5 md:pt-10">
                     {posts.map((blog, i) => (
-                        <Link href={`/blog/${blog.slug}`} key={blog._id ?? i} className=" group space-y-3 md:space-y-5 ">
-                            <img
-                                src={blog?.coverImage ? urlFor(blog.coverImage).width(1200).height(900).fit('crop').url() : "/images/blogpage/blog1.png"}
-                                className='w-full group-hover:scale-95 transition-all duration-300'
-                                alt={blog?.title ?? "Blog image"}
-                            />
+                        <Link href={`/blog/${blog.slug}`} key={blog._id ?? i} className=" group relative space-y-3 md:space-y-5 ">
+                            <div className=" aspect-square group-hover:scale-95 transition-all duration-300 rounded-2xl overflow-hidden relative w-full">
+                                <div className="subtract absolute z-10 pointer-events-none w-[65%] h-5 bg-white bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                                <Image
+                                    fill
+                                    unoptimized
+                                    src={blog?.coverImage ? urlFor(blog.coverImage).url() : "/images/blogpage/blog1.png"}
+                                    className='w-full cover'
+                                    alt={blog?.title ?? "Blog image"}
+                                />
+                            </div>
                             <div className=" max-sm:space-y-1 md:flex w-full justify-between">
                                 <div className="flex items-center gap-x-2">
                                     <img src="/icons/form_person.svg" className='w-5' alt="loading" />

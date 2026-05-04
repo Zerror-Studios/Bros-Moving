@@ -96,7 +96,7 @@ const Header = () => {
   return (
     <>
 
-      <div className="mobile_menu md:hidden fixed top-0 left-full w-full h-[100svh] bg-white z-500">
+      <div className="mobile_menu md:hidden fixed top-0 left-full w-full h-screen bg-white z-500">
         <button onClick={() => setIsMobileMenu(false)} className='p-3 text-white rounded-full md:hidden absolute top-5 right-5 bg-[#F5344F]' ><RiCloseLine size={16} /></button>
         <nav className=" w-full h-full flex flex-col uppercase text-3xl  font-medium gap-y-5  justify-center items-center gap-x-10">
           {navLinks.map((link, i) => {

@@ -86,28 +86,27 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
 
     return (
         <>
-            <div ref={container} className="w-full p-3 md:p-5 center relative text-center">
-                <div className="  max_width_layout absolute bottom-20 md:bottom-32 flex flex-col justify-center items-center text-[#F9F6F3]">
-                    <div className=" hero_text opacity-0 flex flex-col justify-center items-center">
-                        <h1 className=' hero_title  text-4xl md:text-7xl max-sm:w-[90vw]  font-semibold'>{post?.title}</h1>
-                    </div>
-                    <div className=" hero_text opacity-0 w-fit mt-5  flex gap-x-5 h-fit  ">
-                        <div className="flex items-center gap-x-2">
-                            <img src="/icons/white_person.svg" className='w-5 icon_anim opacity-0' alt="loading" />
-                            <p className=' hero_desc text-base md:text-lg'>{post?.author || "Bro's Moving"}</p>
+            <div ref={container} className="w-full p-3 md:p-5 center h-screen relative text-center">
+                <div className={` ${isLoaded ? "" : "skeleton"} w-full h-full overflow-hidden relative  text-center center rounded-2xl md:rounded-4xl`}>
+                    <div className="  max_width_layout absolute bottom-20 z-10 flex flex-col justify-center items-center text-[#F9F6F3]">
+                        <div className=" hero_text opacity-0 flex flex-col justify-center items-center">
+                            <h1 className=' hero_title  text-4xl md:text-7xl max-sm:w-[90vw]  font-semibold'>{post?.title}</h1>
                         </div>
-                        <div className="w-[1px] bg-white h-8 icon_anim opacity-0"></div>
-                        <div className="flex items-center gap-x-2">
-                            <img src="/icons/white_calender.svg" className='w-5 icon_anim opacity-0' alt="loading" />
-                            <p className=' hero_desc text-base md:text-lg'>{formatPostDate(post?.date)}</p>
+                        <div className=" hero_text opacity-0 w-fit mt-5  flex gap-x-5 h-fit  ">
+                            <div className="flex items-center gap-x-2">
+                                <img src="/icons/white_person.svg" className='w-5 icon_anim opacity-0' alt="loading" />
+                                <p className=' hero_desc text-base md:text-lg'>{post?.author || "Bro's Moving"}</p>
+                            </div>
+                            <div className="w-[1px] bg-white h-8 icon_anim opacity-0"></div>
+                            <div className="flex items-center gap-x-2">
+                                <img src="/icons/white_calender.svg" className='w-5 icon_anim opacity-0' alt="loading" />
+                                <p className=' hero_desc text-base md:text-lg'>{formatPostDate(post?.date)}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <Image width={1920} height={1080} onLoad={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroImgUrl} unoptimized alt={post?.title ?? ""} />
-                <Image height={1920} width={1080} onLoad={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100" : "opacity-0"}`} src={heroMobImgUrl} unoptimized alt={post?.title ?? ""} />
-                <div className={`w-full absolute  pointer-events-none transition-all  skeleton duration-300 inset-0 p-3 md:p-5 ${isLoaded ? "opacity-0" : "opacity-100"} `}>
-                    <img className='w-full max-sm:hidden' src="/images/page_hero_skeleton.png" alt="loading" />
-                    <img className='w-full md:hidden' src="/images/mob_page_hero_skeleton.png" alt="loading" />
+                    <Image fill onLoad={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100!" : "opacity-0"}`} src={heroImgUrl} unoptimized alt={post?.title ?? ""} />
+                    <Image fill onLoad={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100!" : "opacity-0"}`} src={heroMobImgUrl} unoptimized alt={post?.title ?? ""} />
+                    <div className="subtract absolute z-10 pointer-events-none w-[80vw] h-10 bg-white bottom-[-1px] left-1/2 -translate-x-1/2"></div>
                 </div>
             </div>
 
@@ -142,7 +141,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
             </div>
 
             <div className=" max_width_layout md:w-[60%] md:px-0!  padding py-0! mx-auto flex items-center justify-between mt-5 md:mt-10 mb-5 md:mb-24">
-                <Link  href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
+                <Link href={prevSlug ? `/blog/${prevSlug}` : '/blogs'} className=' group hover:pl-2 pl-0 transition-all duration-300 flex w-fit items-center gap-x-0 hover:gap-x-2 font-medium border border-black/30 leading-none   rounded-full px-4 h-10  md:h-11'>
                     <div className={`group-hover:scale-100 group-hover:p-2.5 transition-all duration-300 scale-0  p-0 overflow-hidden bg-[#090A0C] rounded-full  `}>
                         <img
                             src="/icons/arrow-right.svg"

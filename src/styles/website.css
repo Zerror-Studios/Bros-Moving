@@ -55,18 +55,30 @@ input[type="date"] {
 }
 
 .skeleton {
-  animation: skeleton-flicker 1.2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  background: #f1f1f1; 
 }
 
-@keyframes skeleton-flicker {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(223, 223, 223),
+    transparent
+  );
+  animation: skeleton-loading 1.2s infinite;
 }
 
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
 
 ::view-transition-old(root) {
   animation: fade-out 0.4s ease forwards;
@@ -74,16 +86,35 @@ input[type="date"] {
 
 ::view-transition-new(root) {
   animation: fade-in 0.4s ease forwards;
-  animation-delay: 0.4s; 
-  opacity: 0; 
+  animation-delay: 0.4s;
+  opacity: 0;
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.subtract {
+  clip-path: shape(
+    nonzero from 6.33% 0.58%,
+    curve to 0.07% 99.5% with 3.03% 1.89% / 2.76% 95%,
+    curve to 99.78% 99.5% with 5% 100% / 95% 100%,
+    curve to 93.58% 0.58% with 97.14% 95% / 96.78% 0.58%,
+    curve to 6.33% 0.58% with 90.3% 0.58% / 9.65% 0.58%,
+    close
+  );
 }
