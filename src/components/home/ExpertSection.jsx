@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Button from "../common/Button";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,18 +99,18 @@ const ExpertSection = () => {
                             {/* TOOLTIP */}
                             <div
                                 className={`transition-all duration-300 p-3 bg-white rounded-lg shadow-md
-      ${activeId === item.id
+                                        ${activeId === item.id
                                         ? "opacity-100 translate-y-0"
                                         : "opacity-0 translate-y-3 pointer-events-none"
                                     }`}
                             >
-                                <h3 className="font-medium text-xl">{item.title}</h3>
+                                <p className="font-medium text-xl">{item.title}</p>
                                 <p className="text-[#6B6E73]">{item.subtitle}</p>
                             </div>
                         </div>
                     ))}
 
-                    <img className='w-full' src="/images/homepage/expert_map.png" alt="loading" />
+                    <Image width={800} height={600} className='' src="/images/homepage/expert_map.webp" alt="loading" />
 
                     <div className="w-full mt-10 flex items-center justify-between">
 

@@ -57,7 +57,7 @@ input[type="date"] {
 .skeleton {
   position: relative;
   overflow: hidden;
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
 
 .skeleton::after {
@@ -115,6 +115,16 @@ input[type="date"] {
     curve to 99.78% 99.5% with 5% 100% / 95% 100%,
     curve to 93.58% 0.58% with 97.14% 95% / 96.78% 0.58%,
     curve to 6.33% 0.58% with 90.3% 0.58% / 9.65% 0.58%,
+    close
+  );
+}
+.subtract-small {
+  clip-path: shape(
+    nonzero from 0.09% 100%,
+    curve to 13.26% 0.87% with 3.65% 100% / 10.23% 2.82%,
+    curve to 86.61% 0.87% with 16.29% -1.08% / 82.34% 0.87%,
+    curve to 99.78% 100% with 90.88% 0.87% / 94.09% 100%,
+    curve to 0.09% 100% with 75% 100% / 25% 100%,
     close
   );
 }

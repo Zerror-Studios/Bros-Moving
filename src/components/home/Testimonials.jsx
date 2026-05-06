@@ -2,6 +2,7 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+import Image from 'next/image';
 import React, { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
@@ -76,7 +77,7 @@ const Testimonials = () => {
 
     return (
         <>
-            <div ref={testimonialsContainer} className=" testimonials_paren w-full h-screen padding  flex flex-col justify-center gap-y-10">
+            <div ref={testimonialsContainer} className=" testimonials_paren w-full h-screen padding  flex flex-col max-sm:py-24! justify-between md:justify-center gap-y-10">
                 <div className="w-full  md:text-center">
                     <h2 className='text-3xl md:text-5xl  font-semibold '>What Our Customers Say</h2>
                     <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>Hear Directly from Our Customers About Their Smooth and Stress-Free Moving Experiences</p>
@@ -85,7 +86,7 @@ const Testimonials = () => {
                 <div className=" w-full max_width_layout overflow-hidden rounded-3xl flex">
                     <div className=" testimonials_slider   flex gap-x-5">
                         {testimonials.map((item, i) => (
-                            <div className="bg-[#F9F6F3] rounded-3xl p-10 flex flex-col max-sm:gap-y-20 justify-between w-[90vw] md:w-[40vw] max-sm:h-[65svh] md:aspect-4/3" key={i}>
+                            <div className="bg-[#F9F6F3] rounded-3xl p-10 flex flex-col max-sm:gap-y-20 justify-between w-[90vw] md:w-[40vw] max-sm:h-[60svh] md:aspect-4/3" key={i}>
                                 <div className="flex gap-x-1">
                                     {[...Array(5)].map((_, i) => (
                                         <img key={i} src="/icons/gold_star.svg" alt="loading" />
@@ -94,8 +95,8 @@ const Testimonials = () => {
                                 <p className='text-[#6B6E73] text-2xl md:text-3xl'>{item.text}</p>
 
                                 <div className="flex gap-x-2 items-center">
-                                    <div className="size-14 center rounded-full overflow-hidden">
-                                        <img className='cover object-top' src="/images/homepage/testimonials/img1.png" alt="loading" />
+                                    <div className="size-14 relative center rounded-full overflow-hidden">
+                                        <Image fill className='cover object-top' src="/images/homepage/testimonials/img1.png" alt="loading" />
                                     </div>
                                     <div className="">
                                         <p className='text-2xl  font-semibold'>{item.name}</p>

@@ -1,5 +1,6 @@
 "use client"
-import { RiArrowDownSLine, RiArrowRightLine, RiPencilLine, RiPhoneLine, RiSettings3Line, RiUser3Line } from '@remixicon/react'
+import { RiArrowDownSLine } from '@remixicon/react'
+import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
 
 const ContactForm = () => {
@@ -139,7 +140,7 @@ const ContactForm = () => {
                         </form>
                     </div>
                     <div className=" w-full  max-sm:mt-10 md:w-1/2 flex items-center  ">
-                        <img src="/images/contactpage/contact_form_img.png" className='w-full' alt="loading" />
+                        <Image height={600} width={400} src="/images/contactpage/contact_form_img.png" className='w-full' alt="loading" />
                     </div>
                 </div>
             </div>

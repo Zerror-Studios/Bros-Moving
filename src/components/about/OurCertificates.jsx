@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 
 export const associations = [
@@ -49,8 +50,8 @@ const OurCertificates = () => {
                             >
                                 <p className='text-[#6B6E73] max-sm:col-span-1 text-base md:text-lg'>0{i + 1}</p>
                                 <h3 className='text-2xl md:w-[20%] leading-tight max-sm:col-span-7 font-semibold'>{association.title}</h3>
-                                <div className=" max-sm:col-span-1 md:w-[10%]  center">
-                                    <img src="/images/aboutpage/certifcate_logo.png" alt="loading" />
+                                <div className=" relative max-sm:col-span-1 md:w-[10%]  center">
+                                    <Image width={100} height={100} src="/images/aboutpage/certifcate_logo.png" alt="loading" />
                                 </div>
                                 <p className=' max-sm:col-span-7 max-sm:mt-2 md:w-[30%] leading-tight text-[#6B6E73]'>{association.description}</p>
                             </div>

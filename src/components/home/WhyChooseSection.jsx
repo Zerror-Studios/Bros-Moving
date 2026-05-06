@@ -2,6 +2,7 @@
 import React from 'react'
 import Button from '../common/Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
+import Image from 'next/image';
 
 export const features = [
     {
@@ -43,7 +44,13 @@ const WhyChooseSection = () => {
             <div className="w-full  max_width_layout flex flex-col-reverse max-sm:gap-y-10 md:flex-row items-stretch   relative gap-x-44   ">
                 <div className=" max-sm:hidden h-full absolute left-1/2 -translate-x-1/2 w-[1px] bg-black/10"></div>
                 <div className=" w-full md:w-1/2  ">
-                    <img src="/images/homepage/why_choose.png" className='w-full' alt="loading" />
+                    <Image
+                        src="/images/homepage/why_choose.png"
+                        alt="Why choose Bros Moving"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto"
+                    />
                 </div>
                 <div className=" w-full md:w-1/2 flex flex-col justify-between">
                     <div className="">
@@ -53,8 +60,16 @@ const WhyChooseSection = () => {
                     <div className="max-sm:my-4">
                         {features.map((feature, i) => (
                             <div key={i} className="flex items-center hover:pl-3 py-1 md:py-3 hover:bg-[#ffffff] rounded-lg transition-all duration-300 hover:text-[#F5344F]  gap-x-4">
-                                <img src={feature.icon} className='w-12' alt="loading" />
+                                <div className="size-12 relative">
+                                    <Image
+                                        fill
+                                        src={feature.icon}
+                                        alt={feature.title}
+                                        className="cover"
+                                    />
+                                </div>
                                 <p className='text-base md:text-lg font-semibold'>{feature.title}</p>
+
                             </div>
                         ))}
                     </div>

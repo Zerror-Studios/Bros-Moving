@@ -3,8 +3,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
-import Button from '../common/Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
+import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 const StepsSection = () => {
@@ -68,7 +68,9 @@ const StepsSection = () => {
   return (
     <>
       <div ref={stepsContainer} className=" steps_section_paren w-full  h-screen relative overflow-hidden">
-        <img className='w-full h-full' src="/images/homepage/steps_section/steps_bg.png" alt="loading" />
+        <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+        <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
+        <Image fill className='cover' src="/images/homepage/steps_section/steps_bg.png" alt="loading" />
 
         <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
           <div className="text-center">
@@ -79,7 +81,7 @@ const StepsSection = () => {
 
             <div className=" steps_card  max-sm:absolute max-sm:w-[80vw] steps_card_1 w-[100%]  text-white  overflow-hidden aspect-3/4 bg-[#F9F6F3] rounded-2xl flex flex-col justify-between p-7">
               <div className="w-full absolute inset-0 z-[1] h-full">
-                <img className='w-full' src="/images/homepage/steps_section/img1.png" alt="loading" />
+                <Image fill className='cover' src="/images/homepage/steps_section/img1.png" alt="loading" />
               </div>
               <div className="size-10 relative z-10 center leading-none font-medium bg-white text-[#F5344F] rounded-full text-base md:text-lg">
                 01
@@ -93,7 +95,7 @@ const StepsSection = () => {
 
             <div className=" steps_card  max-sm:absolute max-sm:w-[80vw] steps_card_2 w-[100%]    overflow-hidden aspect-3/4 bg-[#F9F6F3] rounded-2xl flex flex-col justify-between p-7">
               <div className="w-full absolute inset-0 z-[1] h-full">
-                <img className='w-full' src="/images/homepage/steps_section/img2.png" alt="loading" />
+                <Image fill className='cover' src="/images/homepage/steps_section/img2.png" alt="loading" />
               </div>
               <div className="w-full  relative z-10 flex items-center gap-x-4">
                 <div className="size-10  center leading-none font-medium bg-white text-[#F5344F] rounded-full text-base md:text-lg">
@@ -109,7 +111,7 @@ const StepsSection = () => {
 
             <div className="steps_card  max-sm:absolute max-sm:w-[80vw] steps_card_3 w-[100%]    overflow-hidden aspect-3/4 bg-[#F9F6F3] rounded-2xl flex flex-col justify-between p-7">
               <div className="w-full absolute inset-0 z-[1] h-full">
-                <img className='w-full' src="/images/homepage/steps_section/img3.png" alt="loading" />
+                <Image fill className='cover' src="/images/homepage/steps_section/img3.png" alt="loading" />
               </div>
               <div className="size-10 relative z-10 center leading-none font-medium bg-white text-[#F5344F] rounded-full text-base md:text-lg">
                 03
@@ -123,7 +125,7 @@ const StepsSection = () => {
 
             <div className="steps_card  max-sm:absolute max-sm:w-[80vw] steps_card_4 w-[100%]    overflow-hidden aspect-3/4 bg-[#F9F6F3] rounded-2xl  p-7">
               <div className="w-full absolute inset-0 z-[1] h-full">
-                <img className='w-full' src="/images/homepage/steps_section/img4.png" alt="loading" />
+                <Image fill className='cover' src="/images/homepage/steps_section/img4.png" alt="loading" />
               </div>
               <div className="w-full  relative z-10 flex items-center gap-x-4">
                 <div className="size-10  center leading-none font-medium bg-white text-[#F5344F] rounded-full text-base md:text-lg">
@@ -137,9 +139,6 @@ const StepsSection = () => {
 
             </div>
           </div>
-          {/* <Button onClick={open} variant="white">
-              Get an estimate now!
-            </Button> */}
         </div>
       </div>
     </>

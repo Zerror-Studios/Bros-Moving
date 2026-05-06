@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
 import Button from '../common/Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
+import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoSection = () => {
@@ -15,9 +16,8 @@ const VideoSection = () => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: videocontainer.current,
-                start: "top top",
-                end: "+=500",
-                pin: true,
+                start: "top bottom",
+                end: "top top",
                 scrub: true,
                 // markers: true,
             },
@@ -47,7 +47,7 @@ const VideoSection = () => {
                             <div className="w-full text-[#ffffff] flex flex-col-reverse max-sm:gap-y-5 md:flex-row  items-center justify-between ">
                                 <p className=' max-sm:hidden text-base md:text-lg '>We provide full insurance coverage to keep your belongings safe, <br /> giving you complete peace of mind throughout your move.</p>
                                 <p className=' text-center md:hidden text-base md:text-lg '>We provide full insurance coverage to keep your belongings safe, giving you complete peace of mind throughout your move.</p>
-                                <img src="/images/homepage/smart_moving/trust_logos.svg" className=' w-1/2 md:w-[20%]' alt="loading" />
+                                <Image width={900} height={300} src="/images/homepage/smart_moving/trust_logo.png" className=' w-1/2 md:w-[20%]' alt="loading" />
                             </div>
                         </div>
                     </div>

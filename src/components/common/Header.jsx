@@ -40,11 +40,6 @@ const Header = () => {
 
   useGSAP(() => {
 
-    gsap.to(".header", {
-      opacity: 1,
-      delay: 3
-    })
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".header",
@@ -62,6 +57,21 @@ const Header = () => {
     }, "<");
 
   });
+
+  useGSAP(() => {
+    if (pathname === "/") {
+      gsap.set(".header", { opacity: 0 });
+
+      gsap.to(".header", {
+        opacity: 1,
+        delay: 3,
+        duration: 1,
+        ease: "power2.out"
+      });
+    } else {
+      gsap.set(".header", { opacity: 1 });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (isMobileMenu === true) {
@@ -121,7 +131,7 @@ const Header = () => {
         </nav>
       </div>
 
-      <div className={`header ${pathname === "/" ? "opacity-0" : ""} w-full px-4 md:px-24 pt-4 md:pt-12 z-100  fixed  top-0 left-0 will-change-transform`}>
+      <div className={`header opacity-0 w-full px-4 md:px-24 pt-4 md:pt-12 z-100  fixed  top-0 left-0 will-change-transform`}>
         <div className=" header_inner w-full max_width_layout flex items-center pb-4  justify-between border-b border-white/20 ">
           <Link href='/' className=" w-[20%] md:w-[30%]  ">
             <img src="/logo.svg" className='' alt="loading" />

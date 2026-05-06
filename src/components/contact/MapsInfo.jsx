@@ -10,7 +10,7 @@ const MapsInfo = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.intersectionRatio < 0.5) {
-                    setMapActive(false); // 👈 reset when less than half visible
+                    setMapActive(false); 
                 }
             },
             {

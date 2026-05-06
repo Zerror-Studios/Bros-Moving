@@ -114,7 +114,10 @@ const EstimateForm = () => {
 
                             {/* Date */}
                             <div className="w-1/2">
-                                <label className="font-medium mb-2 text-[#0F172A] block">
+                                <label
+                                    htmlFor="moving-date"
+                                    className="font-medium mb-2 text-[#0F172A] block"
+                                >
                                     Moving Date
                                 </label>
 
@@ -123,14 +126,17 @@ const EstimateForm = () => {
                                     className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                 >
                                     <input
+                                        id="moving-date" // ✅ link to label
                                         ref={inputRef}
                                         type="date"
                                         value={form.date}
                                         onChange={(e) => handleChange("date", e.target.value)}
-                                        className={`bg-transparent outline-none ${form.date ? "text-[#0F172A]" : "text-[#6B6E73]"}  font-medium w-full appearance-none pointer-events-none`}
+                                        className={`bg-transparent outline-none ${form.date ? "text-[#0F172A]" : "text-[#6B6E73]"
+                                            } font-medium w-full appearance-none pointer-events-none`}
                                     />
+
                                     <img
-                                        alt="calender"
+                                        alt="" // ✅ decorative icon
                                         src="/icons/calender.svg"
                                         className="w-5 opacity-60 pointer-events-none"
                                     />

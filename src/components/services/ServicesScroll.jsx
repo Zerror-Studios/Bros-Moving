@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
 import Button from '../common/Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
+import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 export const SERVICES = [
@@ -158,11 +159,11 @@ const ServicesScroll = () => {
                             ))}
                         </div>
                         <div className="w-1/2 max-sm:hidden sticky flex items-center top-0 h-screen  ">
-                            <img src={SERVICES[0].image} style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }} className='  serv_img1 w-full absolute' alt="loading" />
-                            <img src={SERVICES[1].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img2 w-full absolute' alt="loading" />
-                            <img src={SERVICES[2].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img3 w-full absolute' alt="loading" />
-                            <img src={SERVICES[3].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img4 w-full absolute' alt="loading" />
-                            <img src={SERVICES[4].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img5 w-full absolute' alt="loading" />
+                            <Image height={600} width={500} preload src={SERVICES[0].image} style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" }} className='  serv_img1 w-full absolute' alt="loading" />
+                            <Image height={600} width={500} preload src={SERVICES[1].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img2 w-full absolute' alt="loading" />
+                            <Image height={600} width={500} preload src={SERVICES[2].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img3 w-full absolute' alt="loading" />
+                            <Image height={600} width={500} preload src={SERVICES[3].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img4 w-full absolute' alt="loading" />
+                            <Image height={600} width={500} preload src={SERVICES[4].image} style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className='serv_img5 w-full absolute' alt="loading" />
                         </div>
                     </div>
                 </div>

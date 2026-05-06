@@ -1,10 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap');
-
+@font-face {
+  font-family: inter tight;
+  src: url(../../public/fonts/InterTight-VariableFont_wght.woff2);
+}
 html,
 body {
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Inter Tight', sans-serif;
+  font-family:  inter tight, sans-serif;
+  font-display: swap;
 }
 
 @media (min-width: 750px) {

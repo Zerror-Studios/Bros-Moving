@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { urlFor } from '@/sanity/lib/image';
 import { formatPostDate } from '@/components/utils/formatPostDate';
 import Image from 'next/image';
+import BlogCard from '../common/BlogCard';
 
 const SERVICES = [
     "Residential Moving",
@@ -85,29 +86,7 @@ const BlogsGrid = ({ posts = [] }) => {
                 </div>
                 <div className=" max_width_layout w-full grid-cols-2 grid md:grid-cols-3 gap-3 md:gap-8 gap-y-5 md:gap-y-12 pt-5 md:pt-10">
                     {posts.map((blog, i) => (
-                        <Link href={`/blog/${blog.slug}`} key={blog._id ?? i} className=" group relative space-y-3 md:space-y-5 ">
-                            <div className=" aspect-square group-hover:scale-95 transition-all duration-300 rounded-2xl overflow-hidden relative w-full">
-                                <div className="subtract absolute z-10 pointer-events-none w-[65%] h-5 bg-white bottom-[-1px] left-1/2 -translate-x-1/2"></div>
-                                <Image
-                                    fill
-                                    unoptimized
-                                    src={blog?.coverImage ? urlFor(blog.coverImage).url() : "/images/blogpage/blog1.png"}
-                                    className='w-full cover'
-                                    alt={blog?.title ?? "Blog image"}
-                                />
-                            </div>
-                            <div className=" max-sm:space-y-1 md:flex w-full justify-between">
-                                <div className="flex items-center gap-x-2">
-                                    <img src="/icons/form_person.svg" className='w-5' alt="loading" />
-                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
-                                </div>
-                                <div className="flex items-center gap-x-2">
-                                    <img src="/icons/red_calender.svg" className='w-5' alt="loading" />
-                                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{formatPostDate(blog.date)}</p>
-                                </div>
-                            </div>
-                            <h3 className=' text-base md:text-2xl group-hover:text-[#F5344F]  transition-all duration-300 leading-tight group-hover:underline font-semibold'>{blog.title}</h3>
-                        </Link>
+                        <BlogCard key={blog._id ?? i} blog={blog} />
                     ))}
                 </div>
             </div>

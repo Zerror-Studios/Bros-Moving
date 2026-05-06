@@ -1,13 +1,10 @@
 "use client";
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Button from '../common/Button'
-import { RiCloseLine } from '@remixicon/react';
 import gsap from 'gsap';
 import SplitText from 'gsap/dist/SplitText';
 import { useGSAP } from '@gsap/react';
 import { useQuoteStore } from '@/store/useQuoteStore';
-import { Link } from 'next-view-transitions';
-import Introloader from '../common/Introloader';
 import CustomEase from 'gsap/dist/CustomEase';
 gsap.registerPlugin(SplitText, CustomEase);
 
@@ -102,7 +99,6 @@ const Hero = () => {
 
     return (
         <>
-            {/* <Introloader /> */}
             <div ref={container} className="w-full  h-screen  relative p-2 md:p-5">
                 <div style={{ clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" }} className="vide_pren w-full h-full overflow-hidden rounded-2xl md:rounded-4xl">
                     <video poster='/images/hero_video_poster_.webp' loop autoPlay muted playsInline src="/videos/hero_video.mp4" className={` hero_video scale-[3] cover brightness-95`} alt="loading" />
@@ -114,21 +110,21 @@ const Hero = () => {
                                 <div className="space-y-6 md:space-y-10">
                                     <h1 className="text-4xl md:text-7xl md:w-1/2 font-semibold">
                                         <div className='block overflow-hidden  relative'>
-                                            <div className=' line1a whitespace-nowrap text-black'>Hi</div>
-                                            <div className=' line2a translate-y-full absolute inset-0 whitespace-nowrap text-[#F5344F]'>We’re Bro’s moving</div>
-                                            <div className=' line3a translate-y-full absolute inset-0 whitespace-nowrap text-[#090A0C]'>⁠We make</div>
+                                            <div aria-hidden="true" className=' line1a whitespace-nowrap text-black'>Hi</div>
+                                            <div aria-hidden="true" className=' line2a translate-y-full absolute inset-0 whitespace-nowrap text-[#F5344F]'>We’re Bro’s moving</div>
+                                            <div aria-hidden="true" className=' line3a translate-y-full absolute inset-0 whitespace-nowrap text-[#090A0C]'>⁠We make</div>
                                         </div>
                                         <div className='block overflow-hidden'>
-                                            <div className='line3a whitespace-nowrap text-[#090A0C] translate-y-full'>moving reliable & </div>
+                                            <div aria-hidden="true" className='line3a whitespace-nowrap text-[#090A0C] translate-y-full'>moving reliable & </div>
                                         </div>
                                         <div className='block overflow-hidden'>
-                                            <div className="line3a whitespace-nowrap text-[#090A0C] translate-y-full">
+                                            <div aria-hidden="true" className="line3a whitespace-nowrap text-[#090A0C] translate-y-full">
                                                 stress-free
                                             </div>
                                         </div>
                                     </h1>
 
-                                    <p className="hero_desc leading-tight text-base md:text-lg ">
+                                    <p aria-hidden="true" className="hero_desc leading-tight text-base md:text-lg ">
                                         Local & long-distance moving with professional  <br />packing and guaranteed safety.
                                     </p>
                                 </div>
@@ -141,7 +137,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </div>
-                <div className="subtract absolute z-10 pointer-events-none w-[80vw] h-10 bg-white bottom-[calc(0.5rem-1px)] md:bottom-[calc(1.25rem-1px)] left-1/2 -translate-x-1/2"></div>
+                <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-white bottom-[calc(0.5rem-1px)] md:bottom-[calc(1.25rem-1px)] left-1/2 -translate-x-1/2"></div>
             </div>
         </>
     )

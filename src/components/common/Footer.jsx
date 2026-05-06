@@ -3,6 +3,7 @@ import React from 'react'
 import Button from './Button';
 import { Link } from 'next-view-transitions';
 import { useQuoteStore } from '@/store/useQuoteStore';
+import Image from 'next/image';
 
 const footerData = [
   {
@@ -60,7 +61,7 @@ const Footer = () => {
               <button className=' w-fit flex text-white items-center gap-x-2 px-4 py-3 border font-medium border-white rounded-full'><img src="/icons/call.svg" className='w-5' alt="loading" /> (555) 123-4567</button>
             </div>
           </div>
-          <img src="/images/fotter_red_box.png" className='w-full max-sm:hidden' alt="loading" />
+          <Image width={1000} height={500} src="/images/fotter_red_box.png" className='w-full max-sm:hidden' alt="loading" />
           <img src="/images/mob_footer_red_box.png" className='w-full md:hidden' alt="loading" />
         </div>
 
@@ -92,7 +93,7 @@ const Footer = () => {
                     <p className='text-base md:text-lg mb-4 uppercase text-[#F5344F] font-semibold'>{item.title}</p>
                     <div className="flex flex-col gap-y-2 font-light">
                       {item.links.map((link, j) => (
-                        <Link href={link.href} key={j} className=' hover:underline'>{link.label}</Link>
+                        <Link href={link.href} key={j} className=' md:hover:underline'>{link.label}</Link>
                       ))}
                     </div>
                   </div>

@@ -1,10 +1,9 @@
 "use client";
-import { useQuoteStore } from '@/store/useQuoteStore';
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import Image from 'next/image';
 import React, { useRef } from 'react'
-import Button from '../common/Button';
 gsap.registerPlugin(ScrollTrigger);
 
 const highlights = [
@@ -39,7 +38,6 @@ const highlights = [
 ];
 
 const OurMission = () => {
-    const { open } = useQuoteStore();
 
     const container = useRef()
 
@@ -126,14 +124,16 @@ const OurMission = () => {
                         </div>
                     </div>
                     <div className="md:w-1/2  ">
-                        <img src="/images/aboutpage/mission_img.png" className='w-full' alt="loading" />
+                        <Image width={800} height={400} src="/images/aboutpage/mission_img.png" className='w-full' alt="loading" />
                     </div>
                 </div>
             </div>
+
+
             <div ref={container} className='mission_section_paren w-full relative h-screen overflow-hidden '>
-
-                <img className='w-full h-full' src="/images/aboutpage/trust_bg.png" alt="loading" />
-
+                <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#ffff] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
+                <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                <Image fill className='cover' src="/images/aboutpage/trust_bg.png" alt="loading" />
                 <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
                     <div className="text-center text-white">
                         <h2 className='text-3xl md:text-5xl  font-semibold text-center '>Built on Precision & Trust</h2>
@@ -151,9 +151,6 @@ const OurMission = () => {
                             </div>
                         ))}
                     </div>
-                    {/* <Button onClick={open} variant="white">
-              Get an estimate now!
-            </Button> */}
                 </div>
             </div>
         </>

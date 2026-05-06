@@ -9,6 +9,8 @@ import "swiper/css";
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { formatPostDate } from '@/components/utils/formatPostDate';
+import BlogCard from '../common/BlogCard';
+import TrendingBlogsClient from '../home/TrendingBlogsClient';
 gsap.registerPlugin(SplitText);
 
 const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
@@ -106,7 +108,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                     </div>
                     <Image fill onLoad={() => setDeskLoaded(true)} className={` max-sm:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100!" : "opacity-0"}`} src={heroImgUrl} unoptimized alt={post?.title ?? ""} />
                     <Image fill onLoad={() => setMobLoaded(true)} className={` md:hidden w-full opacity-0 transition-all duration-300 ${isLoaded ? "opacity-100!" : "opacity-0"}`} src={heroMobImgUrl} unoptimized alt={post?.title ?? ""} />
-                    <div className="subtract absolute z-10 pointer-events-none w-[80vw] h-10 bg-white bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                    <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-white bottom-[-1px] left-1/2 -translate-x-1/2"></div>
                 </div>
             </div>
 
@@ -124,8 +126,15 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                                         const src = img ? urlFor(img).width(900).url() : null
                                         if (!src) return null
                                         return (
-                                            <div key={img._key ?? j} className="w-full">
-                                                <img src={src} alt="loading" className='w-full' />
+                                            <div key={img._key ?? j} className="w-full rounded-2xl overflow-hidden relative aspect-5/4.5">
+                                                <div className="subtract-small absolute z-10 pointer-events-none w-[80%] h-5 bg-[#fff] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                                                <Image
+                                                    fill
+                                                    unoptimized
+                                                    src={src}
+                                                    className='cover'
+                                                    alt="Blog image"
+                                                />
                                             </div>
                                         )
                                     })}
@@ -163,99 +172,7 @@ const BlogsDetail = ({ post, prevSlug, nextSlug, latestPosts = [] }) => {
                 </Link>
             </div>
 
-            <div className=" w-full padding bg-[#F9F6F3]">
-                <div className=" max_width_layout w-full flex items-end justify-between">
-                    <h2 className='text-3xl md:text-5xl  font-semibold '>Read Latest Blog</h2>
-                    <div className="flex items-end gap-x-2">
-
-                        {/* PREV */}
-                        <button
-                            disabled={isBeginning}
-                            onClick={() => swiperRef.current?.slidePrev()}
-                            className={` size-8  md:size-10  border-black/30 center rounded-full border transition-all duration-300
-                                ${isBeginning
-                                    ? " opacity-40 cursor-not-allowed!"
-                                    : " group hover:bg-[#F5344F] hover:border-[#F5344F]"
-                                }`}
-                        >
-                            <img
-                                src="/icons/arrow-right.svg"
-                                className={`w-4 rotate-180 group-hover:invert-100 `}
-                                alt="loading"
-                            />
-                        </button>
-
-                        {/* NEXT */}
-                        <button
-                            disabled={isEnd}
-                            onClick={() => swiperRef.current?.slideNext()}
-                            className={` size-8  md:size-10  border-black/30 center rounded-full border transition-all duration-300
-                                ${isEnd
-                                    ? " opacity-40 cursor-not-allowed!"
-                                    : " group hover:bg-[#F5344F] hover:border-[#F5344F]"
-                                }`}
-                        >
-                            <img
-                                src="/icons/arrow-right.svg"
-                                className="w-4 group-hover:invert-100"
-                                alt="loading"
-                            />
-                        </button>
-
-                    </div>
-                </div>
-
-                <div className=" max_width_layout mt-6 md:mt-14 w-full ">
-                    <Swiper
-                        onSwiper={(swiper) => {
-                            swiperRef.current = swiper;
-                            setIsBeginning(swiper.isBeginning);
-                            setIsEnd(swiper.isEnd);
-                        }}
-                        onSlideChange={(swiper) => {
-                            setIsBeginning(swiper.isBeginning);
-                            setIsEnd(swiper.isEnd);
-                        }}
-                        spaceBetween={30}
-                        slidesPerView={3}
-                        grabCursor={true}
-                        className="cursor-grab active:cursor-grabbing"
-                        breakpoints={{
-                            0: {
-                                slidesPerView: 1.1,
-                                spaceBetween: 10,
-                            },
-                            640: {
-                                slidesPerView: 3,
-                                spaceBetween: 30,
-                            },
-                        }}
-                    >
-                        {latestPosts.map((blog, i) => (
-                            <SwiperSlide key={blog._id ?? i} className=' group space-y-5 '>
-                                <Link href={`/blog/${blog.slug}`} className="space-y-5">
-                                    <img
-                                        src={blog?.coverImage ? urlFor(blog.coverImage).width(1200).height(900).fit('crop').url() : "/images/blogpage/blog1.png"}
-                                        className='w-full group-hover:scale-95 transition-all duration-300'
-                                        alt={blog?.title ?? "Blog image"}
-                                    />
-                                    <div className="flex w-full justify-between">
-                                        <div className="flex items-center gap-x-2">
-                                            <img src="/icons/form_person.svg" alt="loading" />
-                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2">
-                                            <img src="/icons/red_calender.svg" alt="loading" />
-                                            <p className='text-base md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{formatPostDate(blog.date)}</p>
-                                        </div>
-                                    </div>
-                                    <h3 className='text-2xl group-hover:text-[#F5344F]  transition-all duration-300 leading-tight group-hover:underline font-semibold'>{blog.title}</h3>
-                                </Link>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </div>
+            <TrendingBlogsClient posts={latestPosts} swiperRef={swiperRef} setIsBeginning={setIsBeginning} setIsEnd={setIsEnd} />
         </>
     )
 }
