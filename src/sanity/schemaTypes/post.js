@@ -29,6 +29,22 @@ export default defineType({
       type: 'date',
     }),
     defineField({
+      name: 'services',
+      title: 'Services',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'service' }] }],
+      description: 'Assign this post to one or more services for blog filtering.',
+      options: { layout: 'tags' },
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'category' }] }],
+      description: 'Assign this post to one or more blog categories for filtering.',
+      options: { layout: 'tags' },
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover image',
       type: 'image',

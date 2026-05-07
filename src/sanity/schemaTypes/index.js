@@ -1,5 +1,7 @@
 import post from './post'
+import service from './service'
+import category from './category'
 
 export const schema = {
-  types: [post],
+  types: [post, service, category],
 }

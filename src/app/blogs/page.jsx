@@ -2,7 +2,7 @@ import BlogsGrid from '@/components/blogs/BlogsGrid'
 import PageHero from '@/components/common/PageHero'
 import React from 'react'
 import { sanityFetch } from '@/sanity/lib/live'
-import { POSTS_QUERY } from '@/sanity/lib/queries'
+import { BLOG_FILTERS_QUERY, POSTS_QUERY } from '@/sanity/lib/queries'
 import WebPageSchema from '@/components/seo/WebPageSchema'
 import { Const } from '@/components/utils/Constants'
 
@@ -54,9 +54,10 @@ export const blogMetadata = {
 };
 
 const page = async () => {
-    const { data: posts = [] } = await sanityFetch({
-        query: POSTS_QUERY,
-    })
+    const [{ data: posts = [] }, { data: filters = {} }] = await Promise.all([
+        sanityFetch({ query: POSTS_QUERY }),
+        sanityFetch({ query: BLOG_FILTERS_QUERY }),
+    ])
     return (
         <>
             <WebPageSchema
@@ -70,7 +71,11 @@ const page = async () => {
                 image={"/images/blogpage/blog_hero.png"}
                 mobImage={"/images/blogpage/mob_blog_hero.png"}
             />
-            <BlogsGrid posts={posts} />
+            <BlogsGrid
+                posts={posts}
+                services={filters.services}
+                categories={filters.categories}
+            />
         </>
     )
 }

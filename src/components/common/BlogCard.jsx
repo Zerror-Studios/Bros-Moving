@@ -4,11 +4,11 @@ import Image from 'next/image'
 import React from 'react'
 import { formatPostDate } from '../utils/formatPostDate'
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, className="bg-[#F9F6F3]" }) => {
     return (
-        <Link href={`/blog/${blog.slug}`} key={blog._id ?? i} className=" group relative space-y-3 md:space-y-5 ">
+        <Link href={`/blog/${blog.slug}`} className=" group relative space-y-3 md:space-y-5 ">
             <div className=" aspect-5/4.5 group-hover:scale-95 transition-all duration-300 rounded-2xl overflow-hidden relative w-full">
-                <div className="subtract-small absolute z-10 pointer-events-none w-[65%] h-5 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                <div className={`subtract-small absolute z-10 pointer-events-none w-[65%] h-3 md:h-5  bottom-[-1px] left-1/2 -translate-x-1/2 ${className}`}></div>
                 <Image
                     fill
                     unoptimized
