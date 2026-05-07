@@ -10,7 +10,7 @@ const MapsInfo = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.intersectionRatio < 0.5) {
-                    setMapActive(false); 
+                    setMapActive(false);
                 }
             },
             {
@@ -48,22 +48,33 @@ const MapsInfo = () => {
                     </div>
                 </div>
 
-                <div ref={mapRef} className=" max_width_layout relative  w-full mt-5 md:mt-10 rounded-xl md:rounded-3xl aspect-square md:aspect-2/1 overflow-hidden">
-
+                <div
+                    ref={mapRef}
+                    className="max_width_layout relative w-full mt-5 md:mt-10 rounded-xl md:rounded-3xl aspect-square md:aspect-2/1 overflow-hidden"
+                >
                     {!mapActive && (
-                        <Button onClick={() => setMapActive(true)} variant='white' className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                        <Button
+                            onClick={() => setMapActive(true)}
+                            variant="white"
+                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+                        >
                             Click to interact with map
                         </Button>
                     )}
 
                     <iframe
+                        title="Office location on Google Maps"
                         src="https://www.google.com/maps?q=52.3756,4.9032&z=15&output=embed"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        className={`${mapActive ? "pointer-events-auto brightness-100 blur-[0px]" : "pointer-events-none brightness-75 blur-[1px]"}`}
+                        allowFullScreen
+                        className={`${mapActive
+                                ? "pointer-events-auto brightness-100 blur-[0px]"
+                                : "pointer-events-none brightness-75 blur-[1px]"
+                            }`}
                     />
                 </div>
             </div>

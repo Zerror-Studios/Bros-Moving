@@ -30,12 +30,12 @@ const footerData = [
       { label: "About Us", href: "/about" },
       { label: "Services", href: "/services" },
       { label: "Blogs", href: "/blogs" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Contact", href: "/contact" },
       { label: "FAQ", href: "/" },
       { label: "Terms of Service", href: "/" },
       { label: "Privacy Policy", href: "/" },

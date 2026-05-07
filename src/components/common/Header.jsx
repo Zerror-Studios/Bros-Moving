@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react'
 import Button from './Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
 import { RiCloseLine, RiMenu3Line } from '@remixicon/react';
+import ViewTransitionLink from '../hooks/ViewTransitionLink';
 gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
@@ -89,11 +90,11 @@ const Header = () => {
       const closeTl = gsap.timeline();
       closeTl.to(".mob_menu_anim", {
         transform: "translateY(-100%)",
-        stagger: 0.1
+        stagger: 0.05,
       })
       closeTl.to(".mobile_menu", {
         left: "100%",
-        duration: 1,
+        duration: .8,
         ease: "expo.inOut"
       })
       closeTl.to(".mob_menu_anim", {
@@ -113,10 +114,9 @@ const Header = () => {
             const isActive = pathname === link.href;
 
             return (
-              <div onClick={() => setIsMobileMenu(false)} key={i} className="w-fit flex flex-col overflow-hidden group cursor-pointer">
-                <Link href={link.href} className=" mob_menu_anim relative translate-y-full">
+              <ViewTransitionLink href={link.href} delay={1600} onClick={() => setIsMobileMenu(false)} key={i} className="w-fit flex flex-col overflow-hidden group cursor-pointer">
+                <div className=" mob_menu_anim relative translate-y-full">
                   {link.label}
-
                   <span
                     className={`
               absolute left-0 bottom-0 h-[1.5px] rounded-full w-full bg-white
@@ -124,8 +124,8 @@ const Header = () => {
               ${isActive ? "scale-x-100 origin-left" : "scale-x-0 origin-left group-hover:scale-x-100"}
             `}
                   ></span>
-                </Link>
-              </div>
+                </div>
+              </ViewTransitionLink>
             );
           })}
         </nav>
