@@ -12,23 +12,30 @@ import React from 'react'
 
 
 export const metadata = {
-  title: "Bro's Moving Inc | Reliable Moving & Junk Removal Services",
+  title:
+    "Bros Moving Inc. | Trusted Moving Company in Regina & Saskatchewan",
 
   description:
-    "Bro's Moving Inc offers professional local & long-distance moving, junk removal, packing, furniture delivery, and assembly services. Safe, affordable, and stress-free moving solutions for homes and businesses.",
+    "Bros Moving Inc. is a licensed and insured moving company in Regina offering residential, commercial, office, long-distance, packing, storage, junk removal, and specialty moving services across Saskatchewan and Canada.",
 
   keywords: [
-    "Bro's Moving Inc",
+    "Bros Moving Inc",
     "moving company Regina",
-    "local movers",
-    "long distance moving services",
-    "junk removal service",
-    "furniture delivery",
-    "packing and moving services",
-    "office relocation services",
-    "residential movers",
-    "affordable movers near me",
-    "professional movers Canada"
+    "Regina movers",
+    "Saskatchewan moving company",
+    "residential moving services",
+    "commercial moving services",
+    "office moving services",
+    "long distance movers Canada",
+    "packing and unpacking services",
+    "storage services Regina",
+    "specialty item movers",
+    "piano movers Regina",
+    "junk removal services",
+    "white glove furniture delivery",
+    "licensed and insured movers",
+    "affordable movers Saskatchewan",
+    "professional movers Canada",
   ],
 
   robots: "index, follow",
@@ -36,27 +43,35 @@ export const metadata = {
   metadataBase: new URL(Const.ClientLink),
 
   openGraph: {
-    title: "Bro's Moving Inc | Safe & Reliable Moving Services",
+    title:
+      "Bros Moving Inc. | Professional & Stress-Free Moving Services",
+
     description:
-      "Trusted moving company offering packing, junk removal, and relocation services. Professional, efficient, and affordable.",
+      "Trusted Regina movers providing residential, commercial, office, packing, storage, junk removal, and long-distance moving services across Saskatchewan and Canada.",
+
     url: `${Const.ClientLink}/`,
-    siteName: "Bro's Moving Inc",
+    siteName: "Bros Moving Inc.",
     type: "website",
+
     images: [
       {
         url: `${Const.ClientLink}/og.png`,
         width: 1200,
         height: 630,
-        alt: "Bro's Moving Inc Moving Services",
+        alt: "Bros Moving Inc. Moving Services",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Bro's Moving Inc | Moving & Junk Removal Experts",
+
+    title:
+      "Bros Moving Inc. | Reliable Residential & Commercial Movers",
+
     description:
-      "Professional movers for homes & businesses. Safe, affordable, and stress-free moving services.",
+      "Licensed and insured movers offering safe, affordable, and stress-free moving services across Saskatchewan and Canada.",
+
     images: [`${Const.ClientLink}/og.png`],
   },
 
@@ -65,7 +80,7 @@ export const metadata = {
   },
 
   other: {
-    "image_src": `${Const.ClientLink}/og.png`,
+    image_src: `${Const.ClientLink}/og.png`,
   },
 };
 
@@ -74,8 +89,8 @@ const HomePage = () => {
     <>
 
       <WebPageSchema
-        name="Bro's Moving Inc | Moving & Junk Removal Services"
-        description="Professional moving company offering local & long-distance relocation, junk removal, packing, furniture delivery, and assembly services."
+        name="Bros Moving Inc. | Professional Moving Services in Regina"
+        description="Bros Moving Inc. is a trusted licensed and insured moving company offering residential, commercial, office, long-distance, packing, storage, junk removal, and specialty moving services across Saskatchewan and Canada."
         url={`${Const.ClientLink}/`}
       />
 

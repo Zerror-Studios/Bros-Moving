@@ -1,23 +1,28 @@
 export const Const = {
-  Brand: "Bro's Moving Inc",
+  Brand: "Bros Moving Inc.",
 
-  ClientLink: "https://bros-moving.vercel.app",
+  ClientLink: "https://www.brosmovinginc.com",
 
   Desc:
-    "Bro's Moving Inc provides reliable local & long-distance moving, junk removal, packing, furniture delivery, and assembly services. Safe, affordable, and stress-free solutions for residential and commercial needs.",
+    "Bros Moving Inc. is a licensed and insured moving company in Regina providing residential, commercial, office, long-distance, packing, storage, junk removal, and specialty moving services across Saskatchewan and Canada.",
 
   keywords: [
-    "Bro's Moving Inc",
+    "Bros Moving Inc",
+    "Regina movers",
     "moving company Regina",
-    "local movers",
-    "long distance moving",
+    "Saskatchewan movers",
+    "residential moving services",
+    "commercial moving services",
+    "office movers Regina",
+    "long distance movers Canada",
+    "packing and unpacking services",
+    "storage services Regina",
+    "specialty item movers",
     "junk removal services",
-    "packing services",
-    "furniture delivery",
-    "office moving services",
-    "residential movers",
-    "commercial moving company",
-    "affordable movers",
+    "white glove furniture delivery",
+    "licensed moving company",
+    "insured movers Saskatchewan",
+    "affordable movers Regina",
     "professional movers Canada",
   ],
 
@@ -25,7 +30,8 @@ export const Const = {
 
   contact: {
     phone: "+13065511911",
-    email: "info@brosmoving.com", // change if needed
+    secondaryPhone: "+13065511070",
+    email: "brosmovingregina@gmail.com",
   },
 
   address: {
@@ -37,8 +43,9 @@ export const Const = {
   },
 
   socials: {
-    facebook: "",
-    instagram: "",
-    twitter: "",
+    facebook: "https://www.facebook.com/bros.moving.regina",
+    instagram: "https://www.instagram.com/brosmovinginc/",
+    youtube:"https://www.youtube.com/@brosmoving",
+    tiktok:"https://www.tiktok.com/@bros.moving.inc"
   },
 };

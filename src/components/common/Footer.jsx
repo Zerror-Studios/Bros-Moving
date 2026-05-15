@@ -52,13 +52,13 @@ const Footer = () => {
           <div className=" px-5 md:px-16 max-sm:py-12  absolute inset-0 w-full flex flex-col md:flex-row items-center justify-between">
             <div className="w-full space-y-2 md:space-y-5 text-white">
               <h2 className='text-3xl md:text-5xl  font-semibold '>Ready for a Stress- <br />Free Move?</h2>
-              <p className='text-base md:text-lg leading-tight text-[#F9F6F3]'>Hear Directly from Our Customers About Their <br /> Smooth and Stress-Free Moving Experiences</p>
+              <p className='text-base md:text-lg leading-tight text-[#F9F6F3]'>Book your move today and let professionals <br /> handle everything.</p>
             </div>
             <div className=" w-full md:w-[25%]  md:flex flex-col items-end leading-none space-y-2 md:space-y-5">
               <Button variant="white" onClick={open}>
-                Get an estimate now!
+                Get Free Quote
               </Button>
-              <button className=' w-fit flex text-white items-center gap-x-2 px-4 py-3 border font-medium border-white rounded-full'><img src="/icons/call.svg" className='w-5' alt="loading" /> (555) 123-4567</button>
+              <a target='_blank' href="tel:+13065511911" className=' w-fit flex hover:underline text-white items-center gap-x-2 px-4 py-3 border font-medium border-white rounded-full'><img src="/icons/call.svg" className='w-5' alt="loading" />Call Now</a>
             </div>
           </div>
           <Image width={1000} height={500} src="/images/fotter_red_box.png" className='w-full max-sm:hidden' alt="loading" />
@@ -77,14 +77,14 @@ const Footer = () => {
                 <p className='leading-tight  md:hidden'>Fast, reliable & stress-free moving  services across the country.</p>
                 <p className='leading-tight max-sm:hidden'>Fast, reliable & stress-free moving <br /> services across the country.</p>
                 <div className=" max-sm:space-y-2">
-                  <div className="flex items-center gap-x-2">
+                  <a target='_blank'  href="tel:+13065511911" className="flex hover:underline items-center gap-x-2">
                     <img src="/icons/red_dialer.svg" alt="loading" className='w-5' />
-                    <p className=''>(555) 123-4567</p>
-                  </div>
-                  <div className="flex items-center gap-x-2">
+                    <p className=''>+1 306-551-1911</p>
+                  </a>
+                  <a target='_blank' href='https://mail.google.com/mail/u/0/#inbox?compose=jrjtXRHDvMnmqPgHTWrvWmjMTgmVwSQlCmxvsXjFvKqzsCsPtxqqmbrWHRJMNHrDRBGnhwQX' className=" hover:underline flex items-center gap-x-2">
                     <img src="/icons/red_mail.svg" alt="loading" className='w-5' />
-                    <p className=''>info@brosmoving.com</p>
-                  </div>
+                    <p className=''>Brosmovingregina@gmail.com</p>
+                  </a>
                 </div>
               </div>
               <div className=" grid grid-cols-2  max-sm:mt-6 md:flex gap-y-10 md:gap-x-16">
@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full center text-center">
-          <p className='text-[#F9F6F3] max-sm:text-xs max-sm:w-[60%]  font-light'>© 2024 Bro's Moving. All rights reserved. Licensed and Insured.</p>
+          <p className='text-[#F9F6F3] max-sm:text-xs max-sm:w-[60%]  font-light'>© {new Date().getFullYear()} Bro's Moving. All rights reserved. Licensed and Insured.</p>
         </div>
       </div>
     </>

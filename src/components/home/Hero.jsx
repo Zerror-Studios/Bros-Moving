@@ -112,14 +112,14 @@ const Hero = () => {
                                         <div className='block overflow-hidden  relative'>
                                             <div aria-hidden="true" className=' line1a whitespace-nowrap text-black'>Hi</div>
                                             <div aria-hidden="true" className=' line2a translate-y-full absolute inset-0 whitespace-nowrap text-[#F5344F]'>We’re Bro’s moving</div>
-                                            <div aria-hidden="true" className=' line3a translate-y-full absolute inset-0 whitespace-nowrap text-[#090A0C]'>⁠We make</div>
+                                            <div aria-hidden="true" className=' line3a translate-y-full absolute inset-0 whitespace-nowrap text-[#090A0C]'>Fast, Reliable</div>
                                         </div>
                                         <div className='block overflow-hidden'>
-                                            <div aria-hidden="true" className='line3a whitespace-nowrap text-[#090A0C] translate-y-full'>moving reliable & </div>
+                                            <div aria-hidden="true" className='line3a whitespace-nowrap text-[#090A0C] translate-y-full'>& Stress-Free</div>
                                         </div>
                                         <div className='block overflow-hidden'>
                                             <div aria-hidden="true" className="line3a whitespace-nowrap text-[#090A0C] translate-y-full">
-                                                stress-free
+                                                Moving Services
                                             </div>
                                         </div>
                                     </h1>

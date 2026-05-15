@@ -8,44 +8,58 @@ import { Const } from '@/components/utils/Constants'
 import React from 'react'
 
 
-export const aboutMetadata = {
-  title: "About Bro's Moving Inc | Trusted Moving Company",
+export const metadata  = {
+  title:
+    "About Bros Moving Inc. | Trusted Movers in Regina & Saskatchewan",
 
   description:
-    "Learn about Bro's Moving Inc — a professional moving company known for reliable service, affordable pricing, and customer satisfaction.",
+    "Learn about Bros Moving Inc., a licensed and insured moving company in Regina trusted for residential, commercial, office, and long-distance moving services across Saskatchewan.",
 
   keywords: [
-    "about moving company",
-    "professional movers company",
-    "trusted movers",
-    "moving company Regina",
-    "Bro's Moving Inc about",
+    "about Bros Moving Inc",
+    "Regina moving company",
+    "trusted movers Saskatchewan",
+    "licensed movers Regina",
+    "insured moving company",
+    "professional movers Canada",
+    "residential movers Regina",
+    "commercial moving company",
+    "experienced moving team",
+    "local movers Saskatchewan",
   ],
 
   robots: "index, follow",
 
   openGraph: {
-    title: "About Bro's Moving Inc",
+    title:
+      "About Bros Moving Inc. | Reliable & Professional Moving Services",
+
     description:
-      "Trusted movers delivering safe, efficient, and stress-free relocation services.",
+      "Discover Bros Moving Inc., a trusted Regina-based moving company known for safe, affordable, and stress-free moving services across Saskatchewan and Canada.",
+
     url: `${Const.ClientLink}/about`,
-    siteName: "Bro's Moving Inc",
+    siteName: "Bros Moving Inc.",
     type: "website",
+
     images: [
       {
         url: `${Const.ClientLink}/og.png`,
         width: 1200,
         height: 630,
-        alt: "About Bro's Moving Inc",
+        alt: "About Bros Moving Inc.",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About Bro's Moving Inc",
+
+    title:
+      "About Bros Moving Inc. | Trusted Movers in Saskatchewan",
+
     description:
-      "Reliable and professional moving services for homes and businesses.",
+      "Professional residential, commercial, office, and long-distance movers delivering reliable and stress-free relocation services.",
+
     images: [`${Const.ClientLink}/og.png`],
   },
 
@@ -58,8 +72,8 @@ const AboutPage = () => {
   return (
     <>
       <WebPageSchema
-        name="About Bro's Moving Inc"
-        description="Discover Bro's Moving Inc — professional movers offering efficient and affordable relocation services."
+        name="About Bros Moving Inc."
+        description="Bros Moving Inc. is a licensed and insured moving company in Regina providing trusted residential, commercial, office, packing, and long-distance moving services across Saskatchewan and Canada."
         url={`${Const.ClientLink}/about`}
       />
       <PageHero

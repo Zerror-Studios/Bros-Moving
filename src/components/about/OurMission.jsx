@@ -46,8 +46,8 @@ const OurMission = () => {
             scrollTrigger: {
                 trigger: container.current,
                 start: "top top",
-                end: "+=1500",
-                pin: true,
+                end: "bottom bottom",
+                // pin: true,
                 scrub: true,
                 // markers: true,
             },
@@ -100,11 +100,21 @@ const OurMission = () => {
             <div className="w-full padding">
                 <div className=" max_width_layout w-full flex flex-col md:flex-row items-stretch  relative gap-x-44">
                     <div className=" max-sm:hidden h-full absolute left-1/2 -translate-x-1/2 w-[1px] bg-black/10"></div>
-                    <div className="md:w-1/2  flex flex-col justify-between">
-                        <div className="">
-                            <h2 className='text-3xl md:text-5xl  font-semibold w-[80%] '>Our Mission </h2>
-                            <p className='text-[#6B6E73] text-base md:hidden md:text-lg mt-2 leading-tight  '>To turn the stress of relocation into the excitement of a new beginning by providing uncompromising care and precision.</p>
-                            <p className='text-[#6B6E73] text-base max-sm:hidden md:text-lg mt-2 leading-tight  '>To turn the stress of relocation into the excitement of a new <br /> beginning by providing uncompromising care and precision.</p>
+                    <div className="md:w-1/2  flex flex-col gap-y-8 justify-between">
+                        <div>
+                            <h2 className='text-3xl md:text-5xl font-semibold w-[80%]'>
+                                Our Mission
+                            </h2>
+
+                            <p className='text-[#6B6E73] text-base md:hidden md:text-lg mt-2 leading-tight'>
+                                To provide safe, reliable, and stress-free moving services while delivering
+                                exceptional care, transparent communication, and complete customer satisfaction.
+                            </p>
+
+                            <p className='text-[#6B6E73] text-base max-sm:hidden md:text-lg mt-2 leading-tight'>
+                                To provide safe, reliable, and stress-free moving services while delivering
+                                exceptional care, transparent communication, and complete <br /> customer satisfaction.
+                            </p>
                         </div>
                         <div className=" space-y-5 max-sm:my-8 md:space-y-10">
                             <div className="flex items-start gap-x-4">
@@ -123,33 +133,36 @@ const OurMission = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="md:w-1/2  ">
-                        <Image width={800} height={400} src="/images/aboutpage/mission_img.png" className='w-full' alt="loading" />
+                    <div className=" w-full relative rounded-xl overflow-hidden md:w-1/2  ">
+                    <div className="subtract absolute z-10 pointer-events-none rotate-90  w-[70vw] md:w-[18vw] h-6 md:h-10 left-[-22%] bg-[#fff] top-1/2 -translate-y-1/2"></div>
+                        <Image fill src="/images/aboutpage/mission_img.webp" className='cover' alt="loading" />
                     </div>
                 </div>
             </div>
 
 
-            <div ref={container} className='mission_section_paren w-full relative h-screen overflow-hidden '>
-                <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#ffff] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
-                <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
-                <Image fill className='cover' src="/images/aboutpage/trust_bg.png" alt="loading" />
-                <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
-                    <div className="text-center text-white">
-                        <h2 className='text-3xl md:text-5xl  font-semibold text-center '>Built on Precision & Trust</h2>
-                        <p className=' text-base md:text-lg mt-2 leading-tight  '>Why thousands of families choose Bros Moving Inc. for their most important transitions.</p>
-                    </div>
-                    <div className=" max_width_layout relative w-full max-sm:h-[65%] flex max-sm:justify-center md:grid grid-cols-4 items-center gap-x-5">
-                        {highlights.map((highlight, i) => (
-                            <div key={i} className={`mission_card max-sm:absolute max-sm:w-[80vw] p-8  w-full aspect-3/4 ${highlight.className} `}>
-                                <img src="/images/aboutpage/trust_card_bg.png" className=' inset-0 absolute w-full' alt="loading" />
-                                <div className="relative z-10 flex flex-col justify-center gap-y-5 items-center h-full text-center w-full">
-                                    <img src={highlight.icon} alt="loading" />
-                                    <h3 className='text-2xl font-semibold w-[80%]'>{highlight.title}</h3>
-                                    <p className='text-[#6B6E73]'>{highlight.description}</p>
+            <div ref={container} className="w-full h-[400vh]">
+                <div className=' sticky top-0 mission_section_paren w-full h-screen overflow-hidden '>
+                    <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#ffff] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
+                    <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
+                    <Image fill className='cover' src="/images/aboutpage/trust_bg.webp" alt="loading" />
+                    <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
+                        <div className="text-center text-white">
+                            <h2 className='text-3xl md:text-5xl  font-semibold text-center '>Built on Precision & Trust</h2>
+                            <p className=' text-base md:text-lg mt-2 leading-tight  '>Why thousands of families choose Bros Moving Inc. for their most important transitions.</p>
+                        </div>
+                        <div className=" max_width_layout relative w-full max-sm:h-[65%] flex max-sm:justify-center md:grid grid-cols-4 items-center gap-x-5">
+                            {highlights.map((highlight, i) => (
+                                <div key={i} className={`mission_card max-sm:absolute max-sm:w-[80vw] p-8  w-full aspect-3/4 ${highlight.className} `}>
+                                    <img src="/images/aboutpage/trust_card_bg.png" className=' inset-0 absolute w-full' alt="loading" />
+                                    <div className="relative z-10 flex flex-col justify-center gap-y-5 items-center h-full text-center w-full">
+                                        <img src={highlight.icon} alt="loading" />
+                                        <h3 className='text-2xl font-semibold w-[80%]'>{highlight.title}</h3>
+                                        <p className='text-[#6B6E73]'>{highlight.description}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

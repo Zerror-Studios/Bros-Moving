@@ -158,10 +158,10 @@ const Header = () => {
             })}
           </nav>
           <div className=" hidden md:flex w-[30%] shrink-0 items-center gap-x-5 justify-end leading-none">
-            <button className=' text-white flex whitespace-nowrap items-center group gap-x-2'>
+            <a href="tel:+13065511911" target='_blank' className=' text-white flex whitespace-nowrap items-center group gap-x-2'>
               <img src="/icons/call.svg" className='w-5' alt="loading" />
               <p className='relative'>
-                +1 (800) 123-4567
+                +1 306-551-1911
                 <span
                   className={`
                   absolute left-0 bottom-[-3px] h-[1.5px] rounded-full w-full bg-white
@@ -170,7 +170,7 @@ const Header = () => {
                   `}
                 ></span>
               </p>
-            </button>
+            </a>
             <Button onClick={open} variant="white">
               Get an estimate now!
             </Button>

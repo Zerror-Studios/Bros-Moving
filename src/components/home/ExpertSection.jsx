@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Button from "../common/Button";
 import Image from "next/image";
+import { RiStarLine } from "@remixicon/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,7 @@ const ExpertSection = () => {
                             el.innerText =
                                 target >= 1000
                                     ? Math.floor(el.innerText / 1000) + "K+"
-                                    : Math.floor(el.innerText) + (target === 15 ? "+" : "");
+                                    : Math.floor(el.innerText) + (target === 100 ? "+" : "");
                         },
                     }
                 );
@@ -117,7 +118,7 @@ const ExpertSection = () => {
                         <div>
                             <h2
                                 ref={(el) => (countersRef.current[0] = el)}
-                                data-target="12000"
+                                data-target="10000"
                                 className='text-3xl md:text-5xl  font-semibold'
                             >
                                 0
@@ -129,7 +130,7 @@ const ExpertSection = () => {
                             <div className="flex gap-x-1">
                                 <h2
                                     ref={(el) => (countersRef.current[1] = el)}
-                                    data-target="24"
+                                    data-target="5"
                                     className='text-3xl md:text-5xl  font-semibold'
                                 >
                                     0
@@ -137,28 +138,21 @@ const ExpertSection = () => {
                                 <h2
                                     className='text-3xl md:text-5xl  font-semibold'
                                 >
-                                    /
-                                </h2>
-                                <h2
-                                    ref={(el) => (countersRef.current[2] = el)}
-                                    data-target="7"
-                                    className='text-3xl md:text-5xl  font-semibold'
-                                >
-                                    0
+                                    <RiStarLine />
                                 </h2>
                             </div>
-                            <p className='text-[#6B6E73] text-sm md:text-lg'>Customer Support</p>
+                            <p className='text-[#6B6E73] text-sm md:text-lg'>Customer Reviews</p>
                         </div>
 
                         <div>
                             <h2
                                 ref={(el) => (countersRef.current[3] = el)}
-                                data-target="15"
+                                data-target="100"
                                 className='text-3xl md:text-5xl  font-semibold'
                             >
                                 0
                             </h2>
-                            <p className='text-[#6B6E73] text-sm md:text-lg'>Years Experience</p>
+                            <p className='text-[#6B6E73] text-sm md:text-lg'>Trained Movers</p>
                         </div>
 
                     </div>
@@ -171,14 +165,25 @@ const ExpertSection = () => {
                             Expert Movers Serving Regina, Winnipeg & Alberta
                         </h2>
                         <p className='text-[#6B6E73] text-base md:text-lg mt-2 md:mt-8'>
-                            At Bro’s Moving, we proudly deliver reliable, stress-free moving services across Regina, Winnipeg, Saskatchewan, and Alberta. Whether you're relocating your home, office, or handling a long-distance move, our experienced team ensures every step is handled with care and precision.
+                            Bro's Moving Inc. is a Regina-based licensed and insured moving company
+                            trusted across Saskatchewan for delivering safe, reliable, and stress-free
+                            moving services. Since day one, we have proudly maintained a 5-star reputation
+                            on Google through our commitment to professionalism, transparency, and customer satisfaction.
                             <br /><br />
-                            From careful packing and secure transportation to timely delivery and setup, we focus on making your move smooth and hassle-free. Our commitment to professionalism, transparent pricing, and customer satisfaction has made us a trusted choice for individuals and businesses alike.
+                            Our experienced movers are highly trained to handle residential, commercial,
+                            office, and long-distance moves with proper moving procedures and extra care.
+                            From packing and loading to transportation and setup, we tailor every move to
+                            fit your specific needs while ensuring your belongings arrive safely and on time.
+                            <br /><br />
                         </p>
                     </div>
 
-                    <Button variant="outline" href={"/about"}>
-                        Discover More
+                    <Button variant="outline" onClick={() => {
+                        document
+                            .getElementById("review-section")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                    }}>
+                        See Customer Reviews
                     </Button>
                 </div>
             </div>

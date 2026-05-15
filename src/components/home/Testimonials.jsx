@@ -7,44 +7,51 @@ import React, { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
 
-const testimonials = [
+export const testimonials = [
     {
-        name: "Greta Charles",
-        role: "Studio Manager",
-        image: "/images/homepage/testimonials/img1.png",
-        text: "Absolutely outstanding service from start to finish. The team was efficient, careful, and incredibly professional. Everything arrived in perfect condition—highly recommended!",
+        id: 1,
+        name: "Becky Lashinski",
+        role: "Verified Customer",
+        img: "/images/homepage/testimonials/becky.png",
+        text: "These guys were on time, efficient, careful, and extremely friendly. They handled our heavy furniture perfectly and made the entire moving process smooth and stress-free.",
     },
     {
-        name: "Daniel Brooks",
-        role: "Product Designer",
-        image: "/images/homepage/testimonials/img2.png",
-        text: "Truly impressive experience from beginning to end. The crew was punctual, attentive, and extremely professional. Every item was handled with care—would definitely recommend!",
+        id: 2,
+        name: "Harrison",
+        role: "Verified Customer",
+        img: "/images/homepage/testimonials/harrison.png",
+        text: "Mani and his team were professional, efficient, and incredibly careful with all of our belongings. They worked tirelessly and made our house move completely hassle-free.",
     },
     {
-        name: "Sophia Turner",
-        role: "Marketing Lead",
-        image: "/images/homepage/testimonials/img3.png",
-        text: "Fantastic service delivered throughout the entire process. The staff was organized, responsive, and very professional. All belongings were delivered safely—highly recommended!",
+        id: 3,
+        name: "Victoria Oppenlander",
+        role: "Local Guide",
+        img: "/images/homepage/testimonials/victoria.png",
+        text: "Fantastic moving experience from start to finish. The team arrived prepared, communicated clearly, and handled everything with care while working quickly and professionally.",
     },
     {
-        name: "Liam Carter",
-        role: "Creative Director",
-        image: "/images/homepage/testimonials/img4.png",
-        text: "Exceptional support from the very beginning to completion. The team was quick, detail-oriented, and highly professional. Everything reached safely without issues—strongly recommended!",
+        id: 4,
+        name: "Rajinderpal Bhullar",
+        role: "Verified Customer",
+        img: "/images/homepage/testimonials/Rajinderpal.png",
+        text: "The crew was super friendly and worked quickly to get everything packed and loaded safely. Every item arrived without a scratch and the service exceeded expectations.",
     },
     {
-        name: "Olivia Bennett",
-        role: "Business Consultant",
-        image: "/images/homepage/testimonials/img5.png",
-        text: "Wonderful experience across the entire journey. The crew was efficient, polite, and extremely professional. All items were delivered securely and on time—highly recommended!",
+        id: 5,
+        name: "Saravanan Ramachandran",
+        role: "Local Guide",
+        img: "/images/homepage/testimonials/Saravanan.png",
+        text: "Great experience with Bros Moving during our move from Regina to Edmonton. Pickup and delivery were on time, pricing was fair, and the whole process felt seamless.",
     },
     {
-        name: "Noah Williams",
-        role: "Operations Manager",
-        image: "/images/homepage/testimonials/img6.png",
-        text: "Great service provided from start to finish. The team was careful, organized, and very professional. Everything was transported safely and smoothly—definitely recommended!",
+        id: 6,
+        name: "Carla Anderson",
+        role: "Verified Customer",
+        img: "/images/homepage/testimonials/Carla.png",
+        text: "Bros Moving delivered excellent service with hardworking movers who completed everything faster than expected. The move even came in below the original quote.",
     },
 ];
+
 const Testimonials = () => {
 
     const testimonialsContainer = useRef(null);
@@ -66,8 +73,8 @@ const Testimonials = () => {
                 scrollTrigger: {
                     trigger: testimonialsContainer.current,
                     start: "top top",
-                    end: `+=${moveX}`,
-                    pin: true,
+                    end: `bottom bottom`,
+                    // pin: true,
                     scrub: true,
                     invalidateOnRefresh: true,
                 },
@@ -76,8 +83,8 @@ const Testimonials = () => {
     }, { scope: testimonialsContainer });
 
     return (
-        <>
-            <div ref={testimonialsContainer} className=" testimonials_paren w-full h-screen padding  flex flex-col max-sm:py-24! justify-between md:justify-center gap-y-10">
+        <div ref={testimonialsContainer} id='review-section' className='w-full h-[400vh]'>
+            <div className=" sticky top-0 testimonials_paren w-full h-screen padding  flex flex-col max-sm:py-24! justify-between md:justify-center gap-y-10">
                 <div className="w-full  md:text-center">
                     <h2 className='text-3xl md:text-5xl  font-semibold '>What Our Customers Say</h2>
                     <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>Hear Directly from Our Customers About Their Smooth and Stress-Free Moving Experiences</p>
@@ -96,7 +103,7 @@ const Testimonials = () => {
 
                                 <div className="flex gap-x-2 items-center">
                                     <div className="size-14 relative center rounded-full overflow-hidden">
-                                        <Image fill className='cover object-top' src="/images/homepage/testimonials/img1.png" alt="loading" />
+                                        <Image fill className='cover object-top' src={item.img} alt="loading" />
                                     </div>
                                     <div className="">
                                         <p className='text-2xl  font-semibold'>{item.name}</p>
@@ -108,7 +115,7 @@ const Testimonials = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

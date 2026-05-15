@@ -7,47 +7,52 @@ const services = [
     {
         id: 1,
         title: "Residential Moving",
-        description: "Apartments, houses, condos — we handle it all with care.",
+        description:
+            "Apartments, houses, and condos moved safely, smoothly, and on schedule.",
         unfill_icon: "/icons/services/home_unfill.svg",
         fill_icon: "/icons/services/home_fill.svg",
         className: "col-span-3",
-        img: "/images/blogpage/blog1.png"
+        img: "/images/servicepage/resedential.webp",
     },
     {
         id: 2,
         title: "Commercial Moving",
-        description: "White-glove relocation for your most precious spaces.",
+        description:
+            "Efficient office and business relocations with minimal downtime.",
         unfill_icon: "/icons/services/apartment_unfill.svg",
         fill_icon: "/icons/services/apartment_fill.svg",
         className: "col-span-3",
-        img: "/images/blogpage/blog2.png"
+        img: "/images/servicepage/commercial.webp",
     },
     {
         id: 3,
         title: "Packing & Unpacking",
-        description: "We pack it right and unpack it fast, so you can settle in without hassle.",
+        description:
+            "Full or partial packing services designed to protect every item.",
         unfill_icon: "/icons/services/box_unfill.svg",
         fill_icon: "/icons/services/box_fill.svg",
         className: "col-span-2",
-        img: "/images/blogpage/blog4.png"
+        img: "/images/servicepage/packing.webp",
     },
     {
         id: 4,
         title: "Storage Services",
-        description: "Safe, secure, and flexible storage you can trust.",
+        description:
+            "Secure short-term and long-term storage solutions for your belongings.",
         unfill_icon: "/icons/services/shelf_unfill.svg",
         fill_icon: "/icons/services/shelf_fill.svg",
         className: "col-span-2",
-        img: "/images/blogpage/blog3.png"
+        img: "/images/servicepage/storage.webp",
     },
     {
         id: 5,
         title: "Specialty Moving",
-        description: "Expert care for your most valuable and delicate items.",
+        description:
+            "Professional handling for pianos, antiques, artwork, and fragile items.",
         unfill_icon: "/icons/services/calender_unfill.svg",
         fill_icon: "/icons/services/calender_fill.svg",
         className: "col-span-2",
-        img: "/images/blogpage/blog5.png"
+        img: "/images/servicepage/speciality.webp",
     },
 ];
 
@@ -56,7 +61,9 @@ const ServicesSection = () => {
         <>
             <div className="w-full  mt-14 md:mt-32 padding  bg-[#F9F6F3]">
                 <div className=" max_width_layout w-full md:flex items-end">
-                    <h2 className='text-3xl md:text-5xl  font-semibold mb-5 md:w-[80%] '>Smart Logistics Solutions <br /> for Every Move</h2>
+                    <h2 className='text-3xl md:text-5xl font-semibold mb-5 md:w-[80%]'>
+                        Reliable Moving Services <br /> Tailored to Your Needs
+                    </h2>
                     <Button variant="outline" href={"/services"}>
                         Explore All Services
                     </Button>
@@ -69,7 +76,7 @@ const ServicesSection = () => {
                                 <div className="absolute group-hover:opacity-100 brightness-90 transition-opacity duration-300 opacity-0  inset-0 cover">
                                     <Image fill src={service.img} className='cover' alt="loading" />
                                 </div>
-                            ) 
+                            )
                             }
                             <div className=" relative h-full w-full flex flex-col justify-between">
                                 <div className="size-24  relative center">

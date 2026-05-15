@@ -5,45 +5,61 @@ import WebPageSchema from '@/components/seo/WebPageSchema';
 import { Const } from '@/components/utils/Constants';
 import React from 'react'
 
-export const contactMetadata = {
-  title: "Contact Bro's Moving Inc | Book Moving Services",
+export const metadata  = {
+  title:
+    "Contact Bros Moving Inc. | Get a Free Moving Quote Today",
 
   description:
-    "Contact Bro's Moving Inc for reliable moving, junk removal, packing, and delivery services. Get a free quote today for residential and commercial moves.",
+    "Contact Bros Moving Inc. for residential, commercial, office, long-distance, packing, storage, junk removal, and specialty moving services across Saskatchewan and Canada.",
 
   keywords: [
-    "contact movers",
-    "book moving service",
-    "moving company contact",
+    "contact Bros Moving Inc",
+    "Regina moving company contact",
     "get moving quote",
-    "junk removal contact",
-    "Bro's Moving contact",
+    "book moving services",
+    "moving company Regina",
+    "residential movers contact",
+    "commercial moving quote",
+    "long distance moving services",
+    "packing services Regina",
+    "junk removal services",
+    "office movers Saskatchewan",
+    "licensed movers Canada",
+    "affordable movers Regina",
   ],
 
   robots: "index, follow",
 
   openGraph: {
-    title: "Contact Bro's Moving Inc",
+    title:
+      "Contact Bros Moving Inc. | Reliable Moving Services",
+
     description:
-      "Reach out to book professional moving and junk removal services. Fast response and affordable pricing.",
+      "Reach out to Bros Moving Inc. for professional moving, packing, storage, junk removal, and relocation services with transparent pricing and trusted support.",
+
     url: `${Const.ClientLink}/contact`,
-    siteName: "Bro's Moving Inc",
+    siteName: "Bros Moving Inc.",
     type: "website",
+
     images: [
       {
         url: `${Const.ClientLink}/og.png`,
         width: 1200,
         height: 630,
-        alt: "Contact Bro's Moving Inc",
+        alt: "Contact Bros Moving Inc.",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Contact Bro's Moving Inc",
+
+    title:
+      "Contact Bros Moving Inc. | Book Professional Movers",
+
     description:
-      "Book your move or request a quote for reliable moving services.",
+      "Get in touch for trusted residential, commercial, office, and long-distance moving services across Saskatchewan and Canada.",
+
     images: [`${Const.ClientLink}/og.png`],
   },
 
@@ -56,8 +72,8 @@ const page = () => {
   return (
     <>
       <WebPageSchema
-        name="Contact Bro's Moving Inc"
-        description="Get in touch with Bro's Moving Inc for moving, packing, and junk removal services."
+        name="Contact Bros Moving Inc."
+        description="Contact Bros Moving Inc. for trusted residential, commercial, office, packing, storage, junk removal, and long-distance moving services across Saskatchewan and Canada."
         url={`${Const.ClientLink}/contact`}
       />
       <PageHero

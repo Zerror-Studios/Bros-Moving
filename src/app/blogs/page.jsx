@@ -6,51 +6,68 @@ import { BLOG_FILTERS_QUERY, POSTS_QUERY } from '@/sanity/lib/queries'
 import WebPageSchema from '@/components/seo/WebPageSchema'
 import { Const } from '@/components/utils/Constants'
 
-export const blogMetadata = {
-    title: "Moving Tips & Guides | Bro's Moving Inc Blog",
+export const metadata  = {
+  title:
+    "Moving Tips, Packing Guides & Relocation Advice | Bros Moving Inc. Blog",
+
+  description:
+    "Explore expert moving tips, packing guides, storage advice, and relocation resources from Bros Moving Inc. to make every move smooth, safe, and stress-free.",
+
+  keywords: [
+    "moving tips",
+    "packing guides",
+    "moving blog",
+    "relocation advice",
+    "moving checklist",
+    "packing and moving tips",
+    "long distance moving guide",
+    "office relocation tips",
+    "storage moving advice",
+    "moving company blog",
+    "how to move safely",
+    "Bros Moving blog",
+    "Regina moving tips",
+    "Saskatchewan movers",
+  ],
+
+  robots: "index, follow",
+
+  openGraph: {
+    title:
+      "Moving Tips & Relocation Guides | Bros Moving Inc. Blog",
 
     description:
-        "Read expert moving tips, packing guides, and relocation advice from Bro's Moving Inc to make your move easier and stress-free.",
+      "Helpful moving resources, packing tips, and expert relocation advice from trusted professional movers.",
 
-    keywords: [
-        "moving tips",
-        "packing tips",
-        "moving blog",
-        "relocation advice",
-        "how to move safely",
-        "moving checklist",
+    url: `${Const.ClientLink}/blog`,
+    siteName: "Bros Moving Inc.",
+    type: "website",
+
+    images: [
+      {
+        url: `${Const.ClientLink}/og.png`,
+        width: 1200,
+        height: 630,
+        alt: "Bros Moving Inc. Blog",
+      },
     ],
+  },
 
-    robots: "index, follow",
+  twitter: {
+    card: "summary_large_image",
 
-    openGraph: {
-        title: "Moving Tips & Guides | Blog",
-        description:
-            "Helpful guides and expert advice for stress-free moving and packing.",
-        url: `${Const.ClientLink}/blog`,
-        siteName: "Bro's Moving Inc",
-        type: "website",
-        images: [
-            {
-                url: `${Const.ClientLink}/og.png`,
-                width: 1200,
-                height: 630,
-                alt: "Moving Blog",
-            },
-        ],
-    },
+    title:
+      "Moving Tips & Packing Guides | Bros Moving Inc.",
 
-    twitter: {
-        card: "summary_large_image",
-        title: "Moving Tips & Guides",
-        description:
-            "Learn expert strategies for smooth and safe moving.",
-        images: [`${Const.ClientLink}/og.png`],
-    },
+    description:
+      "Discover expert moving advice, packing strategies, and relocation guides for a stress-free moving experience.",
 
-    alternates: {
-        canonical: `${Const.ClientLink}/blog`,
-    },
+    images: [`${Const.ClientLink}/og.png`],
+  },
+
+  alternates: {
+    canonical: `${Const.ClientLink}/blog`,
+  },
 };
 
 const page = async () => {
@@ -61,10 +78,10 @@ const page = async () => {
     return (
         <>
             <WebPageSchema
-                name="Bro's Moving Blog"
-                description="Expert tips, guides, and insights on moving, packing, and relocation."
-                url={`${Const.ClientLink}/blog`}
-            />
+  name="Bros Moving Inc. Blog"
+  description="Read expert moving tips, packing guides, storage advice, and relocation insights from Bros Moving Inc. for safer and stress-free moving experiences."
+  url={`${Const.ClientLink}/blog`}
+/>
             <PageHero
                 title={"Discover Our Latest Stories"}
                 description={"Explore a collection of the latest news, practical guides, and industry insights—all in one place."}

@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
 import { useQuoteStore } from '@/store/useQuoteStore';
 import Image from 'next/image';
+import Button from '../common/Button';
 gsap.registerPlugin(ScrollTrigger);
 
 const StepsSection = () => {
@@ -16,8 +17,8 @@ const StepsSection = () => {
       scrollTrigger: {
         trigger: stepsContainer.current,
         start: "top top",
-        end: "+=1500",
-        pin: true,
+        end: "bottom bottom",
+        // pin: true,
         scrub: true,
         // markers: true,
       },
@@ -66,13 +67,13 @@ const StepsSection = () => {
   }, { scope: stepsContainer });
 
   return (
-    <>
-      <div ref={stepsContainer} className=" steps_section_paren w-full  h-screen relative overflow-hidden">
+    <div ref={stepsContainer} className='w-full relative h-[300vh] ' >
+      <div  className=" sticky top-0 steps_section_paren w-full  h-screen  overflow-hidden">
         <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
         <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
-        <Image fill className='cover' src="/images/homepage/steps_section/steps_bg.png" alt="loading" />
+        <Image fill className='cover' src="/images/homepage/steps_section/steps_bg.webp" alt="loading" />
 
-        <div className=" padding w-full  h-full flex gap-y-10 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
+        <div className=" padding w-full  h-full flex gap-y-8 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
           <div className="text-center">
             <h2 className='text-3xl md:text-5xl  font-semibold text-center text-white '>Simple Steps to Get Moving</h2>
             <p className=' text-white text-base md:text-lg mt-2 leading-tight  '>Reliable moving services built on care, efficiency, and clear  communication.</p>
@@ -139,9 +140,12 @@ const StepsSection = () => {
 
             </div>
           </div>
+          <Button onClick={open} variant="primary">
+            Book Your Move Now
+          </Button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

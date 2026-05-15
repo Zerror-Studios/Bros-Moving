@@ -51,7 +51,7 @@ const ContactForm = () => {
             <div className="w-full padding pb-5! md:pb-10!">
                 <div className=" max_width_layout w-full flex flex-col md:flex-row items-stretch border-b border-black/10 pb-5 md:pb-14  relative gap-x-44 ">
                     <div className=" max-sm:hidden h-[calc(100%-3.5rem)] absolute left-1/2 -translate-x-1/2 w-[1px] bg-black/10"></div>
-                    <div className=" w-full md:w-1/2 flex flex-col justify-between">
+                    <div className=" w-full md:w-1/2 flex flex-col gap-y-8 justify-between">
                         <div className="">
                             <h2 className='text-3xl md:text-5xl  font-semibold md:w-[80%] '>Have question? <br />We’re Here to Help!</h2>
                             <p className='text-[#6B6E73] leading-tight text-base md:text-lg mt-2  '>Our expertise and personalized approach ensure you make well-informed decisions, turning your dreams into reality.</p>
@@ -139,8 +139,9 @@ const ContactForm = () => {
 
                         </form>
                     </div>
-                    <div className=" w-full  max-sm:mt-10 md:w-1/2 flex items-center  ">
-                        <Image height={600} width={400} src="/images/contactpage/contact_form_img.png" className='w-full' alt="loading" />
+                    <div className=" w-full  max-sm:mt-10 rounded-xl overflow-hidden md:w-1/2 flex items-center  relative ">
+                    <div className="subtract absolute z-10 pointer-events-none rotate-90  w-[70vw] md:w-[25vw] h-6 md:h-10 left-[-30%] bg-[#fff] top-1/2 -translate-y-1/2"></div>
+                        <Image fill src="/images/aboutpage/mission_img.webp" className='cover' alt="loading" />
                     </div>
                 </div>
             </div>

@@ -5,47 +5,62 @@ import { Const } from '@/components/utils/Constants'
 import React from 'react'
 
 
-export const servicesMetadata = {
-  title: "Moving Services | Bro's Moving Inc",
+export const metadata  = {
+  title:
+    "Professional Moving Services in Regina | Bros Moving Inc.",
 
   description:
-    "Explore Bro's Moving Inc services including local & long-distance moving, junk removal, packing, furniture delivery, and assembly for homes and businesses.",
+    "Explore residential, commercial, office, long-distance, packing, storage, junk removal, white glove delivery, and specialty moving services from Bros Moving Inc. across Saskatchewan and Canada.",
 
   keywords: [
-    "moving services",
-    "local moving",
-    "long distance movers",
-    "junk removal services",
-    "packing services",
-    "furniture delivery",
+    "moving services Regina",
+    "residential moving services",
+    "commercial moving services",
     "office moving services",
-    "residential moving",
+    "long distance movers Canada",
+    "packing and unpacking services",
+    "storage services Regina",
+    "specialty item movers",
+    "white glove furniture delivery",
+    "junk removal services",
+    "professional movers Saskatchewan",
+    "licensed moving company",
+    "affordable movers Regina",
+    "Bros Moving Inc services",
   ],
 
   robots: "index, follow",
 
   openGraph: {
-    title: "Bro's Moving Inc Services",
+    title:
+      "Professional Moving Services | Bros Moving Inc.",
+
     description:
-      "Complete moving solutions including packing, junk removal, and relocation services.",
+      "Trusted moving services for homes, offices, businesses, and long-distance relocations with packing, storage, junk removal, and specialty moving solutions.",
+
     url: `${Const.ClientLink}/services`,
-    siteName: "Bro's Moving Inc",
+    siteName: "Bros Moving Inc.",
     type: "website",
+
     images: [
       {
         url: `${Const.ClientLink}/og.png`,
         width: 1200,
         height: 630,
-        alt: "Moving Services",
+        alt: "Bros Moving Inc. Services",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Moving Services | Bro's Moving Inc",
+
+    title:
+      "Moving Services | Bros Moving Inc.",
+
     description:
-      "Professional moving services tailored for residential and commercial needs.",
+      "Reliable residential, commercial, office, packing, storage, and long-distance moving services across Saskatchewan and Canada.",
+
     images: [`${Const.ClientLink}/og.png`],
   },
 
@@ -59,10 +74,10 @@ const ServicesPage = () => {
     <>
 
       <WebPageSchema
-        name="Moving Services | Bro's Moving Inc"
-        description="Professional moving services including packing, junk removal, delivery, and relocation."
-        url={`${Const.ClientLink}/services`}
-      />
+  name="Professional Moving Services | Bros Moving Inc."
+  description="Explore trusted residential, commercial, office, long-distance, packing, storage, junk removal, white glove delivery, and specialty moving services from Bros Moving Inc."
+  url={`${Const.ClientLink}/services`}
+/>
       <PageHero
         title={"Bro's Moving Reliable Moving Services"}
         description={"Trusted moving solutions for homes and businesses across Saskatchewan."}
