@@ -12,7 +12,7 @@ const services = [
         unfill_icon: "/icons/services/home_unfill.svg",
         fill_icon: "/icons/services/home_fill.svg",
         className: "col-span-3",
-        img: "/images/servicepage/resedential.webp",
+        img: "/images/servicepage/new_resedential.png",
     },
     {
         id: 2,
@@ -22,7 +22,7 @@ const services = [
         unfill_icon: "/icons/services/apartment_unfill.svg",
         fill_icon: "/icons/services/apartment_fill.svg",
         className: "col-span-3",
-        img: "/images/servicepage/commercial.webp",
+        img: "/images/servicepage/new_commercial.png",
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ const services = [
         unfill_icon: "/icons/services/box_unfill.svg",
         fill_icon: "/icons/services/box_fill.svg",
         className: "col-span-2",
-        img: "/images/servicepage/packing.webp",
+        img: "/images/servicepage/new_packing.png",
     },
     {
         id: 4,
@@ -42,7 +42,7 @@ const services = [
         unfill_icon: "/icons/services/shelf_unfill.svg",
         fill_icon: "/icons/services/shelf_fill.svg",
         className: "col-span-2",
-        img: "/images/servicepage/storage.webp",
+        img: "/images/servicepage/new_storage.png",
     },
     {
         id: 5,
@@ -52,7 +52,7 @@ const services = [
         unfill_icon: "/icons/services/calender_unfill.svg",
         fill_icon: "/icons/services/calender_fill.svg",
         className: "col-span-2",
-        img: "/images/servicepage/speciality.webp",
+        img: "/images/servicepage/new_speciality.png",
     },
 ];
 

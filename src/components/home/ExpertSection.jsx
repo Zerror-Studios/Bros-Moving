@@ -58,8 +58,8 @@ const ExpertSection = () => {
                         onUpdate: function () {
                             el.innerText =
                                 target >= 1000
-                                    ? Math.floor(el.innerText / 1000) + "K+"
-                                    : Math.floor(el.innerText) + (target === 100 ? "+" : "");
+                                    ? Math.floor(el.innerText ) + "+"
+                                    : Math.floor(el.innerText) + (target === 12 ? "+" : "");
                         },
                     }
                 );
@@ -118,7 +118,7 @@ const ExpertSection = () => {
                         <div>
                             <h2
                                 ref={(el) => (countersRef.current[0] = el)}
-                                data-target="10000"
+                                data-target="1100"
                                 className='text-3xl md:text-5xl  font-semibold'
                             >
                                 0
@@ -147,7 +147,7 @@ const ExpertSection = () => {
                         <div>
                             <h2
                                 ref={(el) => (countersRef.current[3] = el)}
-                                data-target="100"
+                                data-target="12"
                                 className='text-3xl md:text-5xl  font-semibold'
                             >
                                 0
@@ -165,7 +165,7 @@ const ExpertSection = () => {
                             Expert Movers Serving Regina, Winnipeg & Alberta
                         </h2>
                         <p className='text-[#6B6E73] text-base md:text-lg mt-2 md:mt-8'>
-                            Bro's Moving Inc. is a Regina-based licensed and insured moving company
+                            Bros Moving Inc. is a Regina-based licensed and insured moving company
                             trusted across Saskatchewan for delivering safe, reliable, and stress-free
                             moving services. Since day one, we have proudly maintained a 5-star reputation
                             on Google through our commitment to professionalism, transparency, and customer satisfaction.

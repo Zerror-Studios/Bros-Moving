@@ -50,7 +50,7 @@ const WhyChooseSection = () => {
                 <div className=" w-full md:w-1/2 gap-y-8 flex flex-col justify-between">
                     <div>
                         <h2 className='text-3xl md:text-5xl font-semibold md:w-[80%]'>
-                            Why Choose Bro&apos;s Moving?
+                            Why Choose Bros Moving?
                         </h2>
 
                         <p className='text-[#6B6E73] text-base md:text-lg mt-2 leading-tight'>

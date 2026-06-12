@@ -13,7 +13,7 @@ const SERVICES = [
         id: "residential-moving",
         title: "Residential Moving",
         desc: "Trusted residential moving services for homes, condos, apartments, and seasonal properties across Saskatchewan, Manitoba, and Ontario.",
-        image: "/images/servicepage/service1.png",
+        image: "/images/servicepage/resedential.png",
         innerServices: [
             "Apartment and condo moving",
             "Household and seasonal property relocation",
@@ -30,7 +30,7 @@ const SERVICES = [
         id: "commercial-moving",
         title: "Commercial Moving",
         desc: "Organized and efficient commercial moving services for retail stores, warehouses, food stores, and business spaces.",
-        image: "/images/servicepage/service2.png",
+        image: "/images/servicepage/commercial.png",
         innerServices: [
             "Retail store relocation",
             "Warehouse moving services",
@@ -47,7 +47,7 @@ const SERVICES = [
         id: "office-moving",
         title: "Office Moving",
         desc: "Professional office moving solutions for confidential documents, electronics, desks, and office equipment.",
-        image: "/images/servicepage/service3.png",
+        image: "/images/servicepage/office.png",
         innerServices: [
             "Confidential document packing",
             "Computer and electronics moving",
@@ -64,7 +64,7 @@ const SERVICES = [
         id: "long-distance-moving",
         title: "Long Distance Moving",
         desc: "Reliable long-distance moving services across all provinces in Canada with stress-free transportation and handling.",
-        image: "/images/servicepage/service4.png",
+        image: "/images/servicepage/long_distance.png",
         innerServices: [
             "Province-to-province moving",
             "Packing and unpacking assistance",
@@ -81,7 +81,7 @@ const SERVICES = [
         id: "specialty-item-moving",
         title: "Specialty Item Moving",
         desc: "Expert handling for pianos, antiques, appliances, hot tubs, restaurant equipment, and valuable specialty items.",
-        image: "/images/servicepage/service5.png",
+        image: "/images/servicepage/speciality.png",
         innerServices: [
             "Piano moving services",
             "Heavy appliance relocation",
@@ -98,7 +98,7 @@ const SERVICES = [
         id: "packing-unpacking",
         title: "Packing & Unpacking",
         desc: "Professional packing and unpacking services using high-quality materials to keep your belongings safe and organized.",
-        image: "/images/servicepage/service5.png",
+        image: "/images/servicepage/packing.png",
         innerServices: [
             "Full-service packing solutions",
             "Fragile item wrapping and protection",
@@ -115,7 +115,7 @@ const SERVICES = [
         id: "senior-moving",
         title: "Senior Moving",
         desc: "Friendly and respectful moving services for senior citizens with extra care and a 10% first-move discount.",
-        image: "/images/servicepage/service5.png",
+        image: "/images/servicepage/senior.png",
         innerServices: [
             "Retirement home relocation",
             "Senior care residence moving",
@@ -132,7 +132,7 @@ const SERVICES = [
         id: "white-glove-delivery",
         title: "White Glove Furniture Delivery",
         desc: "Premium white glove delivery services for furniture, appliances, and electronics with assembly and placement included.",
-        image: "/images/servicepage/service5.png",
+        image: "/images/servicepage/white_glove.png",
         innerServices: [
             "Furniture delivery services",
             "Appliance and electronics delivery",
@@ -149,7 +149,7 @@ const SERVICES = [
         id: "junk-removal",
         title: "Junk Removal",
         desc: "Affordable junk removal and waste management services included with your move to save time, effort, and money.",
-        image: "/images/servicepage/service5.png",
+        image: "/images/servicepage/junk_removal.png",
         innerServices: [
             "Affordable junk removal services",
             "Waste management solutions",
@@ -248,23 +248,25 @@ const ServicesScroll = () => {
 
                     {/* RIGHT IMAGES */}
                     <div className="w-1/2 max-sm:hidden sticky flex items-center top-0 h-screen overflow-hidden">
-                        {SERVICES.map((service, i) => (
-                            <Image
-                                key={i}
-                                height={600}
-                                width={500}
-                                preload
-                                src={service.image}
-                                alt={service.title}
-                                className="service_image w-full absolute object-cover"
-                                style={{
-                                    clipPath:
-                                        i === 0
-                                            ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-                                            : "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-                                }}
-                            />
-                        ))}
+                        <div className="relative w-full rounded-2xl overflow-hidden aspect-square">
+                            <div className="subtract absolute z-10 pointer-events-none rotate-90  w-[70vw] md:w-[25vw] h-6 md:h-10 left-[-30%] bg-[#fff] top-1/2 -translate-y-1/2"></div>
+                            {SERVICES.map((service, i) => (
+                                <Image
+                                    key={i}
+                                    fill
+                                    preload
+                                    src={service.image}
+                                    alt={service.title}
+                                    className="service_image  absolute cover"
+                                    style={{
+                                        clipPath:
+                                            i === 0
+                                                ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+                                                : "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+                                    }}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

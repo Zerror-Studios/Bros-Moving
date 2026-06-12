@@ -141,7 +141,7 @@ const Header = () => {
               const isActive = pathname === link.href;
 
               return (
-                <div key={i} className="w-fit flex flex-col group cursor-pointer">
+                <div key={i} className="w-fit flex flex-col uppercase text-sm group cursor-pointer">
                   <Link href={link.href} className="relative">
                     {link.label}
 

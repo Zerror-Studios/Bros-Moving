@@ -20,7 +20,7 @@ const BlogCard = ({ blog, className="bg-[#F9F6F3]" }) => {
             <div className=" max-sm:space-y-1 md:flex w-full justify-between">
                 <div className="flex items-center gap-x-2">
                     <img src="/icons/form_person.svg" className='w-5' alt="loading" />
-                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bro's Moving"}</p>
+                    <p className='text-sm md:text-lg text-[#6B6E73] transition-all duration-300  group-hover:text-[#090A0C]'>{blog.author || "Bros Moving"}</p>
                 </div>
                 <div className="flex items-center gap-x-2">
                     <img src="/icons/red_calender.svg" className='w-5' alt="loading" />

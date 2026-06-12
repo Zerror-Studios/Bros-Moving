@@ -2,6 +2,8 @@
 import { RiArrowDownSLine } from '@remixicon/react'
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
     const [form, setForm] = useState({
@@ -11,6 +13,7 @@ const ContactForm = () => {
         note: ""
     });
     const [open, setOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const dropdownRef = useRef(null);
 
     const SERVICES = [
@@ -25,8 +28,51 @@ const ContactForm = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (!form.name.trim()) {
+            toast.error("Please enter your name.");
+            return;
+        }
+        if (!form.phone.trim()) {
+            toast.error("Please enter your phone number.");
+            return;
+        }
+        if (!form.service) {
+            toast.error("Please select a service.");
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(form),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Something went wrong. Please try again.');
+            }
+
+            toast.success("Message sent successfully!");
+            setForm({
+                name: "",
+                phone: "",
+                service: "",
+                note: ""
+            });
+        } catch (error) {
+            toast.error(error.message || "Failed to send message. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
 
@@ -48,6 +94,9 @@ const ContactForm = () => {
 
     return (
         <>
+
+            <ToastContainer position="top-right" autoClose={3000} />
+
             <div className="w-full padding pb-5! md:pb-10!">
                 <div className=" max_width_layout w-full flex flex-col md:flex-row items-stretch border-b border-black/10 pb-5 md:pb-14  relative gap-x-44 ">
                     <div className=" max-sm:hidden h-[calc(100%-3.5rem)] absolute left-1/2 -translate-x-1/2 w-[1px] bg-black/10"></div>
@@ -135,11 +184,18 @@ const ContactForm = () => {
                             </div>
 
                             {/* Button */}
-                            <button type='submit' className='w-full leading-none center  gap-x-2  text-white rounded-full p-4 bg-[#F5344F]'>  Send Message <img src="/icons/arrow-right.svg" className='w-5 invert-100' alt="loading" /> </button>
+                            <button 
+                                type='submit' 
+                                disabled={isSubmitting}
+                                className={`w-full leading-none center gap-x-2 text-white rounded-full p-4 bg-[#F5344F] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#d02c43]'} transition-colors duration-200`}
+                            >  
+                                {isSubmitting ? 'Sending...' : 'Send Message'} 
+                                {!isSubmitting && <img src="/icons/arrow-right.svg" className='w-5 invert-100' alt="loading" />}
+                            </button>
 
                         </form>
                     </div>
-                    <div className=" w-full  max-sm:mt-10 rounded-xl overflow-hidden md:w-1/2 flex items-center  relative ">
+                    <div className=" w-full  max-sm:mt-10 rounded-2xl overflow-hidden md:w-1/2 flex items-center  relative ">
                     <div className="subtract absolute z-10 pointer-events-none rotate-90  w-[70vw] md:w-[25vw] h-6 md:h-10 left-[-30%] bg-[#fff] top-1/2 -translate-y-1/2"></div>
                         <Image fill src="/images/aboutpage/mission_img.webp" className='cover' alt="loading" />
                     </div>

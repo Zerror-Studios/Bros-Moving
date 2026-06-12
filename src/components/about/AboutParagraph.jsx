@@ -51,8 +51,8 @@ const AboutParagraph = () => {
                         onUpdate: function () {
                             el.innerText =
                                 target >= 1000
-                                    ? Math.floor(el.innerText / 1000) + "K+"
-                                    : Math.floor(el.innerText) + (target === 100 ? "+" : "");
+                                    ? Math.floor(el.innerText) + "+"
+                                    : Math.floor(el.innerText) + (target === 12 ? "+" : "");
                         },
                     }
                 );
@@ -67,7 +67,7 @@ const AboutParagraph = () => {
             <div ref={sectionRef} className=" about_para_paren w-full  padding pb-0!">
                 <div className=" max_width_layout w-full flex flex-col items-center text-center border-b pb-10 md:pb-20 border-black/10">
                     <h2 className='split_para text-2xl md:text-4xl font-medium md:w-[70%]'>
-                        Bro's Moving provides trusted residential, commercial, office, and long-distance
+                        Bros Moving provides trusted residential, commercial, office, and long-distance
                         moving services across Saskatchewan and beyond. From careful packing and secure
                         transportation to unloading and setup, our experienced movers handle every
                         detail with professionalism, efficiency, and extra care to deliver a smooth
@@ -77,7 +77,7 @@ const AboutParagraph = () => {
                         <div className="">
                             <h2
                                 ref={(el) => (countersRef.current[0] = el)}
-                                data-target="10000"
+                                data-target="1100"
                                 className='text-3xl md:text-5xl  font-semibold'>0</h2>
                             <p className='text-[#6B6E73] text-base md:text-lg   '>Moves Completed</p>
                         </div>
@@ -101,7 +101,7 @@ const AboutParagraph = () => {
                         <div className="">
                             <h2
                                 ref={(el) => (countersRef.current[3] = el)}
-                                data-target="100"
+                                data-target="12"
                                 className='text-3xl md:text-5xl  font-semibold'
                             >
                                 0

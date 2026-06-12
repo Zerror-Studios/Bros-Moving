@@ -1,11 +1,14 @@
 import { groq } from 'next-sanity'
 
-export const POSTS_QUERY = groq`*[_type == "post"] | order(coalesce(date, _createdAt) desc){
+export const POSTS_QUERY = groq`*[_type == "post"] | order(coalesce(publishDate, _createdAt) desc){
   _id,
-  title,
+  coverTitle,
+  "title": coalesce(coverTitle, heroTitle),
+  description,
   author,
   "slug": slug.current,
-  date,
+  publishDate,
+  "date": publishDate,
   "services": services[]->{
     _id,
     title,
@@ -16,17 +19,21 @@ export const POSTS_QUERY = groq`*[_type == "post"] | order(coalesce(date, _creat
     title,
     "slug": slug.current
   },
-  coverImage{
+  "coverImage": cover_img{
     asset->
   }
 }`
 
 export const POST_BY_SLUG_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
   _id,
-  title,
+  coverTitle,
+  "title": coalesce(heroTitle, coverTitle),
+  heroTitle,
+  description,
   author,
   "slug": slug.current,
-  date,
+  publishDate,
+  "date": publishDate,
   "services": services[]->{
     _id,
     title,
@@ -37,14 +44,20 @@ export const POST_BY_SLUG_QUERY = groq`*[_type == "post" && slug.current == $slu
     title,
     "slug": slug.current
   },
-  coverImage{
+  "coverImage": cover_img{
     asset->
   },
-  details,
-  seo
+  cover_img{
+    asset->
+  },
+  hero_img{
+    asset->
+  },
+  introSection,
+  sections,
 }`
 
-export const POST_SLUGS_QUERY = groq`*[_type == "post" && defined(slug.current)] | order(coalesce(date, _createdAt) desc){
+export const POST_SLUGS_QUERY = groq`*[_type == "post" && defined(slug.current)] | order(coalesce(publishDate, _createdAt) desc){
   "slug": slug.current
 }`
 

@@ -84,8 +84,8 @@ const AboutPage = () => {
       />
       <AboutParagraph />
       <OurMission />
-      <OurCertificates />
-      <OurTeam />
+      {/* <OurCertificates /> */}
+      {/* <OurTeam /> */}
     </>
   )
 }

@@ -3,8 +3,9 @@
 import { RiArrowDownSLine } from '@remixicon/react'
 import { Flip } from 'gsap/Flip'
 import gsap from 'gsap'
-import React, { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import React, { useLayoutEffect, useMemo, useRef, useState, useEffect } from 'react'
 import { flushSync } from 'react-dom'
+import { useSearchParams, useRouter } from 'next/navigation'
 import BlogCard from '../common/BlogCard';
 
 gsap.registerPlugin(Flip)
@@ -24,12 +25,20 @@ const postHasFilter = (postItems = [], activeFilter) => {
 }
 
 const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
+    const searchParams = useSearchParams();
+    const router = useRouter();
+
     const [isServiceOpen, setIsServiceOpen] = useState(false);
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-    const [activeService, setActiveService] = useState(ALL_FILTER.slug);
-    const [activeCategory, setActiveCategory] = useState(ALL_FILTER.slug);
+    const [activeService, setActiveService] = useState(searchParams.get('service') || ALL_FILTER.slug);
+    const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || ALL_FILTER.slug);
     const gridRef = useRef(null);
     const flipState = useRef(null);
+
+    useEffect(() => {
+        setActiveService(searchParams.get('service') || ALL_FILTER.slug);
+        setActiveCategory(searchParams.get('category') || ALL_FILTER.slug);
+    }, [searchParams]);
 
     const serviceOptions = useMemo(() => [ALL_FILTER, ...(services || [])], [services])
     const categoryOptions = useMemo(() => [ALL_FILTER, ...(categories || [])], [categories])
@@ -56,13 +65,25 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
         setIsServiceOpen(false);
     };
 
-    const applyFilter = (setter, value) => {
+    const applyFilter = (filterType, value) => {
         if (gridRef.current) {
             flipState.current = Flip.getState(gridRef.current.querySelectorAll('[data-blog-card]'))
         }
 
         flushSync(() => {
-            setter(value)
+            const params = new URLSearchParams(searchParams.toString());
+            if (value === ALL_FILTER.slug) {
+                params.delete(filterType);
+            } else {
+                params.set(filterType, value);
+            }
+            router.push(`/blogs?${params.toString()}`, { scroll: false });
+
+            if (filterType === 'service') {
+                setActiveService(value);
+            } else if (filterType === 'category') {
+                setActiveCategory(value);
+            }
             setIsServiceOpen(false)
             setIsCategoryOpen(false)
         })
@@ -74,6 +95,7 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
         }
 
         flushSync(() => {
+            router.push('/blogs', { scroll: false });
             setActiveService(ALL_FILTER.slug)
             setActiveCategory(ALL_FILTER.slug)
             setIsServiceOpen(false)
@@ -174,7 +196,7 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
                                 return (
                                     <button
                                         key={item._id || slug}
-                                        onClick={() => applyFilter(setActiveService, slug)}
+                                        onClick={() => applyFilter('service', slug)}
                                         className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeService === slug ? 'bg-[#F5344F] text-white' : ''}`}
                                     >
                                         {item.title}
@@ -193,7 +215,7 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
                                 return (
                                     <button
                                         key={item._id || slug}
-                                        onClick={() => applyFilter(setActiveCategory, slug)}
+                                        onClick={() => applyFilter('category', slug)}
                                         className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeCategory === slug ? 'bg-[#F5344F] text-white' : ''}`}
                                     >
                                         {item.title}

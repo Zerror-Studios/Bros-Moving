@@ -71,7 +71,7 @@ const StepsSection = () => {
       <div  className=" sticky top-0 steps_section_paren w-full  h-screen  overflow-hidden">
         <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] bottom-[-1px] left-1/2 -translate-x-1/2"></div>
         <div className="subtract absolute z-10 pointer-events-none w-[70vw] md:w-[80vw] h-6 md:h-10 bg-[#F9F6F3] scale-y-[-1] top-[-1px] left-1/2 -translate-x-1/2"></div>
-        <Image fill className='cover' src="/images/homepage/steps_section/steps_bg.webp" alt="loading" />
+        <Image fill className='cover' src="/images/homepage/steps_section/steps_bg.jpg" alt="loading" />
 
         <div className=" padding w-full  h-full flex gap-y-8 flex-col justify-center items-center  absolute top-0 left-0 z-10 ">
           <div className="text-center">

@@ -1,12 +1,12 @@
 import BlogsGrid from '@/components/blogs/BlogsGrid'
 import PageHero from '@/components/common/PageHero'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { sanityFetch } from '@/sanity/lib/live'
 import { BLOG_FILTERS_QUERY, POSTS_QUERY } from '@/sanity/lib/queries'
 import WebPageSchema from '@/components/seo/WebPageSchema'
 import { Const } from '@/components/utils/Constants'
 
-export const metadata  = {
+export const metadata = {
   title:
     "Moving Tips, Packing Guides & Relocation Advice | Bros Moving Inc. Blog",
 
@@ -71,30 +71,32 @@ export const metadata  = {
 };
 
 const page = async () => {
-    const [{ data: posts = [] }, { data: filters = {} }] = await Promise.all([
-        sanityFetch({ query: POSTS_QUERY }),
-        sanityFetch({ query: BLOG_FILTERS_QUERY }),
-    ])
-    return (
-        <>
-            <WebPageSchema
-  name="Bros Moving Inc. Blog"
-  description="Read expert moving tips, packing guides, storage advice, and relocation insights from Bros Moving Inc. for safer and stress-free moving experiences."
-  url={`${Const.ClientLink}/blog`}
-/>
-            <PageHero
-                title={"Discover Our Latest Stories"}
-                description={"Explore a collection of the latest news, practical guides, and industry insights—all in one place."}
-                image={"/images/blogpage/blog_hero.png"}
-                mobImage={"/images/blogpage/mob_blog_hero.png"}
-            />
-            <BlogsGrid
-                posts={posts}
-                services={filters.services}
-                categories={filters.categories}
-            />
-        </>
-    )
+  const [{ data: posts = [] }, { data: filters = {} }] = await Promise.all([
+    sanityFetch({ query: POSTS_QUERY }),
+    sanityFetch({ query: BLOG_FILTERS_QUERY }),
+  ])
+  return (
+    <>
+      <WebPageSchema
+        name="Bros Moving Inc. Blog"
+        description="Read expert moving tips, packing guides, storage advice, and relocation insights from Bros Moving Inc. for safer and stress-free moving experiences."
+        url={`${Const.ClientLink}/blog`}
+      />
+      <PageHero
+        title={"Discover Our Latest Stories"}
+        description={"Explore a collection of the latest news, practical guides, and industry insights—all in one place."}
+        image={"/images/blogpage/blog_hero.png"}
+        mobImage={"/images/blogpage/mob_blog_hero.png"}
+      />
+      <Suspense fallback={<div className="min-h-[50vh] center"><p className="text-lg">Loading blogs...</p></div>}>
+        <BlogsGrid
+          posts={posts}
+          services={filters.services}
+          categories={filters.categories}
+        />
+      </Suspense>
+    </>
+  )
 }
 
 export default page

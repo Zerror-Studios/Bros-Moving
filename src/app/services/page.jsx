@@ -79,7 +79,7 @@ const ServicesPage = () => {
   url={`${Const.ClientLink}/services`}
 />
       <PageHero
-        title={"Bro's Moving Reliable Moving Services"}
+        title={"Bros Moving Reliable Moving Services"}
         description={"Trusted moving solutions for homes and businesses across Saskatchewan."}
         image={"/images/servicepage/service_hero.png"}
         mobImage={"/images/servicepage/mob_service_hero.png"}

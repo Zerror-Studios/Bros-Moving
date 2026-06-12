@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full center text-center">
-          <p className='text-[#F9F6F3] max-sm:text-xs max-sm:w-[60%]  font-light'>© {new Date().getFullYear()} Bro's Moving. All rights reserved. Licensed and Insured.</p>
+          <p className='text-[#F9F6F3] max-sm:text-xs max-sm:w-[60%]  font-light'>© {new Date().getFullYear()} Bros Moving. All rights reserved. Licensed and Insured.</p>
         </div>
       </div>
     </>
