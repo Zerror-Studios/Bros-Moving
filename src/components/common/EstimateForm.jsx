@@ -192,7 +192,7 @@ const EstimateForm = () => {
                 className={`w-full fixed inset-0 padding h-screen z-[110] 
       bg-black/40 backdrop-blur-[8px] transition-all duration-300
       ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-            >
+            >   
 
                 <div className="max_width_layout w-full flex justify-center items-center h-full">
 
@@ -299,7 +299,7 @@ const EstimateForm = () => {
                                         className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
                                         <span className={`w-full font-medium ${form.homeSize ? "text-black" : "text-[#6B6E73]"}`}>
-                                            {form.homeSize || "Select home size"}
+                                            {form.homeSize || "Home size"}
                                         </span>
                                         <img alt="arrow" src="/icons/drop_arrow.svg" className="w-4 opacity-60" />
                                     </div>

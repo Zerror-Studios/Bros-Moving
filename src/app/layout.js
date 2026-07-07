@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/fonts.css";
 import "../styles/website.css";
+import Script from "next/script";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 import SiteShell from "@/components/common/SiteShell";
 import { Const } from "@/components/utils/Constants";
@@ -78,6 +79,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-Q3P1WXTQMN`}
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Q3P1WXTQMN');
+              gtag('config', 'AW-17323495482');
+            `,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <OrganizationSchema />
         <SiteShell>{children}</SiteShell>
