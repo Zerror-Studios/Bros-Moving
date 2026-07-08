@@ -290,6 +290,9 @@ const EstimateForm = () => {
                                     <div
                                         className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
+                                      <span className={`w-full absolute font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
+                                            {form.date || "Select date"}
+                                        </span>
                                         <input
                                             type="date"
                                             placeholder=""
