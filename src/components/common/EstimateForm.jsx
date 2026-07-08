@@ -8,20 +8,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 const EstimateForm = () => {
     const { isOpen, close } = useQuoteStore();
-    const dateinputRef = useRef(null);
     const [isHomeOpen, setIsHomeOpen] = useState(false);
 
     const [estimate, setEstimate] = useState(null);
     const [loading, setLoading] = useState(false);
     const [bookingLoading, setBookingLoading] = useState(false);
-
-    const openPicker = () => {
-        if (dateinputRef.current?.showPicker) {
-            dateinputRef.current.showPicker();
-        } else {
-            dateinputRef.current?.focus();
-        }
-    };
 
     const HOME_OPTIONS = [
         "1 Bedroom",
@@ -297,26 +288,14 @@ const EstimateForm = () => {
                                     </label>
 
                                     <div
-                                        onClick={openPicker}
                                         className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
                                         <input
-                                            ref={dateinputRef}
                                             type="date"
                                             placeholder=""
                                             value={form.date}
                                             onChange={(e) => handleChange("date", e.target.value)}
-                                            className="absolute opacity-0 pointer-events-none"
-                                        />
-
-                                        <p className={`absolute font-medium text-[16px] pointer-events-none ${form.date ? "text-black" : "text-[#6B6E73]"}`}>
-                                            {form.date || "Select date"}
-                                        </p>
-
-                                        <img
-                                            src="/icons/calender.svg"
-                                            className="absolute right-4 w-5 opacity-70"
-                                            alt=""
+                                            className={` font-medium w-full h-full outline-none text-[16px]  ${form.date ? "text-black opacity-100" : " opacity-50 "}`}
                                         />
                                     </div>
                                 </div>

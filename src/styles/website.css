@@ -26,19 +26,6 @@
   display: block;
 }
 
-/* Hide default calendar icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  display: none;
-}
-
-/* Remove default styles */
-input[type="date"] {
-  appearance: none;
-  -webkit-appearance: none;
-  position: relative;
-}
-
 @keyframes ripple {
   0% {
     transform: scale(1);
