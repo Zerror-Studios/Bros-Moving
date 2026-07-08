@@ -309,9 +309,9 @@ const EstimateForm = () => {
                                             className="absolute opacity-0 pointer-events-none"
                                         />
 
-                                        <span className={`absolute pointer-events-none ${form.date ? "text-black" : "text-[#6B6E73]"}`}>
+                                        <p className={`absolute font-medium text-[16px] pointer-events-none ${form.date ? "text-black" : "text-[#6B6E73]"}`}>
                                             {form.date || "Select date"}
-                                        </span>
+                                        </p>
 
                                         <img
                                             src="/icons/calender.svg"
