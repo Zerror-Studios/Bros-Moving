@@ -53,7 +53,7 @@ const VideoSection = () => {
                     </div>
                 </div>
             </div>
-            <div className=" absolute video_inner w-[85%] md:w-[60%] h-[50%] rounded-3xl overflow-hidden">
+            <div className=" absolute video_inner w-full md:w-[60%] h-full md:h-[50%] md:rounded-3xl overflow-hidden">
                 <video poster='/images/hero_video_poster_.webp' loop autoPlay muted playsInline src="/videos/hero_video.mp4" className='cover' alt="loading" />
             </div>
         </div>

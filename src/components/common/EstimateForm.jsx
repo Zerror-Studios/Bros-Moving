@@ -8,13 +8,20 @@ import "react-toastify/dist/ReactToastify.css";
 
 const EstimateForm = () => {
     const { isOpen, close } = useQuoteStore();
-    const inputRef = useRef(null);
+    const dateinputRef = useRef(null);
     const [isHomeOpen, setIsHomeOpen] = useState(false);
 
     const [estimate, setEstimate] = useState(null);
     const [loading, setLoading] = useState(false);
     const [bookingLoading, setBookingLoading] = useState(false);
 
+    const openPicker = () => {
+        if (dateinputRef.current?.showPicker) {
+            dateinputRef.current.showPicker();
+        } else {
+            dateinputRef.current?.focus();
+        }
+    };
 
     const HOME_OPTIONS = [
         "1 Bedroom",
@@ -49,6 +56,11 @@ const EstimateForm = () => {
         setForm((prev) => ({ ...prev, [field]: value }));
     };
 
+    const swapZips = () => {
+        setEstimate(null);
+        setForm((prev) => ({ ...prev, fromZip: prev.toZip, toZip: prev.fromZip }));
+    };
+
     const BEDROOM_HOURS = {
         "1 Bedroom": 2,
         "2 Bedroom": 3,
@@ -63,7 +75,7 @@ const EstimateForm = () => {
                 !form.toZip ||
                 !form.homeSize
             ) {
-                 toast.error("Please fill all fields");
+                toast.error("Please fill all fields");
                 return;
             }
             setLoading(true);
@@ -86,7 +98,7 @@ const EstimateForm = () => {
             const data = await res.json();
 
             if (data.error) {
-                 toast.error(data.error);
+                toast.error(data.error);
                 return;
             }
             console.log(data)
@@ -181,6 +193,13 @@ const EstimateForm = () => {
     }, [isOpen])
 
 
+    const [rotation, setRotation] = useState(0);
+
+    const handleSwap = () => {
+        swapZips();
+        setRotation((prev) => prev + 180);
+    };
+
     return (
         <>
 
@@ -192,7 +211,7 @@ const EstimateForm = () => {
                 className={`w-full fixed inset-0 padding h-screen z-[110] 
       bg-black/40 backdrop-blur-[8px] transition-all duration-300
       ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-            >   
+            >
 
                 <div className="max_width_layout w-full flex justify-center items-center h-full">
 
@@ -224,9 +243,19 @@ const EstimateForm = () => {
 
                             <div className="w-full flex gap-4  relative rounded-xl">
 
-                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full">
-                                    <div className="w-10 h-10 flex items-center justify-center bg-[#F5344F] rounded-full shadow-[0px_6px_10px_rgba(245,52,79,0.25)]">
-                                        <img src="/icons/swap_arrow.svg" className="w-4" alt="arrow" />
+                                <div
+                                    onClick={handleSwap}
+                                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full cursor-pointer z-10"
+                                >
+                                    <div
+                                        className="w-10 h-10 flex items-center justify-center bg-[#F5344F] rounded-full shadow-[0px_6px_10px_rgba(245,52,79,0.25)] active:scale-90 transition-transform duration-300"
+                                        style={{ transform: `rotate(${rotation}deg)` }}
+                                    >
+                                        <img
+                                            src="/icons/swap_arrow.svg"
+                                            className="w-4"
+                                            alt="arrow"
+                                        />
                                     </div>
                                 </div>
 
@@ -238,7 +267,7 @@ const EstimateForm = () => {
                                         value={form.fromZip}
                                         onChange={(e) => handleChange("fromZip", e.target.value)}
                                         placeholder="Enter zip"
-                                        className="w-full bg-transparent outline-none text-xl font-semibold"
+                                        className="w-full bg-transparent outline-none text-[16px] md:text-xl font-semibold"
                                     />
                                 </div>
 
@@ -250,7 +279,7 @@ const EstimateForm = () => {
                                         value={form.toZip}
                                         onChange={(e) => handleChange("toZip", e.target.value)}
                                         placeholder="Enter zip"
-                                        className="w-full bg-transparent outline-none text-xl font-semibold text-right"
+                                        className="w-full bg-transparent outline-none text-[16px] md:text-xl font-semibold text-right"
                                     />
                                 </div>
                             </div>
@@ -258,6 +287,7 @@ const EstimateForm = () => {
                             <div className="flex gap-4 mt-8">
 
                                 {/* Date */}
+
                                 <div className="w-1/2">
                                     <label
                                         htmlFor="moving-date"
@@ -267,23 +297,26 @@ const EstimateForm = () => {
                                     </label>
 
                                     <div
-                                        onClick={() => inputRef.current?.showPicker?.()}
-                                        className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
+                                        onClick={openPicker}
+                                        className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
                                         <input
-                                            id="moving-date" // ✅ link to label
-                                            ref={inputRef}
+                                            ref={dateinputRef}
                                             type="date"
+                                            placeholder=""
                                             value={form.date}
                                             onChange={(e) => handleChange("date", e.target.value)}
-                                            className={`bg-transparent outline-none ${form.date ? "text-[#0F172A]" : "text-[#6B6E73]"
-                                                } font-medium w-full appearance-none pointer-events-none`}
+                                            className="absolute opacity-0 pointer-events-none"
                                         />
 
+                                        <span className={`absolute pointer-events-none ${form.date ? "text-black" : "text-[#6B6E73]"}`}>
+                                            {form.date || "Select date"}
+                                        </span>
+
                                         <img
-                                            alt="" // ✅ decorative icon
                                             src="/icons/calender.svg"
-                                            className="w-5 opacity-60 pointer-events-none"
+                                            className="absolute right-4 w-5 opacity-70"
+                                            alt=""
                                         />
                                     </div>
                                 </div>
@@ -298,10 +331,10 @@ const EstimateForm = () => {
                                         onClick={() => setIsHomeOpen((prev) => !prev)}
                                         className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
-                                        <span className={`w-full font-medium ${form.homeSize ? "text-black" : "text-[#6B6E73]"}`}>
+                                        <span className={`w-full font-medium text-[16px] ${form.homeSize ? "text-black" : "text-[#6B6E73]"}`}>
                                             {form.homeSize || "Home size"}
                                         </span>
-                                        <img alt="arrow" src="/icons/drop_arrow.svg" className="w-4 opacity-60" />
+                                        <img alt="arrow" src="/icons/drop_arrow.svg" className={`w-4 opacity-60 transition-all duration-300 ${isHomeOpen ? "rotate-180" : ""} `} />
                                     </div>
 
                                     {/* Dropdown */}
@@ -337,7 +370,7 @@ const EstimateForm = () => {
                                         value={form.phone}
                                         onChange={(e) => handleChange("phone", e.target.value)}
                                         placeholder="+(123) 456 7890"
-                                        className="bg-transparent outline-none text-[#0F172A] font-medium w-full"
+                                        className="bg-transparent outline-none text-[#0F172A] text-[16px] font-medium w-full"
                                     />
                                     <img alt="phone" src="/icons/phone.svg" className="w-5 opacity-60" />
                                 </div>

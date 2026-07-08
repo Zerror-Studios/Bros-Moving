@@ -3,7 +3,9 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import Image from 'next/image';
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 gsap.registerPlugin(ScrollTrigger)
 
 
@@ -52,17 +54,50 @@ export const testimonials = [
     },
 ];
 
+const TestimonialCard = ({ item }) => (
+    <div className="bg-[#F9F6F3] rounded-3xl p-6 sm:p-10 flex flex-col gap-y-6 sm:gap-y-0 justify-between w-full min-h-[280px] sm:min-h-0 sm:w-[40vw] sm:aspect-4/3">
+        <div className="flex gap-x-1">
+            {[...Array(5)].map((_, i) => (
+                <img key={i} src="/icons/gold_star.svg" alt="star" />
+            ))}
+        </div>
+        <p className='text-[#6B6E73] text-lg sm:text-2xl md:text-3xl'>{item.text}</p>
+        <div className="flex gap-x-2 items-center">
+            <div className="size-12 sm:size-14 relative center rounded-full overflow-hidden shrink-0">
+                <Image fill className='cover object-top' src={item.img} alt={item.name} />
+            </div>
+            <div>
+                <p className='text-lg sm:text-2xl font-semibold'>{item.name}</p>
+                <p className='text-[#6B6E73] text-sm sm:text-base'>{item.role}</p>
+            </div>
+        </div>
+    </div>
+);
+
 const Testimonials = () => {
 
     const testimonialsContainer = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
 
+    // Detect mobile breakpoint (matches Tailwind's sm: 640px)
+    useEffect(() => {
+        const mql = window.matchMedia("(max-width: 639px)");
+        const handleChange = (e) => setIsMobile(e.matches);
+        setIsMobile(mql.matches);
+        mql.addEventListener("change", handleChange);
+        return () => mql.removeEventListener("change", handleChange);
+    }, []);
+
+    // GSAP horizontal scroll — only runs on desktop
     useGSAP(() => {
-        const container = document.querySelector(".max_width_layout"); // FIXED
+        if (isMobile) return;
+
+        const container = document.querySelector(".max_width_layout");
         const slider = document.querySelector(".testimonials_slider");
+        if (!container || !slider) return;
 
         const totalWidth = slider.scrollWidth;
         const visibleWidth = container.offsetWidth;
-
         const moveX = totalWidth - visibleWidth;
 
         gsap.to(
@@ -74,46 +109,48 @@ const Testimonials = () => {
                     trigger: testimonialsContainer.current,
                     start: "top top",
                     end: `bottom bottom`,
-                    // pin: true,
                     scrub: true,
                     invalidateOnRefresh: true,
                 },
             }
         );
-    }, { scope: testimonialsContainer });
+    }, { scope: testimonialsContainer, dependencies: [isMobile] });
 
     return (
-        <div ref={testimonialsContainer} id='review-section' className='w-full h-[400vh]'>
-            <div className=" sticky top-0 testimonials_paren w-full h-screen padding  flex flex-col max-sm:py-24! justify-between md:justify-center gap-y-10">
-                <div className="w-full  md:text-center">
-                    <h2 className='text-3xl md:text-5xl  font-semibold '>What Our Customers Say</h2>
+        <div ref={testimonialsContainer} id='review-section' className={`w-full ${isMobile ? 'h-auto' : 'h-[400vh]'}`}>
+            <div className={`${isMobile ? '' : 'sticky top-0'} testimonials_paren w-full ${isMobile ? '' : 'h-screen'} padding flex flex-col py-16 sm:py-0 justify-center gap-y-8 sm:gap-y-10`}>
+                <div className="w-full sm:text-center">
+                    <h2 className='text-3xl md:text-5xl font-semibold'>What Our Customers Say</h2>
                     <p className='text-base leading-tight mt-2 md:text-lg text-[#6B6E73]'>Hear Directly from Our Customers About Their Smooth and Stress-Free Moving Experiences</p>
                 </div>
 
-                <div className=" w-full max_width_layout overflow-hidden rounded-3xl flex">
-                    <div className=" testimonials_slider   flex gap-x-5">
-                        {testimonials.map((item, i) => (
-                            <div className="bg-[#F9F6F3] rounded-3xl p-10 flex flex-col max-sm:gap-y-20 justify-between w-[90vw] md:w-[40vw] max-sm:h-[60svh] md:aspect-4/3" key={i}>
-                                <div className="flex gap-x-1">
-                                    {[...Array(5)].map((_, i) => (
-                                        <img key={i} src="/icons/gold_star.svg" alt="loading" />
-                                    ))}
-                                </div>
-                                <p className='text-[#6B6E73] text-2xl md:text-3xl'>{item.text}</p>
-
-                                <div className="flex gap-x-2 items-center">
-                                    <div className="size-14 relative center rounded-full overflow-hidden">
-                                        <Image fill className='cover object-top' src={item.img} alt="loading" />
-                                    </div>
-                                    <div className="">
-                                        <p className='text-2xl  font-semibold'>{item.name}</p>
-                                        <p className='text-[#6B6E73]'>{item.role}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                {/* Mobile: Swiper Slider */}
+                {isMobile && (
+                    <div className="w-full overflow-hidden">
+                        <Swiper
+                            slidesPerView={1.1}
+                            spaceBetween={12}
+                            className="testimonials_swiper !overflow-visible"
+                        >
+                            {testimonials.map((item, i) => (
+                                <SwiperSlide key={i}>
+                                    <TestimonialCard item={item} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
-                </div>
+                )}
+
+                {/* Desktop: GSAP horizontal scroll */}
+                {!isMobile && (
+                    <div className="w-full max_width_layout overflow-hidden rounded-3xl flex">
+                        <div className="testimonials_slider flex gap-x-5">
+                            {testimonials.map((item, i) => (
+                                <TestimonialCard key={i} item={item} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     )
