@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 const EstimateForm = () => {
     const { isOpen, close } = useQuoteStore();
     const [isHomeOpen, setIsHomeOpen] = useState(false);
-
+    const dateRef = useRef(null);
     const [estimate, setEstimate] = useState(null);
     const [loading, setLoading] = useState(false);
     const [bookingLoading, setBookingLoading] = useState(false);
@@ -290,16 +290,19 @@ const EstimateForm = () => {
                                     <div
                                         className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
-                                      <span className={`w-full absolute font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
+                                        <span className={`w-full absolute font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
                                             {form.date || "Select date"}
                                         </span>
                                         <input
+                                            ref={dateRef}
                                             type="date"
-                                            placeholder=""
                                             value={form.date}
                                             onChange={(e) => handleChange("date", e.target.value)}
-                                            className={` font-medium w-full h-full outline-none text-[16px]  ${form.date ? "text-black opacity-100" : " opacity-50 "}`}
+                                            onClick={() => dateRef.current?.showPicker()}
+                                            className={`font-medium w-full h-full cursor-pointer outline-none text-[16px] ${form.date ? "text-black opacity-100" : "opacity-0"
+                                                }`}
                                         />
+                                        <img alt="arrow" src="/icons/calender.svg" className={`w-4  transition-all pointer-events-none absolute right-3 duration-300 ${form.date ? "opacity-0" : "opacity-60"} `} />
                                     </div>
                                 </div>
 
