@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react'
 import Button from '../common/Button';
+import { Link } from 'next-view-transitions';
 
 const MapsInfo = () => {
     const mapRef = useRef(null);
@@ -26,28 +27,28 @@ const MapsInfo = () => {
         <>
             <div className="w-full padding pt-0!">
                 <div className=" max_width_layout w-full grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10">
-                    <div className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] p-3 md:p-7">
+                    <Link href="tel:+13065511911" className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] hover:bg-[#f5344f] hover:text-white transition-all duration-300 p-3 md:p-7 group">
                         <img src="/icons/contact_dialer.svg" className=' w-14 md:w-20' alt="loading" />
                         <div className="space-y-2 leading-none">
-                            <p className='text-[#6B6E73]'>Call Support</p>
-                            <p className='text-base md:text-lg font-semibold'>+1 306-551-1911</p>
+                            <p className='text-[#6B6E73] group-hover:text-gray-200 transition-all duration-300'>Call Support</p>
+                            <p className='text-base group-hover:underline md:text-lg font-semibold'>+1 306-551-1911</p>
                         </div>
-                    </div>
-                    <div className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] p-3 md:p-7">
+                    </Link>
+                    <Link href="mailto:brosmovingregina@gmail.com" className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] hover:bg-[#f5344f] hover:text-white transition-all duration-300 p-3 md:p-7 group">
                         <img src="/icons/contact_mail.svg" className=' w-14 md:w-20' alt="loading" />
                         <div className="space-y-2 leading-none">
-                            <p className='text-[#6B6E73]'>Write us</p>
-                            <p className='text-base md:text-lg font-semibold'>
+                            <p className='text-[#6B6E73] group-hover:text-gray-200 transition-all duration-300'>Write us</p>
+                            <p className='text-base group-hover:underline md:text-lg font-semibold'>
                                 brosmovingregina@gmail.com
                             </p>
                         </div>
-                    </div>
-                    <div className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] p-3 md:p-7">
+                    </Link>
+                    <Link href="https://maps.app.goo.gl/fBPjGgULZaXo2jhb9" target="_blank" rel="noopener noreferrer" className="w-full flex items-center gap-x-4 rounded-xl md:rounded-3xl bg-[#F9F6F3] hover:bg-[#f5344f] hover:text-white transition-all duration-300 p-3 md:p-7 group">
                         <img src="/icons/contact_map.svg" className=' w-14 md:w-20' alt="loading" />
                         <div className="space-y-2 leading-none">
-                            <p className='text-base md:text-lg font-semibold'>139 Birchwood Crescent, Regina, SK S4S 5S3, Canada</p>
+                            <p className='text-base group-hover:underline md:text-lg font-semibold'>139 Birchwood Crescent, Regina, SK S4S 5S3, Canada</p>
                         </div>
-                    </div>
+                    </Link>
                 </div>
 
                 <div

@@ -288,9 +288,16 @@ const EstimateForm = () => {
                                     </label>
 
                                     <div
+                                        onClick={() => {
+                                            try {
+                                                dateRef.current?.showPicker();
+                                            } catch (e) {
+                                                dateRef.current?.focus();
+                                            }
+                                        }}
                                         className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
                                     >
-                                        <span className={`w-full absolute font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
+                                        <span className={`w-full absolute pointer-events-none font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
                                             {form.date || "Select date"}
                                         </span>
                                         <input
@@ -298,8 +305,12 @@ const EstimateForm = () => {
                                             type="date"
                                             value={form.date}
                                             onChange={(e) => handleChange("date", e.target.value)}
-                                            onClick={() => dateRef.current?.showPicker()}
-                                            className={`font-medium w-full h-full cursor-pointer outline-none text-[16px] ${form.date ? "text-black opacity-100" : "opacity-0"
+                                            onClick={(e) => {
+                                                try {
+                                                    dateRef.current?.showPicker();
+                                                } catch (err) {}
+                                            }}
+                                            className={`font-medium w-full h-full cursor-pointer outline-none bg-transparent text-[16px] ${form.date ? "text-black opacity-100" : "opacity-0"
                                                 }`}
                                         />
                                         <img alt="arrow" src="/icons/calender.svg" className={`w-4  transition-all pointer-events-none absolute right-3 duration-300 ${form.date ? "opacity-0" : "opacity-60"} `} />
