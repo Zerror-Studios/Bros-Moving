@@ -33,14 +33,14 @@ const footerData = [
       { label: "Contact", href: "/contact" },
     ],
   },
-  {
-    title: "Support",
-    links: [
-      { label: "FAQ", href: "/" },
-      { label: "Terms of Service", href: "/" },
-      { label: "Privacy Policy", href: "/" },
-    ],
-  },
+  // {
+  //   title: "Support",
+  //   links: [
+  //     { label: "FAQ", href: "/" },
+  //     { label: "Terms of Service", href: "/" },
+  //     { label: "Privacy Policy", href: "/" },
+  //   ],
+  // },
 ];
 const Footer = () => {
   const { open } = useQuoteStore();
