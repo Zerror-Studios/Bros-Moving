@@ -8,7 +8,9 @@ import { flushSync } from 'react-dom'
 import { useSearchParams, useRouter } from 'next/navigation'
 import BlogCard from '../common/BlogCard';
 
-gsap.registerPlugin(Flip)
+if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') { gsap.registerPlugin(Flip); }
+}
 
 const ALL_FILTER = {
     _id: 'all',
@@ -18,8 +20,9 @@ const ALL_FILTER = {
 
 const getFilterSlug = (item) => item?.slug || item?._id
 
-const postHasFilter = (postItems = [], activeFilter) => {
+const postHasFilter = (postItems, activeFilter) => {
     if (activeFilter === ALL_FILTER.slug) return true
+    if (!postItems || !Array.isArray(postItems)) return false
 
     return postItems.some((item) => getFilterSlug(item) === activeFilter)
 }
@@ -166,63 +169,71 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
                     <h2 className='text-3xl md:text-5xl  font-semibold '>Blogs<sup className='text-base md:text-lg'>({filteredPosts.length})</sup> </h2>
                     <div className="relative flex items-end gap-x-4">
 
-                        <button
-                            onClick={toggleService}
-                            className={`flex w-fit items-center gap-x-1 pr-1 md:pr-2 md:gap-x-2 font-medium border rounded-full px-4 h-10 md:h-11 transition-colors ${activeService !== ALL_FILTER.slug ? 'border-[#F5344F] bg-[#F5344F] text-white' : 'border-black/30'}`}
-                        >
-                            {activeService === ALL_FILTER.slug ? 'Services' : activeServiceLabel}
-                            <RiArrowDownSLine
-                                className={`${isServiceOpen ? "rotate-180" : ""} transition-all duration-300`}
-                            />
-                        </button>
+                        {services && services.length > 0 && (
+                            <>
+                                <button
+                                    onClick={toggleService}
+                                    className={`flex w-fit items-center gap-x-1 pr-1 md:pr-2 md:gap-x-2 font-medium border rounded-full px-4 h-10 md:h-11 transition-colors ${activeService !== ALL_FILTER.slug ? 'border-[#F5344F] bg-[#F5344F] text-white' : 'border-black/30'}`}
+                                >
+                                    {activeService === ALL_FILTER.slug ? 'Services' : activeServiceLabel}
+                                    <RiArrowDownSLine
+                                        className={`${isServiceOpen ? "rotate-180" : ""} transition-all duration-300`}
+                                    />
+                                </button>
 
-                        <button
-                            onClick={toggleCategory}
-                            className={`flex w-fit items-center gap-x-1 pr-1 md:pr-2 md:gap-x-2 font-medium border rounded-full px-4 h-10 md:h-11 transition-colors ${activeCategory !== ALL_FILTER.slug ? 'border-[#F5344F] bg-[#F5344F] text-white' : 'border-black/30'}`}
-                        >
-                            {activeCategory === ALL_FILTER.slug ? 'Categories' : activeCategoryLabel}
-                            <RiArrowDownSLine
-                                className={`${isCategoryOpen ? "rotate-180" : ""} transition-all duration-300`}
-                            />
-                        </button>
+                                <div
+                                    data-lenis-prevent
+                                    className={`${isServiceOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "translate-y-2 opacity-0 pointer-events-none"} transition-all duration-150 absolute left-0 top-[110%] w-full z-10 custom_scroller max-h-[26vh] border overflow-y-auto border-black/10 bg-white rounded-xl shadow-md`}
+                                >
+                                    {serviceOptions.map((item) => {
+                                        const slug = getFilterSlug(item)
 
-                        <div
-                            data-lenis-prevent
-                            className={`${isServiceOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "translate-y-2 opacity-0 pointer-events-none"} transition-all duration-150 absolute left-0 top-[110%] w-full z-10 custom_scroller max-h-[26vh] border overflow-y-auto border-black/10 bg-white rounded-xl shadow-md`}
-                        >
-                            {serviceOptions.map((item) => {
-                                const slug = getFilterSlug(item)
+                                        return (
+                                            <button
+                                                key={item._id || slug}
+                                                onClick={() => applyFilter('service', slug)}
+                                                className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeService === slug ? 'bg-[#F5344F] text-white' : ''}`}
+                                            >
+                                                {item.title}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </>
+                        )}
 
-                                return (
-                                    <button
-                                        key={item._id || slug}
-                                        onClick={() => applyFilter('service', slug)}
-                                        className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeService === slug ? 'bg-[#F5344F] text-white' : ''}`}
-                                    >
-                                        {item.title}
-                                    </button>
-                                )
-                            })}
-                        </div>
+                        {categories && categories.length > 0 && (
+                            <>
+                                <button
+                                    onClick={toggleCategory}
+                                    className={`flex w-fit items-center gap-x-1 pr-1 md:pr-2 md:gap-x-2 font-medium border rounded-full px-4 h-10 md:h-11 transition-colors ${activeCategory !== ALL_FILTER.slug ? 'border-[#F5344F] bg-[#F5344F] text-white' : 'border-black/30'}`}
+                                >
+                                    {activeCategory === ALL_FILTER.slug ? 'Categories' : activeCategoryLabel}
+                                    <RiArrowDownSLine
+                                        className={`${isCategoryOpen ? "rotate-180" : ""} transition-all duration-300`}
+                                    />
+                                </button>
 
-                        <div
-                            data-lenis-prevent
-                            className={`${isCategoryOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "translate-y-2 opacity-0 pointer-events-none"} transition-all duration-150 absolute left-0 top-[110%] w-full z-10 custom_scroller max-h-[26vh] border overflow-y-auto border-black/10 bg-white rounded-xl shadow-md`}
-                        >
-                            {categoryOptions.map((item) => {
-                                const slug = getFilterSlug(item)
+                                <div
+                                    data-lenis-prevent
+                                    className={`${isCategoryOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "translate-y-2 opacity-0 pointer-events-none"} transition-all duration-150 absolute left-0 top-[110%] w-full z-10 custom_scroller max-h-[26vh] border overflow-y-auto border-black/10 bg-white rounded-xl shadow-md`}
+                                >
+                                    {categoryOptions.map((item) => {
+                                        const slug = getFilterSlug(item)
 
-                                return (
-                                    <button
-                                        key={item._id || slug}
-                                        onClick={() => applyFilter('category', slug)}
-                                        className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeCategory === slug ? 'bg-[#F5344F] text-white' : ''}`}
-                                    >
-                                        {item.title}
-                                    </button>
-                                )
-                            })}
-                        </div>
+                                        return (
+                                            <button
+                                                key={item._id || slug}
+                                                onClick={() => applyFilter('category', slug)}
+                                                className={`  block text-left w-full p-3 border-b hover:bg-[#F5344F] hover:text-white cursor-pointer border-black/10 transition-colors ${activeCategory === slug ? 'bg-[#F5344F] text-white' : ''}`}
+                                            >
+                                                {item.title}
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </>
+                        )}
 
                     </div>
                 </div>
@@ -238,7 +249,7 @@ const BlogsGrid = ({ posts = [], services = [], categories = [] }) => {
 
                     {!filteredPosts.length && (
                         <div className="absolute inset-0 center flex-col mt-5 md:mt-10 rounded-2xl border border-black/10 bg-white p-8 text-center">
-                            <p className="text-lg font-semibold">No blogs found for this filter.</p>
+                            <p className="text-lg font-semibold">No blogs found.</p>
                             <button
                                 onClick={clearFilters}
                                 className="mt-4 font-medium text-[#F5344F] underline"

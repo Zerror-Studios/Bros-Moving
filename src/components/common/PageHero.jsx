@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import SplitText from 'gsap/dist/SplitText';
 import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
-gsap.registerPlugin(SplitText);
+if (typeof window !== 'undefined') { gsap.registerPlugin(SplitText); }
 
 const PageHero = ({ title, description, image, mobImage }) => {
 

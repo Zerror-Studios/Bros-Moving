@@ -10,7 +10,7 @@ import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 import LenisScroll from "@/components/common/LenisScroll";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 export default function SiteShell({ children }) {
   const pathname = usePathname();

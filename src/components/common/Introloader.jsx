@@ -4,7 +4,7 @@ import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText';
 import React from 'react'
 import Button from './Button';
-gsap.registerPlugin(SplitText);
+if (typeof window !== 'undefined') { gsap.registerPlugin(SplitText); }
 
 const Introloader = () => {
 

@@ -228,6 +228,11 @@ const EstimateForm = () => {
 
 
             <div
+                onClick={(e) => {
+                    const isOutsideForm = !e.target.closest('form');
+                    const isOutsideDatePicker = !e.target.closest('.react-datepicker-popper') && !e.target.closest('#estimate-datepicker-portal') && !e.target.closest('.react-datepicker-wrapper');
+                    if (isOutsideForm && isOutsideDatePicker) close();
+                }}
                 className={`w-full fixed inset-0 padding h-screen z-[110] 
       bg-black/40 backdrop-blur-[8px] transition-all duration-300
       ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}

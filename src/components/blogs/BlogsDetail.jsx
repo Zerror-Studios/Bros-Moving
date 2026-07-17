@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import { formatPostDate } from '@/components/utils/formatPostDate';
 import TrendingBlogsClient from '../home/TrendingBlogsClient';
-gsap.registerPlugin(SplitText);
+if (typeof window !== 'undefined') { gsap.registerPlugin(SplitText); }
 
 const renderContentItems = (items = []) => {
     const blocks = [];

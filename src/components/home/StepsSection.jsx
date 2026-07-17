@@ -6,7 +6,7 @@ import React, { useRef } from 'react'
 import { useQuoteStore } from '@/store/useQuoteStore';
 import Image from 'next/image';
 import Button from '../common/Button';
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 const StepsSection = () => {
   const { open } = useQuoteStore();

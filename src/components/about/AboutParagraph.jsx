@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText'
 import React, { useRef } from 'react'
-gsap.registerPlugin(SplitText, ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(SplitText, ScrollTrigger); }
 
 const AboutParagraph = () => {
     useGSAP(() => {

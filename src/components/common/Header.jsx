@@ -9,7 +9,7 @@ import Button from './Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
 import { RiCloseLine, RiMenu3Line } from '@remixicon/react';
 import ViewTransitionLink from '../hooks/ViewTransitionLink';
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 const navLinks = [
   {

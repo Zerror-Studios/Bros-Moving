@@ -6,10 +6,12 @@ import SplitText from 'gsap/dist/SplitText';
 import { useGSAP } from '@gsap/react';
 import { useQuoteStore } from '@/store/useQuoteStore';
 import CustomEase from 'gsap/dist/CustomEase';
-gsap.registerPlugin(SplitText, CustomEase);
+if (typeof window !== 'undefined') { gsap.registerPlugin(SplitText, CustomEase); }
 
 const Hero = () => {
-    CustomEase.create("custom", "0.77, 0, 0.175, 1");
+    if (typeof window !== 'undefined') {
+        CustomEase.create("custom", "0.77, 0, 0.175, 1");
+    }
     const { open } = useQuoteStore();
     const container = useRef();
 

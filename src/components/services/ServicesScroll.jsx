@@ -6,7 +6,7 @@ import React, { useRef } from 'react'
 import Button from '../common/Button';
 import { useQuoteStore } from '@/store/useQuoteStore';
 import Image from 'next/image';
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 const SERVICES = [
     {

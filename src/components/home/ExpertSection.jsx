@@ -7,7 +7,7 @@ import Button from "../common/Button";
 import Image from "next/image";
 import { RiStarLine } from "@remixicon/react";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
 
 const HOTSPOTS = [
     {

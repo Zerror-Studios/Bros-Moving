@@ -6,7 +6,9 @@ import Image from 'next/image';
 import React, { useRef, useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
+}
 
 
 export const testimonials = [
