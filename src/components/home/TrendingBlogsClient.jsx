@@ -62,31 +62,37 @@ const TrendingBlogsClient = ({ posts }) => {
             </div>
 
             <div className="max_width_layout mt-14 w-full">
-                <Swiper
-                    onSwiper={(swiper) => {
-                        swiperRef.current = swiper;
-                        setIsBeginning(swiper.isBeginning);
-                        setIsEnd(swiper.isEnd);
-                    }}
-                    onSlideChange={(swiper) => {
-                        setIsBeginning(swiper.isBeginning);
-                        setIsEnd(swiper.isEnd);
-                    }}
-                    spaceBetween={30}
-                    slidesPerView={3}
-                    grabCursor
-                    className="cursor-grab active:cursor-grabbing"
-                    breakpoints={{
-                        0: { slidesPerView: 1.1, spaceBetween: 10 },
-                        640: { slidesPerView: 3, spaceBetween: 30 },
-                    }}
-                >
-                    {posts.map((blog, i) => (
-                        <SwiperSlide key={i} className="group space-y-5">
-                            <BlogCard key={blog._id ?? i} blog={blog} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                {!posts || posts.length === 0 ? (
+                    <div className="w-full py-10 flex justify-center items-center text-center">
+                        <p className="text-[#6B6E73] text-xl font-medium">No blogs found.</p>
+                    </div>
+                ) : (
+                    <Swiper
+                        onSwiper={(swiper) => {
+                            swiperRef.current = swiper;
+                            setIsBeginning(swiper.isBeginning);
+                            setIsEnd(swiper.isEnd);
+                        }}
+                        onSlideChange={(swiper) => {
+                            setIsBeginning(swiper.isBeginning);
+                            setIsEnd(swiper.isEnd);
+                        }}
+                        spaceBetween={30}
+                        slidesPerView={3}
+                        grabCursor
+                        className="cursor-grab active:cursor-grabbing"
+                        breakpoints={{
+                            0: { slidesPerView: 1.1, spaceBetween: 10 },
+                            640: { slidesPerView: 3, spaceBetween: 30 },
+                        }}
+                    >
+                        {posts.map((blog, i) => (
+                            <SwiperSlide key={i} className="group space-y-5">
+                                <BlogCard key={blog._id ?? i} blog={blog} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
             </div>
         </div>
     );

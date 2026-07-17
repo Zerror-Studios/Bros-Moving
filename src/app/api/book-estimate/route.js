@@ -1,4 +1,5 @@
 import { createClient } from 'next-sanity'
+import nodemailer from 'nodemailer'
 
 import { apiVersion, dataset, projectId } from '@/sanity/env'
 
@@ -56,6 +57,65 @@ export async function POST(req) {
             status: 'new',
             submittedAt: new Date().toISOString(),
         })
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.NEXT_PUBLIC_EMAIL_USER,
+                pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.NEXT_PUBLIC_EMAIL_USER,
+            to: process.env.NEXT_PUBLIC_CLIENT_EMAIL,
+            subject: 'New Estimate Booking - Bros Moving',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #333;">New Estimate Booking Details</h2>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">From Zip</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.fromZip}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">To Zip</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.toZip}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Moving Date</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.date}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Home Size</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.homeSize}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Phone Number</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.phone}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Distance</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${Number(estimate.kms).toFixed(1)} km</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Moving Cost</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">$${Number(estimate.movingCost).toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Labor Cost</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">$${Number(estimate.laborCost).toFixed(2)}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Total Estimate</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">$${Number(estimate.total).toFixed(2)}</td>
+                        </tr>
+                    </table>
+                </div>
+            `,
+        };
+
+        await transporter.sendMail(mailOptions);
 
         return Response.json({ id: doc._id })
     } catch (err) {
