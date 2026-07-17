@@ -37,7 +37,7 @@ const contentItem = {
 
 export default defineType({
   name: 'post',
-  title: 'Posts',
+  title: 'All Blogs',
   type: 'document',
   fields: [
     defineField({
