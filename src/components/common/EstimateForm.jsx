@@ -2,14 +2,42 @@
 
 import { useQuoteStore } from "@/store/useQuoteStore";
 import { RiCloseLine } from "@remixicon/react";
-import React, { useEffect, useRef, useState } from "react";
+import { format, parse } from "date-fns";
+import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const formatDateValue = (date) => (date ? format(date, "yyyy-MM-dd") : "");
+
+const parseDateValue = (value) => {
+    if (!value) return null;
+    const date = parse(value, "yyyy-MM-dd", new Date());
+    return Number.isNaN(date.getTime()) ? null : date;
+};
+
+const DatePickerInput = React.forwardRef(function DatePickerInput(
+    { value, onClick, placeholder },
+    ref
+) {
+    return (
+        <button
+            type="button"
+            ref={ref}
+            onClick={onClick}
+            className="w-full min-h-12 flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 pr-10 font-medium text-[16px] text-left outline-none cursor-pointer"
+        >
+            <span className={value ? "text-[#0F172A]" : "text-[#6B6E73]"}>
+                {value || placeholder}
+            </span>
+        </button>
+    );
+});
 
 const EstimateForm = () => {
     const { isOpen, close } = useQuoteStore();
     const [isHomeOpen, setIsHomeOpen] = useState(false);
-    const dateRef = useRef(null);
     const [estimate, setEstimate] = useState(null);
     const [loading, setLoading] = useState(false);
     const [bookingLoading, setBookingLoading] = useState(false);
@@ -180,8 +208,9 @@ const EstimateForm = () => {
             if (window.lenis) window.lenis.stop();
         } else {
             if (window.lenis) window.lenis.start();
+            setIsHomeOpen(false);
         }
-    }, [isOpen])
+    }, [isOpen]);
 
 
     const [rotation, setRotation] = useState(0);
@@ -287,33 +316,28 @@ const EstimateForm = () => {
                                         Moving Date
                                     </label>
 
-                                    <div
-                                        onClick={() => {
-                                            try {
-                                                dateRef.current?.showPicker();
-                                            } catch (e) {
-                                                dateRef.current?.focus();
-                                            }
-                                        }}
-                                        className="relative flex items-center bg-[#F5F2EF] rounded-full px-4 py-3 cursor-pointer"
-                                    >
-                                        <span className={`w-full absolute pointer-events-none font-medium text-[16px] ${form.date ? "opacity-0" : "text-[#6B6E73]"}`}>
-                                            {form.date || "Select date"}
-                                        </span>
-                                        <input
-                                            ref={dateRef}
-                                            type="date"
-                                            value={form.date}
-                                            onChange={(e) => handleChange("date", e.target.value)}
-                                            onClick={(e) => {
-                                                try {
-                                                    dateRef.current?.showPicker();
-                                                } catch (err) {}
-                                            }}
-                                            className={`font-medium w-full h-full cursor-pointer outline-none bg-transparent text-[16px] ${form.date ? "text-black opacity-100" : "opacity-0"
-                                                }`}
+                                    <div className="relative estimate-datepicker">
+                                        <DatePicker
+                                            id="moving-date"
+                                            selected={parseDateValue(form.date)}
+                                            onChange={(date) => handleChange("date", formatDateValue(date))}
+                                            onCalendarOpen={() => setIsHomeOpen(false)}
+                                            minDate={new Date()}
+                                            dateFormat="MMM d, yyyy"
+                                            placeholderText="Select date"
+                                            shouldCloseOnSelect
+                                            showPopperArrow={false}
+                                            popperPlacement="bottom-start"
+                                            portalId="estimate-datepicker-portal"
+                                            customInput={<DatePickerInput />}
+                                            calendarClassName="estimate-datepicker-calendar"
+                                            popperClassName="estimate-datepicker-popper"
                                         />
-                                        <img alt="arrow" src="/icons/calender.svg" className={`w-4  transition-all pointer-events-none absolute right-3 duration-300 ${form.date ? "opacity-0" : "opacity-60"} `} />
+                                        <img
+                                            alt=""
+                                            src="/icons/calender.svg"
+                                            className="w-4 opacity-60 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2"
+                                        />
                                     </div>
                                 </div>
 

@@ -50,3 +50,44 @@ button {
   height: 100%;
   object-fit: cover;
 }
+
+/* Estimate form date picker (react-datepicker) */
+.estimate-datepicker .react-datepicker-wrapper,
+.estimate-datepicker .react-datepicker__input-container {
+  display: block;
+  width: 100%;
+}
+
+.estimate-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+.estimate-datepicker-calendar {
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 1rem !important;
+  font-family: inherit;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+}
+
+.estimate-datepicker-calendar .react-datepicker__header {
+  background: #f5f2ef;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.estimate-datepicker-calendar .react-datepicker__day--selected,
+.estimate-datepicker-calendar .react-datepicker__day--keyboard-selected {
+  background-color: #f5344f !important;
+  color: #fff !important;
+  border-radius: 999px;
+}
+
+.estimate-datepicker-calendar .react-datepicker__day:hover {
+  border-radius: 999px;
+  background-color: rgba(245, 52, 79, 0.12);
+}
+
+.estimate-datepicker-calendar .react-datepicker__navigation-icon::before {
+  border-color: #0f172a;
+}
