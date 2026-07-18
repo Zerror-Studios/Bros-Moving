@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuoteStore } from "@/store/useQuoteStore";
-import { RiCloseLine } from "@remixicon/react";
+import { RiCloseLine, RiUserLine, RiPhoneLine } from "@remixicon/react";
 import { format, parse } from "date-fns";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
@@ -54,6 +54,7 @@ const EstimateForm = () => {
         toZip: "",
         date: "",
         homeSize: "",
+        name: "",
         phone: "",
     });
 
@@ -64,6 +65,7 @@ const EstimateForm = () => {
             toZip: "",
             date: "",
             homeSize: "",
+            name: "",
             phone: "",
         });
     }
@@ -160,6 +162,7 @@ const EstimateForm = () => {
                 !form.toZip ||
                 !form.date ||
                 !form.homeSize ||
+                !form.name ||
                 !form.phone
             ) {
                 toast.error("Please fill all fields before booking.");
@@ -387,6 +390,22 @@ const EstimateForm = () => {
 
                             <div className="mt-8">
                                 <label className="font-medium mb-2 text-[#0F172A] block">
+                                    Full Name
+                                </label>
+                                <div className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3">
+                                    <input
+                                        type="text"
+                                        value={form.name}
+                                        onChange={(e) => handleChange("name", e.target.value)}
+                                        placeholder="John Doe"
+                                        className="bg-transparent outline-none text-[#0F172A] text-[16px] font-medium w-full"
+                                    />
+                                    <RiUserLine className="w-5 h-5 text-[#0F172A] opacity-60 shrink-0" />
+                                </div>
+                            </div>
+
+                            <div className="mt-4">
+                                <label className="font-medium mb-2 text-[#0F172A] block">
                                     Phone Number
                                 </label>
                                 <div className="flex items-center justify-between bg-[#F5F2EF] rounded-full px-4 py-3">
@@ -397,7 +416,7 @@ const EstimateForm = () => {
                                         placeholder="+(123) 456 7890"
                                         className="bg-transparent outline-none text-[#0F172A] text-[16px] font-medium w-full"
                                     />
-                                    <img alt="phone" src="/icons/phone.svg" className="w-5 opacity-60" />
+                                    <RiPhoneLine className="w-5 h-5 text-[#0F172A] opacity-60 shrink-0" />
                                 </div>
                             </div>
 

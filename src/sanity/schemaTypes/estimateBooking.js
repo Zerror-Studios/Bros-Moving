@@ -30,6 +30,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'customerName',
+      title: 'Customer Name',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'phone',
       title: 'Phone Number',
       type: 'string',
@@ -83,7 +89,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'phone',
+      title: 'customerName',
       subtitle: 'movingDate',
     },
     prepare({ title, subtitle }) {

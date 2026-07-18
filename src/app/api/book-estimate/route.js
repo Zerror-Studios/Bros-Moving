@@ -13,7 +13,7 @@ const writeClient = createClient({
     useCdn: false,
 })
 
-const requiredFields = ['fromZip', 'toZip', 'date', 'homeSize', 'phone']
+const requiredFields = ['fromZip', 'toZip', 'date', 'homeSize', 'name', 'phone']
 
 export async function POST(req) {
     try {
@@ -48,6 +48,7 @@ export async function POST(req) {
             toZip: form.toZip.trim(),
             movingDate: form.date,
             homeSize: form.homeSize,
+            customerName: form.name.trim(),
             phone: form.phone.trim(),
             distanceKm: Number(estimate.kms),
             movingCost: Number(estimate.movingCost),
@@ -89,6 +90,10 @@ export async function POST(req) {
                         <tr>
                             <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Home Size</td>
                             <td style="padding: 10px; border: 1px solid #ddd;">${form.homeSize}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Customer Name</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">${form.name}</td>
                         </tr>
                         <tr>
                             <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold; background-color: #f9f9f9;">Phone Number</td>
